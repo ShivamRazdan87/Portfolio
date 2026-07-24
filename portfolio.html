@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivam Razdan — Full-Stack & AI Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --kraft: #E4D5B7;
+    --kraft-dark: #D6C29C;
+    --forest: #1F3A2E;
+    --forest-light: #2E5240;
+    --ink: #1B2A20;
+    --paper: #FBF8F1;
+    --stamp: #B23A2E;
+    --line: rgba(27,42,32,0.16);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--kraft);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(27,42,32,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+
+  /* ===== NAV ===== */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 0;
+  }
+  .brand { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 15px; letter-spacing: 0.03em; }
+  .brand span { color: var(--forest); }
+  nav .links { display: flex; gap: 28px; font-family: 'Space Mono', monospace; font-size: 13px; }
+  nav .links a { text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color .2s; }
+  nav .links a:hover { border-color: var(--forest); }
+
+  /* ===== HERO ===== */
+  header.hero { padding: 60px 0 80px; }
+  .eyebrow {
+    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--forest-light); margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--forest-light); }
+  h1.display {
+    font-family: 'Fraunces', serif; font-weight: 600; font-style: normal;
+    font-size: clamp(42px, 7vw, 76px); line-height: 1.02; margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  h1.display em { font-style: italic; font-weight: 500; color: var(--forest); }
+  .hero-sub {
+    font-size: 18px; line-height: 1.6; max-width: 560px; color: var(--ink);
+    opacity: 0.82; margin-bottom: 34px;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    font-family: 'Space Mono', monospace; font-size: 13px; text-decoration: none;
+    padding: 13px 24px; border-radius: 2px; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-solid { background: var(--forest); color: var(--paper); }
+  .btn-solid:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(31,58,46,0.25); }
+  .btn-line { border: 1px solid var(--ink); color: var(--ink); }
+  .btn-line:hover { transform: translateY(-2px); }
+
+  /* ===== SECTION LABEL ===== */
+  .section { padding: 70px 0; border-top: 1px solid var(--line); }
+  .section-label {
+    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--forest-light); margin-bottom: 10px;
+  }
+  .section h2 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 40px; letter-spacing: -0.01em;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 2px; background: var(--line); border: 1px solid var(--line); }
+  .skill-cell { background: var(--kraft); padding: 22px 20px; }
+  .skill-cell .cat { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--forest-light); margin-bottom: 10px; }
+  .skill-cell .items { font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.7; }
+
+  /* ===== RECEIPT (signature element) ===== */
+  .receipt-stage {
+    display: flex; justify-content: center; padding: 20px 0 10px;
+  }
+  .receipt {
+    background: var(--paper);
+    width: 100%; max-width: 420px;
+    padding: 34px 30px 40px;
+    font-family: 'Space Mono', monospace;
+    color: var(--ink);
+    box-shadow: 0 30px 60px -20px rgba(27,42,32,0.35);
+    position: relative;
+    transform: rotate(-1.2deg);
+    clip-path: polygon(
+      0% 1%, 3% 0%, 7% 1.5%, 11% 0%, 15% 1.5%, 19% 0%, 23% 1.5%, 27% 0%, 31% 1.5%, 35% 0%, 39% 1.5%, 43% 0%, 47% 1.5%, 51% 0%, 55% 1.5%, 59% 0%, 63% 1.5%, 67% 0%, 71% 1.5%, 75% 0%, 79% 1.5%, 83% 0%, 87% 1.5%, 91% 0%, 95% 1.5%, 99% 0%, 100% 1%,
+      100% 99%, 97% 100%, 93% 98.5%, 89% 100%, 85% 98.5%, 81% 100%, 77% 98.5%, 73% 100%, 69% 98.5%, 65% 100%, 61% 98.5%, 57% 100%, 53% 98.5%, 49% 100%, 45% 98.5%, 41% 100%, 37% 98.5%, 33% 100%, 29% 98.5%, 25% 100%, 21% 98.5%, 17% 100%, 13% 98.5%, 9% 100%, 5% 98.5%, 1% 100%, 0% 99%
+    );
+  }
+  .receipt::after {
+    content: 'PAID';
+    position: absolute; top: 42%; right: 8%;
+    font-family: 'Space Mono', monospace; font-weight: 700; font-size: 30px;
+    color: var(--stamp); border: 3px solid var(--stamp); border-radius: 6px;
+    padding: 2px 14px; opacity: 0.55; transform: rotate(-14deg);
+    letter-spacing: 0.08em; pointer-events: none;
+  }
+  .r-center { text-align: center; margin-bottom: 6px; }
+  .r-shop { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.01em; }
+  .r-sub { font-size: 11px; opacity: 0.65; margin-top: 4px; }
+  .r-divider { border: none; border-top: 1px dashed rgba(27,42,32,0.35); margin: 16px 0; }
+  .r-meta { font-size: 11px; display: flex; justify-content: space-between; opacity: 0.7; margin-bottom: 4px; }
+  .r-line { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; padding: 6px 0; }
+  .r-line .name { flex: 1; }
+  .r-line .check { color: var(--forest); font-weight: 700; }
+  .r-total { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; padding-top: 12px; margin-top: 4px; border-top: 1px solid var(--ink); }
+  .r-barcode { margin-top: 26px; height: 34px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px); opacity: 0.8; }
+  .r-thanks { text-align: center; font-size: 11px; margin-top: 14px; opacity: 0.6; letter-spacing: 0.05em; }
+
+  .project-write { max-width: 620px; margin: 46px auto 0; }
+  .project-write h3 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; margin: 0 0 12px; }
+  .project-write p { line-height: 1.7; opacity: 0.85; margin-bottom: 14px; }
+  .project-links { display: flex; gap: 16px; margin-top: 18px; font-family: 'Space Mono', monospace; font-size: 13px; }
+  .project-links a { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ===== CONTACT ===== */
+  .contact-block { text-align: center; }
+  .contact-block .big {
+    font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
+    font-size: clamp(30px, 5vw, 46px); margin: 0 0 26px; line-height: 1.15;
+  }
+  .contact-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 14px; }
+  .contact-row a { text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+
+  footer { padding: 30px 0 50px; text-align: center; font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.55; }
+
+  @media (max-width: 600px) {
+    nav .links { gap: 16px; font-size: 11px; }
+    .section { padding: 50px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">SHIVAM<span>.</span>RAZDAN</div>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Full-Stack &amp; AI Web Developer</div>
+    <h1 class="display">I build tools your<br><em>business actually runs on.</em></h1>
+    <p class="hero-sub">Not templates — working software. Real payments, real logins, real dashboards. Based in Greater Noida, building with Next.js, Supabase, and modern AI tooling.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-solid">See the work →</a>
+      <a href="#contact" class="btn btn-line">Let's talk</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-label">Case Study</div>
+    <h2>One receipt, everything built.</h2>
+
+    <div class="receipt-stage">
+      <div class="receipt">
+        <div class="r-center">
+          <div class="r-shop">ANANYA GENERAL STORE</div>
+          <div class="r-sub">Hyperlocal Grocery Delivery — Built End to End</div>
+        </div>
+        <hr class="r-divider">
+        <div class="r-meta"><span>ORDER #A1042</span><span>GREATER NOIDA</span></div>
+        <hr class="r-divider">
+
+        <div class="r-line"><span class="name">Customer login — phone/email OTP</span><span class="check">✓</span></div>
+        <div class="r-line"><span class="name">Live order tracking</span><span class="check">✓</span></div>
+        <div class="r-line"><span class="name">Direct UPI payments — zero fees</span><span class="check">✓</span></div>
+        <div class="r-line"><span class="name">Cash on delivery</span><span class="check">✓</span></div>
+        <div class="r-line"><span class="name">Admin dashboard + inventory</span><span class="check">✓</span></div>
+        <div class="r-line"><span class="name">Low-stock &amp; sales alerts</span><span class="check">✓</span></div>
+        <div class="r-line"><span class="name">WhatsApp order notifications</span><span class="check">✓</span></div>
+        <div class="r-line"><span class="name">Cross-device auto-sync</span><span class="check">✓</span></div>
+
+        <div class="r-total"><span>TOTAL DELIVERED</span><span>1 LIVE STORE</span></div>
+        <div class="r-barcode"></div>
+        <div class="r-thanks">THANK YOU FOR SHOPPING WITH US</div>
+      </div>
+    </div>
+
+    <div class="project-write">
+      <h3>A real shop, a real owner, a real app.</h3>
+      <p>Ananya General Store is a working delivery app built for a kirana shop owner in a residential society — not a demo. Customers log in, browse, and pay directly via UPI with zero transaction fees; the owner runs the whole operation from an admin dashboard with live inventory, order status, and WhatsApp alerts the moment an order comes in.</p>
+      <p>Built solo, end to end: architecture, auth, database design, payments, and the operational tooling a small business owner actually needs day to day.</p>
+      <div class="project-links">
+        <a href="https://ananya-general-store.vercel.app/" target="_blank">Live site →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-label">Toolkit</div>
+    <h2>What I build with.</h2>
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <div class="cat">Frontend</div>
+        <div class="items">Next.js<br>TypeScript<br>Tailwind CSS</div>
+      </div>
+      <div class="skill-cell">
+        <div class="cat">Backend &amp; Data</div>
+        <div class="items">Supabase<br>PostgreSQL<br>Zustand</div>
+      </div>
+      <div class="skill-cell">
+        <div class="cat">AI &amp; Integrations</div>
+        <div class="items">LLM APIs<br>Prompt Engineering<br>Embeddings / RAG</div>
+      </div>
+      <div class="skill-cell">
+        <div class="cat">Ship &amp; Operate</div>
+        <div class="items">Vercel<br>Payments (UPI)<br>Auth &amp; Sessions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap contact-block">
+    <div class="section-label" style="text-align:center;">Get in touch</div>
+    <p class="big">Got a business that<br>needs a real website?</p>
+    <div class="contact-row">
+      <a href="mailto:razdan.shivam005@gmail.com">razdan.shivam005@gmail.com</a>
+      <a href="tel:+919958882260">+91 99588 82260</a>
+      <a href="https://www.linkedin.com/in/shivam-razdan-65839b273" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Shivam Razdan — Built with Next.js &amp; a lot of tea.</div>
+</footer>
+
+</body>
+</html>
