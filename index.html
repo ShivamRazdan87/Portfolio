@@ -3,260 +3,436 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shivam Razdan — Full-Stack & AI Web Developer</title>
+<title>Shivam — Full-Stack Web Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --kraft: #E4D5B7;
-    --kraft-dark: #D6C29C;
-    --forest: #1F3A2E;
-    --forest-light: #2E5240;
-    --ink: #1B2A20;
-    --paper: #FBF8F1;
-    --stamp: #B23A2E;
-    --line: rgba(27,42,32,0.16);
+  :root{
+    --forest: #1F3327;
+    --forest-deep: #16241C;
+    --paper: #F7F1E3;
+    --paper-dark: #EDE5D0;
+    --ink: #201C16;
+    --cream: #F3EFE3;
+    --tag-red: #B7402F;
+    --turmeric: #D6A438;
+    --line: rgba(32,28,22,0.16);
+    --line-light: rgba(243,239,227,0.22);
+
+    --display: 'Fraunces', serif;
+    --mono: 'Space Mono', monospace;
+    --body: 'Inter', sans-serif;
+
+    --maxw: 1080px;
   }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--kraft);
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(27,42,32,0.06) 1px, transparent 0);
-    background-size: 22px 22px;
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
     color: var(--ink);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--body);
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
-  a { color: inherit; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+  img,svg{ display:block; max-width:100%; }
+  a{ color: inherit; }
 
-  /* ===== NAV ===== */
-  nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 28px 0;
-  }
-  .brand { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 15px; letter-spacing: 0.03em; }
-  .brand span { color: var(--forest); }
-  nav .links { display: flex; gap: 28px; font-family: 'Space Mono', monospace; font-size: 13px; }
-  nav .links a { text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color .2s; }
-  nav .links a:hover { border-color: var(--forest); }
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
 
-  /* ===== HERO ===== */
-  header.hero { padding: 60px 0 80px; }
-  .eyebrow {
-    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--forest-light); margin-bottom: 18px;
-    display: flex; align-items: center; gap: 10px;
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(247,241,227,0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
   }
-  .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--forest-light); }
-  h1.display {
-    font-family: 'Fraunces', serif; font-weight: 600; font-style: normal;
-    font-size: clamp(42px, 7vw, 76px); line-height: 1.02; margin: 0 0 22px;
-    letter-spacing: -0.01em;
+  .nav-inner{
+    max-width: var(--maxw); margin:0 auto; padding: 16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
   }
-  h1.display em { font-style: italic; font-weight: 500; color: var(--forest); }
-  .hero-sub {
-    font-size: 18px; line-height: 1.6; max-width: 560px; color: var(--ink);
-    opacity: 0.82; margin-bottom: 34px;
+  .nav-mark{
+    font-family: var(--mono); font-weight:700; font-size:14px;
+    letter-spacing: 0.06em; text-transform: uppercase;
   }
-  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-  .btn {
-    font-family: 'Space Mono', monospace; font-size: 13px; text-decoration: none;
-    padding: 13px 24px; border-radius: 2px; display: inline-flex; align-items: center; gap: 8px;
-    transition: transform .15s ease, box-shadow .15s ease;
+  .nav-links{ display:flex; gap:26px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    font-family: var(--mono); font-size: 13px; text-decoration:none;
+    letter-spacing: 0.03em; opacity: 0.75; transition: opacity .2s;
   }
-  .btn-solid { background: var(--forest); color: var(--paper); }
-  .btn-solid:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(31,58,46,0.25); }
-  .btn-line { border: 1px solid var(--ink); color: var(--ink); }
-  .btn-line:hover { transform: translateY(-2px); }
+  .nav-links a:hover, .nav-links a:focus-visible{ opacity: 1; }
+  @media (max-width: 620px){ .nav-links{ gap:16px; } .nav-links a{ font-size:12px; } }
 
-  /* ===== SECTION LABEL ===== */
-  .section { padding: 70px 0; border-top: 1px solid var(--line); }
-  .section-label {
-    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--forest-light); margin-bottom: 10px;
-  }
-  .section h2 {
-    font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(28px, 4vw, 40px);
-    margin: 0 0 40px; letter-spacing: -0.01em;
-  }
-
-  /* ===== SKILLS ===== */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 2px; background: var(--line); border: 1px solid var(--line); }
-  .skill-cell { background: var(--kraft); padding: 22px 20px; }
-  .skill-cell .cat { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--forest-light); margin-bottom: 10px; }
-  .skill-cell .items { font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.7; }
-
-  /* ===== RECEIPT (signature element) ===== */
-  .receipt-stage {
-    display: flex; justify-content: center; padding: 20px 0 10px;
-  }
-  .receipt {
-    background: var(--paper);
-    width: 100%; max-width: 420px;
-    padding: 34px 30px 40px;
-    font-family: 'Space Mono', monospace;
-    color: var(--ink);
-    box-shadow: 0 30px 60px -20px rgba(27,42,32,0.35);
+  /* ---------- HERO ---------- */
+  .hero{
+    background: var(--forest);
+    color: var(--cream);
     position: relative;
-    transform: rotate(-1.2deg);
-    clip-path: polygon(
-      0% 1%, 3% 0%, 7% 1.5%, 11% 0%, 15% 1.5%, 19% 0%, 23% 1.5%, 27% 0%, 31% 1.5%, 35% 0%, 39% 1.5%, 43% 0%, 47% 1.5%, 51% 0%, 55% 1.5%, 59% 0%, 63% 1.5%, 67% 0%, 71% 1.5%, 75% 0%, 79% 1.5%, 83% 0%, 87% 1.5%, 91% 0%, 95% 1.5%, 99% 0%, 100% 1%,
-      100% 99%, 97% 100%, 93% 98.5%, 89% 100%, 85% 98.5%, 81% 100%, 77% 98.5%, 73% 100%, 69% 98.5%, 65% 100%, 61% 98.5%, 57% 100%, 53% 98.5%, 49% 100%, 45% 98.5%, 41% 100%, 37% 98.5%, 33% 100%, 29% 98.5%, 25% 100%, 21% 98.5%, 17% 100%, 13% 98.5%, 9% 100%, 5% 98.5%, 1% 100%, 0% 99%
-    );
+    overflow: hidden;
+    padding: 110px 0 90px;
   }
-  .receipt::after {
-    content: 'PAID';
-    position: absolute; top: 42%; right: 8%;
-    font-family: 'Space Mono', monospace; font-weight: 700; font-size: 30px;
-    color: var(--stamp); border: 3px solid var(--stamp); border-radius: 6px;
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, var(--line-light) 0 1px, transparent 1px 96px);
+    opacity: 0.5;
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--turmeric);
+    display:flex; align-items:center; gap:10px; margin-bottom: 22px;
+  }
+  .eyebrow::before{ content:""; width:26px; height:1px; background: var(--turmeric); }
+  h1.headline{
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height: 1.04;
+    margin: 0 0 26px;
+    max-width: 15ch;
+  }
+  .hero-sub{
+    font-size: 1.08rem;
+    max-width: 46ch;
+    color: rgba(243,239,227,0.82);
+    margin: 0 0 40px;
+  }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.03em;
+    padding: 13px 22px; border-radius: 3px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: transform .18s ease, background .18s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{ background: var(--turmeric); color: var(--forest-deep); font-weight:700; }
+  .btn-primary:hover{ background:#e3b452; }
+  .btn-ghost{ border:1px solid var(--line-light); color: var(--cream); }
+  .btn-ghost:hover{ border-color: var(--cream); }
+
+  .hero-meta{
+    margin-top: 64px; display:flex; gap:40px; flex-wrap:wrap;
+    font-family: var(--mono); font-size: 12.5px; color: rgba(243,239,227,0.6);
+  }
+  .hero-meta span b{ color: var(--cream); display:block; font-size:13px; margin-bottom:2px; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding: 88px 0; }
+  .section-head{ margin-bottom: 46px; }
+  .section-eyebrow{
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; opacity: 0.55; margin-bottom: 10px;
+  }
+  h2.section-title{
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    margin: 0;
+  }
+
+  .reveal{ opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform: none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns: 1.3fr 0.9fr; gap: 60px; align-items:start;
+  }
+  .about-text p{ font-size: 1.02rem; margin: 0 0 18px; max-width: 56ch; }
+  .about-text a{ color: var(--tag-red); text-decoration-thickness: 1px; }
+
+  .stamp{
+    border: 1.5px dashed var(--line);
+    padding: 22px 20px;
+    font-family: var(--mono); font-size: 12.5px;
+    background: var(--paper-dark);
+  }
+  .stamp-row{ display:flex; justify-content:space-between; padding: 7px 0; border-bottom: 1px dotted var(--line); }
+  .stamp-row:last-child{ border-bottom:none; }
+  .stamp-row span:first-child{ opacity: 0.6; }
+  .stamp-row span:last-child{ font-weight:700; text-align:right; }
+
+  /* ---------- WORK / RECEIPT ---------- */
+  .work{ background: var(--forest); color: var(--cream); }
+  .work .section-eyebrow{ opacity:0.55; color: var(--cream); }
+
+  .receipt{
+    background: var(--paper);
+    color: var(--ink);
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 36px 34px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    --notch: 14px;
+    -webkit-mask-image:
+      radial-gradient(circle var(--notch) at 0 0, transparent calc(var(--notch) - 1px), black var(--notch)),
+      radial-gradient(circle var(--notch) at 100% 0, transparent calc(var(--notch) - 1px), black var(--notch));
+    -webkit-mask-position: top left, top right;
+    -webkit-mask-size: 51% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-image:
+      radial-gradient(circle var(--notch) at 0 0, transparent calc(var(--notch) - 1px), black var(--notch)),
+      radial-gradient(circle var(--notch) at 100% 0, transparent calc(var(--notch) - 1px), black var(--notch));
+    mask-position: top left, top right;
+    mask-size: 51% 100%;
+    mask-repeat: no-repeat;
+  }
+  .receipt-torn{
+    height: 12px;
+    background:
+      linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0/10px 12px repeat-x,
+      linear-gradient(-135deg, var(--paper) 50%, transparent 50%) 0 0/10px 12px repeat-x;
+    max-width: 560px; margin: 0 auto; transform: translateY(-1px);
+  }
+  .receipt-head{ text-align:center; margin-bottom: 22px; }
+  .receipt-shop{ font-family: var(--display); font-weight:700; font-size: 1.5rem; letter-spacing: 0.01em; }
+  .receipt-addr{ font-family: var(--mono); font-size: 11.5px; opacity: 0.65; margin-top: 4px; }
+  .receipt-order{ font-family: var(--mono); font-size: 11.5px; opacity: 0.65; margin-top: 10px; }
+
+  .receipt-divider{ border-top: 1.5px dashed var(--line); margin: 18px 0; }
+
+  .receipt-line{
+    display:flex; justify-content:space-between; gap: 14px;
+    font-family: var(--mono); font-size: 12.5px; padding: 8px 0;
+  }
+  .receipt-line .item{ font-weight: 700; }
+  .receipt-line .note{ text-align:right; opacity: 0.7; }
+
+  .receipt-total{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-top: 16px; padding-top: 14px; border-top: 1.5px solid var(--ink);
+    font-family: var(--mono);
+  }
+  .receipt-total .label{ font-size: 11.5px; text-transform:uppercase; letter-spacing:0.08em; opacity:0.6; }
+  .receipt-total .value{ font-size: 13px; font-weight: 700; color: var(--tag-red); }
+
+  .receipt-stack{
+    margin-top: 18px; font-family: var(--mono); font-size: 11px; opacity: 0.7;
+    line-height: 1.7;
+  }
+
+  .barcode{
+    margin: 26px auto 10px; height: 42px; width: 82%;
+    background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 9px, var(--ink) 9px 12px, transparent 12px 14px);
+  }
+  .receipt-thanks{
+    text-align:center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.55; margin-top: 8px;
+  }
+
+  .paid-stamp{
+    position: absolute; top: 38%; right: 7%;
+    font-family: var(--mono); font-weight: 700; font-size: 28px;
+    color: var(--tag-red); border: 3px solid var(--tag-red); border-radius: 6px;
     padding: 2px 14px; opacity: 0.55; transform: rotate(-14deg);
     letter-spacing: 0.08em; pointer-events: none;
   }
-  .r-center { text-align: center; margin-bottom: 6px; }
-  .r-shop { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; letter-spacing: 0.01em; }
-  .r-sub { font-size: 11px; opacity: 0.65; margin-top: 4px; }
-  .r-divider { border: none; border-top: 1px dashed rgba(27,42,32,0.35); margin: 16px 0; }
-  .r-meta { font-size: 11px; display: flex; justify-content: space-between; opacity: 0.7; margin-bottom: 4px; }
-  .r-line { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; padding: 6px 0; }
-  .r-line .name { flex: 1; }
-  .r-line .check { color: var(--forest); font-weight: 700; }
-  .r-total { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; padding-top: 12px; margin-top: 4px; border-top: 1px solid var(--ink); }
-  .r-barcode { margin-top: 26px; height: 34px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px); opacity: 0.8; }
-  .r-thanks { text-align: center; font-size: 11px; margin-top: 14px; opacity: 0.6; letter-spacing: 0.05em; }
 
-  .project-write { max-width: 620px; margin: 46px auto 0; }
-  .project-write h3 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; margin: 0 0 12px; }
-  .project-write p { line-height: 1.7; opacity: 0.85; margin-bottom: 14px; }
-  .project-links { display: flex; gap: 16px; margin-top: 18px; font-family: 'Space Mono', monospace; font-size: 13px; }
-  .project-links a { text-decoration: underline; text-underline-offset: 3px; }
+  .work-links{ display:flex; justify-content:center; gap:16px; margin-top: 40px; flex-wrap:wrap; }
 
-  /* ===== CONTACT ===== */
-  .contact-block { text-align: center; }
-  .contact-block .big {
-    font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
-    font-size: clamp(30px, 5vw, 46px); margin: 0 0 26px; line-height: 1.15;
+  /* ---------- SKILLS ---------- */
+  .shelves{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 700px){ .shelves{ grid-template-columns: 1fr; } }
+  .shelf{ background: var(--paper); padding: 30px 28px; }
+  .shelf-label{
+    font-family: var(--mono); font-size: 12px; letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--tag-red); margin-bottom: 16px;
   }
-  .contact-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 14px; }
-  .contact-row a { text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
-
-  footer { padding: 30px 0 50px; text-align: center; font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.55; }
-
-  @media (max-width: 600px) {
-    nav .links { gap: 16px; font-size: 11px; }
-    .section { padding: 50px 0; }
+  .shelf-items{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+  .shelf-items li{
+    font-family: var(--body); font-size: 13.5px; font-weight:500;
+    background: var(--paper-dark); padding: 6px 12px; border-radius: 2px;
+    border: 1px solid var(--line);
   }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ text-align:center; }
+  .contact .section-title{ margin-bottom: 18px; }
+  .contact p{ max-width: 48ch; margin: 0 auto 34px; opacity: 0.8; }
+  .order-slip{
+    display:inline-block; text-align:left; font-family: var(--mono); font-size: 13px;
+    border: 1px dashed var(--line); padding: 22px 28px; background: var(--paper-dark);
+  }
+  .order-slip div{ padding: 5px 0; }
+  .order-slip a{ color: var(--tag-red); text-decoration: underline; text-underline-offset: 3px; }
+
+  footer{
+    padding: 30px 0 40px; text-align:center;
+    font-family: var(--mono); font-size: 11.5px; opacity: 0.5;
+  }
+
+  :focus-visible{ outline: 2px solid var(--tag-red); outline-offset: 3px; }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <nav>
-    <div class="brand">SHIVAM<span>.</span>RAZDAN</div>
-    <div class="links">
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-</div>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Full-Stack &amp; AI Web Developer</div>
-    <h1 class="display">I build tools your<br><em>business actually runs on.</em></h1>
-    <p class="hero-sub">Not templates — working software. Real payments, real logins, real dashboards. Based in Greater Noida, building with Next.js, Supabase, and modern AI tooling.</p>
-    <div class="hero-cta">
-      <a href="#work" class="btn btn-solid">See the work →</a>
-      <a href="#contact" class="btn btn-line">Let's talk</a>
-    </div>
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-mark">Shivam ✦ Dev</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
 </header>
 
-<section class="section" id="work">
+<section class="hero">
   <div class="wrap">
-    <div class="section-label">Case Study</div>
-    <h2>One receipt, everything built.</h2>
+    <div class="eyebrow">Full-Stack Web Developer</div>
+    <h1 class="headline">Shivam builds stores that feel alive online.</h1>
+    <p class="hero-sub">I build fast, functional web products — from checkout flows to admin dashboards — and layer in AI where it actually helps the person using them. Based in Greater Noida, India.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">See the work</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>Stack</b>Next.js · TypeScript · Supabase</span>
+      <span><b>Focus</b>Commerce & AI-integrated web apps</span>
+      <span><b>Based in</b>Greater Noida, India</span>
+    </div>
+  </div>
+</section>
 
-    <div class="receipt-stage">
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">About</div>
+      <h2 class="section-title">A developer who ships to real shopkeepers, not just demos.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a full-stack developer working across the modern web stack — Next.js, TypeScript, Supabase, Tailwind — to turn ideas for real businesses into working products people actually use.</p>
+        <p>My most recent build, Ananya General Store, is a complete grocery delivery platform built from scratch for a local shop: product catalog, checkout, delivery slots, an admin dashboard, and a WhatsApp order flow the owner uses every day.</p>
+        <p>I'm currently extending that same instinct — practical, product-first engineering — into AI-assisted features: smarter search, conversational support, and tools that layer language models on top of everyday workflows.</p>
+      </div>
+      <div class="stamp reveal">
+        <div class="stamp-row"><span>Role</span><span>Full-Stack Developer</span></div>
+        <div class="stamp-row"><span>Location</span><span>Greater Noida, IN</span></div>
+        <div class="stamp-row"><span>Core stack</span><span>Next.js / TS / Supabase</span></div>
+        <div class="stamp-row"><span>Currently</span><span>Adding AI features</span></div>
+        <div class="stamp-row"><span>Available</span><span>Open to roles</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Flagship project</div>
+      <h2 class="section-title">Ananya General Store — a real shop, fully online.</h2>
+    </div>
+
+    <div class="reveal">
       <div class="receipt">
-        <div class="r-center">
-          <div class="r-shop">ANANYA GENERAL STORE</div>
-          <div class="r-sub">Hyperlocal Grocery Delivery — Built End to End</div>
+        <div class="paid-stamp">PAID</div>
+        <div class="receipt-head">
+          <div class="receipt-shop">ANANYA GENERAL STORE</div>
+          <div class="receipt-addr">Parsvnath Edens, Alpha-2 · Greater Noida</div>
+          <div class="receipt-order">ORDER #001 — FULL-STACK BUILD</div>
         </div>
-        <hr class="r-divider">
-        <div class="r-meta"><span>ORDER #A1042</span><span>GREATER NOIDA</span></div>
-        <hr class="r-divider">
 
-        <div class="r-line"><span class="name">Customer login — phone/email OTP</span><span class="check">✓</span></div>
-        <div class="r-line"><span class="name">Live order tracking</span><span class="check">✓</span></div>
-        <div class="r-line"><span class="name">Direct UPI payments — zero fees</span><span class="check">✓</span></div>
-        <div class="r-line"><span class="name">Cash on delivery</span><span class="check">✓</span></div>
-        <div class="r-line"><span class="name">Admin dashboard + inventory</span><span class="check">✓</span></div>
-        <div class="r-line"><span class="name">Low-stock &amp; sales alerts</span><span class="check">✓</span></div>
-        <div class="r-line"><span class="name">WhatsApp order notifications</span><span class="check">✓</span></div>
-        <div class="r-line"><span class="name">Cross-device auto-sync</span><span class="check">✓</span></div>
+        <div class="receipt-divider"></div>
 
-        <div class="r-total"><span>TOTAL DELIVERED</span><span>1 LIVE STORE</span></div>
-        <div class="r-barcode"></div>
-        <div class="r-thanks">THANK YOU FOR SHOPPING WITH US</div>
+        <div class="receipt-line"><span class="item">Catalog & Inventory</span><span class="note">Supabase + local fallback</span></div>
+        <div class="receipt-line"><span class="item">Checkout & Payments</span><span class="note">Direct UPI / Cash on Delivery</span></div>
+        <div class="receipt-line"><span class="item">WhatsApp Order Alerts</span><span class="note">One-tap owner notify</span></div>
+        <div class="receipt-line"><span class="item">Admin Dashboard</span><span class="note">Live stock + sales + alerts</span></div>
+        <div class="receipt-line"><span class="item">Motion & Polish</span><span class="note">Framer Motion throughout</span></div>
+        <div class="receipt-line"><span class="item">Dark Mode</span><span class="note">Custom theme system</span></div>
+
+        <div class="receipt-total">
+          <span class="label">Status</span>
+          <span class="value">Shipped & Live on Vercel</span>
+        </div>
+
+        <div class="receipt-stack">
+          STACK — Next.js 14 (App Router) · TypeScript<br>
+          Tailwind CSS · Zustand · Supabase · Framer Motion
+        </div>
+
+        <div class="barcode" role="presentation"></div>
+        <div class="receipt-thanks">Thank you for stopping by</div>
       </div>
     </div>
 
-    <div class="project-write">
-      <h3>A real shop, a real owner, a real app.</h3>
-      <p>Ananya General Store is a working delivery app built for a kirana shop owner in a residential society — not a demo. Customers log in, browse, and pay directly via UPI with zero transaction fees; the owner runs the whole operation from an admin dashboard with live inventory, order status, and WhatsApp alerts the moment an order comes in.</p>
-      <p>Built solo, end to end: architecture, auth, database design, payments, and the operational tooling a small business owner actually needs day to day.</p>
-      <div class="project-links">
-        <a href="https://ananya-general-store.vercel.app/" target="_blank">Live site →</a>
-      </div>
+    <div class="work-links">
+      <a class="btn btn-primary" href="https://ananya-general-store.vercel.app/" target="_blank" rel="noopener">View live site</a>
+      <a class="btn btn-ghost" href="https://github.com/ShivamRazdan87" target="_blank" rel="noopener">View code</a>
     </div>
   </div>
 </section>
 
-<section class="section" id="skills">
+<section id="skills">
   <div class="wrap">
-    <div class="section-label">Toolkit</div>
-    <h2>What I build with.</h2>
-    <div class="skills-grid">
-      <div class="skill-cell">
-        <div class="cat">Frontend</div>
-        <div class="items">Next.js<br>TypeScript<br>Tailwind CSS</div>
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Skills</div>
+      <h2 class="section-title">What's on the shelves.</h2>
+    </div>
+    <div class="shelves reveal">
+      <div class="shelf">
+        <div class="shelf-label">Frontend</div>
+        <ul class="shelf-items">
+          <li>Next.js</li><li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>Framer Motion</li>
+        </ul>
       </div>
-      <div class="skill-cell">
-        <div class="cat">Backend &amp; Data</div>
-        <div class="items">Supabase<br>PostgreSQL<br>Zustand</div>
+      <div class="shelf">
+        <div class="shelf-label">Backend & Data</div>
+        <ul class="shelf-items">
+          <li>Node.js</li><li>Supabase</li><li>PostgreSQL</li><li>Zustand</li><li>REST APIs</li>
+        </ul>
       </div>
-      <div class="skill-cell">
-        <div class="cat">AI &amp; Integrations</div>
-        <div class="items">LLM APIs<br>Prompt Engineering<br>Embeddings / RAG</div>
+      <div class="shelf">
+        <div class="shelf-label">AI & Integration</div>
+        <ul class="shelf-items">
+          <li>LLM APIs</li><li>Prompt Engineering</li><li>Chat & Assistant UX</li><li>Embeddings (learning)</li>
+        </ul>
       </div>
-      <div class="skill-cell">
-        <div class="cat">Ship &amp; Operate</div>
-        <div class="items">Vercel<br>Payments (UPI)<br>Auth &amp; Sessions</div>
+      <div class="shelf">
+        <div class="shelf-label">Tools & Deploy</div>
+        <ul class="shelf-items">
+          <li>Git / GitHub</li><li>Vercel</li><li>ESLint</li><li>Chrome DevTools</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="contact">
-  <div class="wrap contact-block">
-    <div class="section-label" style="text-align:center;">Get in touch</div>
-    <p class="big">Got a business that<br>needs a real website?</p>
-    <div class="contact-row">
-      <a href="mailto:razdan.shivam005@gmail.com">razdan.shivam005@gmail.com</a>
-      <a href="tel:+919958882260">+91 99588 82260</a>
-      <a href="https://www.linkedin.com/in/shivam-razdan-65839b273" target="_blank">LinkedIn</a>
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center;">
+      <div class="section-eyebrow">Contact</div>
+      <h2 class="section-title">Let's build something.</h2>
+    </div>
+    <p class="reveal">Open to full-stack and AI web development roles, freelance builds, or a conversation about a project you're planning.</p>
+    <div class="order-slip reveal">
+      <div>EMAIL &nbsp; <a href="mailto:razdan.shivam005@gmail.com">razdan.shivam005@gmail.com</a></div>
+      <div>PHONE &nbsp; <a href="tel:+919958882260">+91 99588 82260</a></div>
+      <div>GITHUB &nbsp; <a href="https://github.com/ShivamRazdan87" target="_blank" rel="noopener">github.com/ShivamRazdan87</a></div>
+      <div>LINKEDIN &nbsp; <a href="https://www.linkedin.com/in/shivam-razdan-65839b273" target="_blank" rel="noopener">linkedin.com/in/shivam-razdan-65839b273</a></div>
+      <div>LOCATION &nbsp; Greater Noida, India</div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">© 2026 Shivam Razdan — Built with Next.js &amp; a lot of tea.</div>
-</footer>
+<footer>Built by Shivam · Updated 2026</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
