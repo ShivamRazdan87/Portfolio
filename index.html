@@ -887,6 +887,9 @@
 
     <p class="price-note">Domain and hosting are billed separately (typically ₹1,500–3,000/year) and are not included in the prices above.</p>
     <p class="price-note">Have something more specific in mind — an online store, a booking system, a custom dashboard? Pricing scales with scope. Let's talk through what you need and I'll quote accordingly.</p>
+    <div style="text-align:center; margin-top:26px;">
+      <a class="btn btn-ghost" href="#contact" onclick="openContactModal(event, 'booking')">Book a Call</a>
+    </div>
 
     <div class="addon-list reveal">
       <div class="addon-row"><span>Extra page</span><span class="addon-price">₹1,500</span></div>
@@ -961,8 +964,8 @@
 <div class="modal-overlay" id="contactModalOverlay">
   <div class="modal-card">
     <button class="modal-close" onclick="closeContactModal()" aria-label="Close">✕</button>
-    <div class="modal-eyebrow">Send a message</div>
-    <h3 class="modal-title">Let's talk about your site.</h3>
+    <div class="modal-eyebrow" id="cm-eyebrow">Send a message</div>
+    <h3 class="modal-title" id="cm-title">Let's talk about your site.</h3>
     <form id="contactModalForm">
       <div class="modal-field">
         <label for="cm-name">Name</label>
@@ -976,7 +979,7 @@
         <label for="cm-message">Message</label>
         <textarea id="cm-message" rows="4" required placeholder="Tell me a bit about what you need..."></textarea>
       </div>
-      <button type="submit" class="modal-submit">Send Message</button>
+      <button type="submit" class="modal-submit" id="cm-submit">Send Message</button>
       <p class="modal-note">Opens your email app with this pre-filled — nothing sent until you hit send there.</p>
     </form>
   </div>
@@ -986,9 +989,41 @@
   (function(){
     var overlay = document.getElementById('contactModalOverlay');
     var form = document.getElementById('contactModalForm');
+    var eyebrowEl = document.getElementById('cm-eyebrow');
+    var titleEl = document.getElementById('cm-title');
+    var messageField = document.getElementById('cm-message');
+    var submitBtn = document.getElementById('cm-submit');
+    var currentType = 'general';
 
-    window.openContactModal = function(e){
+    var COPY = {
+      general: {
+        eyebrow: 'Send a message',
+        title: "Let's talk about your site.",
+        placeholder: 'Tell me a bit about what you need...',
+        submit: 'Send Message',
+        subjectPrefix: 'New enquiry from'
+      },
+      booking: {
+        eyebrow: 'Book a call',
+        title: "Let's schedule a time to talk.",
+        placeholder: 'A couple of times that work for you, and a bit about your project...',
+        submit: 'Request a Call',
+        subjectPrefix: 'Booking request from'
+      }
+    };
+
+    function applyCopy(type){
+      var c = COPY[type] || COPY.general;
+      eyebrowEl.textContent = c.eyebrow;
+      titleEl.textContent = c.title;
+      messageField.placeholder = c.placeholder;
+      submitBtn.textContent = c.submit;
+    }
+
+    window.openContactModal = function(e, type){
       if (e) e.preventDefault();
+      currentType = type === 'booking' ? 'booking' : 'general';
+      applyCopy(currentType);
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     };
@@ -1008,9 +1043,10 @@
       e.preventDefault();
       var name = document.getElementById('cm-name').value.trim();
       var email = document.getElementById('cm-email').value.trim();
-      var message = document.getElementById('cm-message').value.trim();
+      var message = messageField.value.trim();
+      var c = COPY[currentType] || COPY.general;
 
-      var subject = 'New enquiry from ' + name + ' — via portfolio site';
+      var subject = c.subjectPrefix + ' ' + name + ' — via portfolio site';
       var body = 'Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message;
       var mailto = 'mailto:razdan.shivam005@gmail.com'
         + '?subject=' + encodeURIComponent(subject)
@@ -1018,26 +1054,6 @@
 
       window.location.href = mailto;
       closeContactModal();
-    });
-
-    // Auto-open once per visit, a few seconds after the page loads —
-    // but not if the visitor has already opened or dismissed it manually.
-    var alreadyShown = sessionStorage.getItem('ssdev_contact_modal_shown');
-    if (!alreadyShown) {
-      setTimeout(function(){
-        if (!overlay.classList.contains('open')) {
-          openContactModal();
-        }
-        sessionStorage.setItem('ssdev_contact_modal_shown', '1');
-      }, 8000);
-    }
-
-    // If the visitor opens it manually before the timer fires, don't
-    // also auto-pop it later in the same session.
-    document.addEventListener('click', function(e){
-      if (e.target.closest('[onclick="openContactModal(event)"]')) {
-        sessionStorage.setItem('ssdev_contact_modal_shown', '1');
-      }
     });
   })();
 </script>
