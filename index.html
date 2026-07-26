@@ -338,6 +338,66 @@
   .contact{ text-align:center; }
   .contact .section-title{ margin-bottom: 18px; }
   .contact p{ max-width: 48ch; margin: 0 auto 34px; opacity: 0.8; }
+
+  /* ---------- CONTACT MODAL ---------- */
+  .modal-overlay{
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(22,36,28,0.72);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; transition: opacity .25s ease;
+  }
+  .modal-overlay.open{ display: flex; opacity: 1; }
+  .modal-card{
+    background: var(--cream);
+    border: 1px solid var(--line);
+    max-width: 440px; width: 100%;
+    padding: 34px 30px 30px;
+    position: relative;
+    transform: translateY(14px) scale(0.98);
+    transition: transform .25s ease;
+    box-shadow: 0 40px 80px -20px rgba(22,36,28,0.5);
+  }
+  .modal-overlay.open .modal-card{ transform: translateY(0) scale(1); }
+  .modal-close{
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none; cursor: pointer;
+    font-family: var(--mono); font-size: 18px; color: var(--ink); opacity: 0.5;
+    line-height: 1; padding: 4px;
+  }
+  .modal-close:hover{ opacity: 1; }
+  .modal-eyebrow{
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--forest); opacity: 0.75; margin-bottom: 8px;
+  }
+  .modal-title{
+    font-family: var(--display); font-weight: 600; font-size: 24px;
+    margin: 0 0 22px; letter-spacing: -0.01em;
+  }
+  .modal-field{ margin-bottom: 14px; text-align: left; }
+  .modal-field label{
+    display:block; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.6; margin-bottom: 6px;
+  }
+  .modal-field input, .modal-field textarea{
+    width: 100%; font-family: var(--body); font-size: 14px;
+    padding: 10px 12px; border: 1px solid var(--line); background: var(--paper);
+    color: var(--ink); border-radius: 2px; resize: vertical;
+  }
+  .modal-field input:focus, .modal-field textarea:focus{
+    outline: none; border-color: var(--forest);
+  }
+  .modal-submit{
+    width: 100%; margin-top: 6px;
+    background: var(--forest); color: var(--cream);
+    border: none; padding: 13px 24px; font-family: var(--mono); font-size: 13px;
+    cursor: pointer; transition: transform .15s ease;
+  }
+  .modal-submit:hover{ transform: translateY(-2px); }
+  .modal-note{
+    font-family: var(--mono); font-size: 10.5px; opacity: 0.55;
+    margin-top: 12px; text-align: center;
+  }
   .order-slip{
     display:inline-block; text-align:left; font-family: var(--mono); font-size: 13px;
     border: 1px dashed var(--line); padding: 22px 28px; background: var(--paper-dark);
@@ -620,7 +680,7 @@
     <p class="hero-sub">I build fast, functional web products — from checkout flows to admin dashboards — and layer in AI where it actually helps the person using them. Based in Greater Noida, India.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#work">See the work</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="#contact" onclick="openContactModal(event)">Get in touch</a>
     </div>
     <div class="hero-meta">
       <span><b>Stack</b>Next.js · TypeScript · Supabase</span>
@@ -896,6 +956,90 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<div class="modal-overlay" id="contactModalOverlay">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeContactModal()" aria-label="Close">✕</button>
+    <div class="modal-eyebrow">Send a message</div>
+    <h3 class="modal-title">Let's talk about your site.</h3>
+    <form id="contactModalForm">
+      <div class="modal-field">
+        <label for="cm-name">Name</label>
+        <input type="text" id="cm-name" required>
+      </div>
+      <div class="modal-field">
+        <label for="cm-email">Your Email</label>
+        <input type="email" id="cm-email" required>
+      </div>
+      <div class="modal-field">
+        <label for="cm-message">Message</label>
+        <textarea id="cm-message" rows="4" required placeholder="Tell me a bit about what you need..."></textarea>
+      </div>
+      <button type="submit" class="modal-submit">Send Message</button>
+      <p class="modal-note">Opens your email app with this pre-filled — nothing sent until you hit send there.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var overlay = document.getElementById('contactModalOverlay');
+    var form = document.getElementById('contactModalForm');
+
+    window.openContactModal = function(e){
+      if (e) e.preventDefault();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeContactModal = function(){
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    overlay.addEventListener('click', function(e){
+      if (e.target === overlay) closeContactModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeContactModal();
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('cm-name').value.trim();
+      var email = document.getElementById('cm-email').value.trim();
+      var message = document.getElementById('cm-message').value.trim();
+
+      var subject = 'New enquiry from ' + name + ' — via portfolio site';
+      var body = 'Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message;
+      var mailto = 'mailto:razdan.shivam005@gmail.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+      closeContactModal();
+    });
+
+    // Auto-open once per visit, a few seconds after the page loads —
+    // but not if the visitor has already opened or dismissed it manually.
+    var alreadyShown = sessionStorage.getItem('ssdev_contact_modal_shown');
+    if (!alreadyShown) {
+      setTimeout(function(){
+        if (!overlay.classList.contains('open')) {
+          openContactModal();
+        }
+        sessionStorage.setItem('ssdev_contact_modal_shown', '1');
+      }, 8000);
+    }
+
+    // If the visitor opens it manually before the timer fires, don't
+    // also auto-pop it later in the same session.
+    document.addEventListener('click', function(e){
+      if (e.target.closest('[onclick="openContactModal(event)"]')) {
+        sessionStorage.setItem('ssdev_contact_modal_shown', '1');
+      }
+    });
+  })();
 </script>
 
 </body>
