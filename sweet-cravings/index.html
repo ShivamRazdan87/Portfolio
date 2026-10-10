@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Cravings Co. — Handmade Cakes & Desserts</title>
+<meta name="description" content="Sweet Cravings Co. — small-batch cakes, cupcakes, brownies and cookies baked fresh every morning. Order online for pickup or same-day delivery.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23E86A7E'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='32' fill='%23FFF6EC' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF6EC;
+    --cream-2:#FBE9DA;
+    --pink:#E86A7E;
+    --pink-deep:#C94C62;
+    --pink-soft:#FBD3D9;
+    --cocoa:#3B2420;
+    --cocoa-2:#6B4A40;
+    --butter:#F6C76B;
+    --mint:#BFE3D0;
+    --line:rgba(59,36,32,.12);
+    --shadow:0 18px 40px -18px rgba(59,36,32,.35);
+    --display:'DM Serif Display', Georgia, serif;
+    --body:'DM Sans', system-ui, sans-serif;
+    --maxw:1160px;
+    --r:22px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--cocoa);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  button{font:inherit;cursor:pointer}
+  main{overflow-x:clip}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink-deep)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:14px 26px;font-weight:600;text-decoration:none;transition:transform .2s, background .2s, box-shadow .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--pink);color:#fff;box-shadow:0 10px 24px -10px var(--pink)}
+  .btn-primary:hover{background:var(--pink-deep)}
+  .btn-ghost{background:transparent;color:var(--cocoa);border:1.5px solid var(--cocoa)}
+  .btn-ghost:hover{background:var(--cocoa);color:var(--cream)}
+  :focus-visible{outline:3px solid var(--butter);outline-offset:3px}
+
+  /* ---------- Announcement + Nav ---------- */
+  .announce{background:var(--cocoa);color:var(--cream);text-align:center;font-size:13.5px;padding:9px 16px}
+  .announce b{color:var(--butter)}
+  header.nav{position:sticky;top:0;z-index:40;background:rgba(255,246,236,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:24px}
+  .logo-mark{width:38px;height:38px;border-radius:12px;background:var(--pink);display:grid;place-items:center;color:var(--cream);font-size:22px}
+  .logo em{color:var(--pink);font-style:italic}
+  .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+  .nav-links a{text-decoration:none;font-weight:500;opacity:.8}
+  .nav-links a:hover{opacity:1;color:var(--pink-deep)}
+  .nav-actions{display:flex;align-items:center;gap:10px}
+  .cart-btn{position:relative;background:var(--cocoa);color:var(--cream);border:0;border-radius:999px;padding:10px 18px;display:flex;align-items:center;gap:8px;font-weight:600}
+  .cart-count{background:var(--pink);color:#fff;border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;padding:0 6px;transition:transform .25s}
+  .cart-count.bump{transform:scale(1.35)}
+  .menu-toggle{display:none;background:none;border:0;padding:8px}
+  .menu-toggle span{display:block;width:22px;height:2px;background:var(--cocoa);margin:5px 0;transition:.3s}
+  @media (max-width:860px){
+    .nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:var(--cream);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .35s}
+    .nav-links.open{max-height:320px}
+    .nav-links li a{display:block;padding:14px 24px;border-top:1px solid var(--line)}
+    .menu-toggle{display:block}
+    .cart-btn .label{display:none}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;padding:72px 0 96px;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-180px;top:-140px;width:620px;height:620px;border-radius:50%;background:var(--pink-soft);z-index:-1}
+  .hero::after{content:"";position:absolute;left:-120px;bottom:-160px;width:340px;height:340px;border-radius:50%;background:var(--cream-2);z-index:-1}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(44px,6.4vw,82px);margin:16px 0 20px}
+  .hero h1 em{color:var(--pink);font-style:italic}
+  .hero p.lead{font-size:18px;max-width:480px;color:var(--cocoa-2);margin:0 0 30px}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+  .hero-stats strong{display:block;font-family:var(--display);font-size:34px;font-weight:400}
+  .hero-stats span{font-size:14px;color:var(--cocoa-2)}
+  .hero-art{position:relative;aspect-ratio:1/1;max-width:520px;margin-left:auto;width:100%}
+  .hero-art .plate{position:absolute;inset:6%;border-radius:50%;background:#fff;box-shadow:var(--shadow);display:grid;place-items:center}
+  .hero-art .plate svg{width:78%;animation:float 6s ease-in-out infinite}
+  .float-tag{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);font-size:14px;display:flex;align-items:center;gap:10px}
+  .float-tag .dot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:18px}
+  .float-tag b{display:block;font-size:14px}
+  .float-tag small{color:var(--cocoa-2)}
+  .tag-1{left:-4%;top:14%;animation:float 5s ease-in-out infinite .4s}
+  .tag-2{right:-2%;bottom:12%;animation:float 5.5s ease-in-out infinite 1s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @media (max-width:860px){
+    .hero{padding:48px 0 64px}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-art{max-width:400px;margin:0 auto}
+    .tag-1{left:0}.tag-2{right:0}
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee{background:var(--pink);color:#fff;overflow:hidden;padding:14px 0;transform:rotate(-1.2deg);margin:0 -20px}
+  .marquee-track{display:flex;gap:40px;width:max-content;animation:marquee 28s linear infinite;font-family:var(--display);font-size:24px;white-space:nowrap}
+  .marquee-track span::after{content:"✦";margin-left:40px;color:var(--butter)}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* ---------- Sections ---------- */
+  section{padding:96px 0}
+  @media (max-width:600px){section{padding:68px 0}}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 44px}
+  .section-head h2{font-size:clamp(34px,4.5vw,52px);margin:10px 0 12px}
+  .section-head p{color:var(--cocoa-2);margin:0}
+
+  /* ---------- Menu ---------- */
+  .filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+  .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;font-weight:500;transition:.2s}
+  .chip:hover{border-color:var(--pink)}
+  .chip.active{background:var(--cocoa);color:var(--cream);border-color:var(--cocoa)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+  .card{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .25s, box-shadow .25s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .card-art{aspect-ratio:4/3;display:grid;place-items:center;position:relative}
+  .card-art svg{width:62%;transition:transform .35s}
+  .card:hover .card-art svg{transform:scale(1.07) rotate(-3deg)}
+  .badge{position:absolute;top:14px;left:14px;background:var(--cocoa);color:var(--cream);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+  .badge.veg{left:auto;right:14px;background:#fff;color:#2E7D4F;border:1.5px solid #2E7D4F}
+  .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+  .card-body h3{font-size:23px}
+  .card-body p{font-size:14.5px;color:var(--cocoa-2);margin:6px 0 16px;flex:1}
+  .card-foot{display:flex;align-items:center;justify-content:space-between}
+  .price{font-weight:700;font-size:19px}
+  .price small{font-weight:500;color:var(--cocoa-2);font-size:13px}
+  .add{background:var(--pink-soft);color:var(--pink-deep);border:0;border-radius:999px;padding:9px 16px;font-weight:700;transition:.2s}
+  .add:hover{background:var(--pink);color:#fff}
+  .add.added{background:var(--mint);color:#1F5C40}
+
+  /* ---------- Why ---------- */
+  .why{background:var(--cocoa);color:var(--cream);border-radius:40px;margin:0 16px}
+  .why .eyebrow{color:var(--butter)}
+  .why .section-head p{color:rgba(255,246,236,.75)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .why-item{background:rgba(255,246,236,.06);border:1px solid rgba(255,246,236,.12);border-radius:var(--r);padding:28px 24px}
+  .why-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+  .why-item h3{font-size:22px;margin-bottom:8px}
+  .why-item p{margin:0;font-size:14.5px;color:rgba(255,246,236,.72)}
+  @media (max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.why-grid{grid-template-columns:1fr}.why{margin:0;border-radius:28px}}
+
+  /* ---------- Custom order ---------- */
+  .custom-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+  .custom-copy h2{font-size:clamp(34px,4.5vw,52px);margin:10px 0 16px}
+  .custom-copy p{color:var(--cocoa-2)}
+  .steps{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:16px}
+  .steps li{display:flex;gap:14px;align-items:flex-start}
+  .steps .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--butter);display:grid;place-items:center;font-weight:700}
+  .steps b{display:block}
+  .steps span{font-size:14.5px;color:var(--cocoa-2)}
+  form.custom{background:#fff;border-radius:28px;padding:32px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  form.custom .full{grid-column:1/-1}
+  label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+  input,select,textarea{width:100%;font:inherit;color:inherit;background:var(--cream);border:1.5px solid transparent;border-radius:14px;padding:12px 14px;transition:border-color .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--pink)}
+  textarea{resize:vertical;min-height:96px}
+  .form-note{font-size:13px;color:var(--cocoa-2);margin:0}
+  @media (max-width:860px){.custom-grid{grid-template-columns:1fr;gap:36px}}
+  @media (max-width:520px){form.custom{grid-template-columns:1fr;padding:22px}}
+
+  /* ---------- Reviews ---------- */
+  .reviews{background:var(--cream-2)}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .review{background:#fff;border-radius:var(--r);padding:28px;border:1px solid var(--line)}
+  .stars{color:var(--butter);letter-spacing:2px;font-size:18px}
+  .review p{font-size:16px;margin:12px 0 20px}
+  .who{display:flex;align-items:center;gap:12px}
+  .avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff}
+  .who b{display:block;font-size:15px}
+  .who small{color:var(--cocoa-2)}
+  @media (max-width:900px){.review-grid{grid-template-columns:1fr}}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px;margin:0 auto}
+  details{border-bottom:1px solid var(--line);padding:20px 4px}
+  summary{cursor:pointer;list-style:none;font-weight:600;font-size:18px;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:26px;line-height:1;color:var(--pink);transition:transform .25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin:12px 0 0;color:var(--cocoa-2)}
+
+  /* ---------- Visit / Footer ---------- */
+  .visit{padding-top:0}
+  .visit-card{background:var(--pink);color:#fff;border-radius:36px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+  .visit-card::after{content:"";position:absolute;right:-80px;bottom:-120px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.12)}
+  .visit-card h2{font-size:clamp(34px,4.5vw,50px);margin-bottom:14px}
+  .visit-card p{opacity:.92;margin:0 0 26px}
+  .visit-card .btn-primary{background:var(--cocoa);box-shadow:none}
+  .visit-card .btn-primary:hover{background:#000}
+  .visit-card .btn-ghost{color:#fff;border-color:#fff}
+  .visit-card .btn-ghost:hover{background:#fff;color:var(--pink-deep)}
+  .hours{background:rgba(255,255,255,.14);border-radius:22px;padding:24px 26px;position:relative;z-index:1}
+  .hours h3{font-size:22px;margin-bottom:12px}
+  .hours div{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid rgba(255,255,255,.25);font-size:15px}
+  @media (max-width:860px){.visit-card{grid-template-columns:1fr;padding:36px 24px;border-radius:28px}}
+  footer{padding:48px 0 36px;border-top:1px solid var(--line)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--cocoa-2)}
+  .socials{display:flex;gap:10px}
+  .socials a{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;text-decoration:none;transition:.2s}
+  .socials a:hover{background:var(--cocoa);color:var(--cream)}
+
+  /* ---------- Cart drawer ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(59,36,32,.45);opacity:0;pointer-events:none;transition:opacity .3s;z-index:60}
+  .overlay.show{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--cream);z-index:70;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+  .drawer.open{transform:none}
+  .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
+  .drawer-head h2{font-size:28px}
+  .close{background:none;border:0;font-size:28px;line-height:1;padding:4px 8px}
+  .drawer-items{flex:1;overflow-y:auto;padding:12px 24px}
+  .empty{text-align:center;padding:60px 10px;color:var(--cocoa-2)}
+  .empty div{font-size:48px;margin-bottom:10px}
+  .line{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+  .line-art{width:56px;height:56px;border-radius:14px;display:grid;place-items:center}
+  .line-art svg{width:72%}
+  .line b{display:block;font-size:15px}
+  .line small{color:var(--cocoa-2)}
+  .qty{display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:4px}
+  .qty button{width:28px;height:28px;border-radius:50%;border:0;background:var(--cream-2);font-weight:700}
+  .qty span{min-width:18px;text-align:center;font-weight:600}
+  .drawer-foot{padding:20px 24px 26px;border-top:1px solid var(--line);background:#fff}
+  .sum{display:flex;justify-content:space-between;font-size:15px;margin-bottom:6px;color:var(--cocoa-2)}
+  .sum.total{font-size:20px;font-weight:700;color:var(--cocoa);margin:10px 0 16px}
+  .drawer-foot .btn{width:100%;justify-content:center}
+  .drawer-foot .btn[disabled]{opacity:.45;pointer-events:none}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--cocoa);color:var(--cream);padding:12px 20px;border-radius:999px;font-weight:500;z-index:80;transition:transform .35s;max-width:calc(100% - 32px);text-align:center}
+  .toast.show{transform:translate(-50%,0)}
+  .drawer.open ~ .toast{bottom:120px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s, transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">🎂 Free delivery on orders above <b>₹999</b> · Order by 2 PM for same-day delivery</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo" aria-label="Sweet Cravings Co. home"><span class="logo-mark">S</span><span>Sweet <em>Cravings</em></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#why">Our Story</a></li>
+      <li><a href="#custom">Custom Cakes</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="label">Cart</span><span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Baked fresh every morning</span>
+        <h1>Little bites of <em>happiness</em>, made by hand.</h1>
+        <p class="lead">Small-batch cakes, cupcakes, brownies and cookies — baked with real butter, Belgian chocolate and zero shortcuts. Delivered warm to your door.</p>
+        <div class="hero-ctas">
+          <a href="#menu" class="btn btn-primary">Order now →</a>
+          <a href="#custom" class="btn btn-ghost">Design a custom cake</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>12k+</strong><span>Happy cravings</span></div>
+          <div><strong>4.9★</strong><span>Average rating</span></div>
+          <div><strong>100%</strong><span>Eggless options</span></div>
+        </div>
+      </div>
+      <div class="hero-art reveal">
+        <div class="plate" id="heroArt"></div>
+        <div class="float-tag tag-1"><span class="dot" style="background:var(--pink-soft)">🍓</span><div><b>Strawberry Dream</b><small>Today's bestseller</small></div></div>
+        <div class="float-tag tag-2"><span class="dot" style="background:var(--mint)">🛵</span><div><b>45-min delivery</b><small>Within 8 km</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee"></div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Menu</span>
+        <h2>Pick your sweet spot</h2>
+        <p>Everything is baked to order in our home kitchen. Eggless versions available on request.</p>
+      </div>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter menu"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="why" class="why">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why Sweet Cravings</span>
+        <h2>Baked like it's for family</h2>
+        <p>We started in a tiny home kitchen with one oven and a lot of love. The oven's bigger now — the love is the same.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal"><div class="why-icon" style="background:var(--pink)">🧈</div><h3>Real ingredients</h3><p>Pure butter, fresh cream, Belgian chocolate. No premixes, no preservatives.</p></div>
+        <div class="why-item reveal"><div class="why-icon" style="background:var(--butter)">⏰</div><h3>Baked to order</h3><p>Nothing sits on a shelf. Your order goes in the oven after you place it.</p></div>
+        <div class="why-item reveal"><div class="why-icon" style="background:var(--mint)">🥚</div><h3>Eggless friendly</h3><p>Every recipe has a tested eggless version that tastes just as good.</p></div>
+        <div class="why-item reveal"><div class="why-icon" style="background:var(--pink-soft)">🎁</div><h3>Gift-ready boxes</h3><p>Pretty packaging and a handwritten note — free with every order.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="custom">
+    <div class="wrap custom-grid">
+      <div class="custom-copy reveal">
+        <span class="eyebrow">Custom Cakes</span>
+        <h2>Your celebration, your cake.</h2>
+        <p>Birthdays, anniversaries, baby showers or just a Tuesday — tell us what you're dreaming of and we'll bake it into reality.</p>
+        <ol class="steps">
+          <li><span class="n">1</span><div><b>Share your idea</b><span>Fill the form with flavour, size and theme.</span></div></li>
+          <li><span class="n">2</span><div><b>Get a quote</b><span>We'll reply on WhatsApp within an hour.</span></div></li>
+          <li><span class="n">3</span><div><b>We bake & deliver</b><span>Fresh on your date, right on time.</span></div></li>
+        </ol>
+      </div>
+      <form class="custom reveal" id="customForm" novalidate>
+        <div><label for="cName">Your name</label><input id="cName" name="name" required placeholder="Priya Sharma"></div>
+        <div><label for="cPhone">Phone</label><input id="cPhone" name="phone" type="tel" required placeholder="98765 43210"></div>
+        <div><label for="cFlavour">Flavour</label>
+          <select id="cFlavour" name="flavour">
+            <option>Belgian Chocolate</option><option>Red Velvet</option><option>Strawberry</option><option>Butterscotch</option><option>Pineapple</option><option>Lotus Biscoff</option>
+          </select>
+        </div>
+        <div><label for="cSize">Size</label>
+          <select id="cSize" name="size">
+            <option>0.5 kg</option><option selected>1 kg</option><option>1.5 kg</option><option>2 kg</option><option>3 kg+ (tiered)</option>
+          </select>
+        </div>
+        <div><label for="cDate">Date needed</label><input id="cDate" name="date" type="date" required></div>
+        <div><label for="cEgg">Preference</label>
+          <select id="cEgg" name="egg"><option>Eggless</option><option>With egg</option></select>
+        </div>
+        <div class="full"><label for="cNotes">Theme & message on cake</label><textarea id="cNotes" name="notes" placeholder="Unicorn theme, pastel colours. 'Happy 6th Birthday Aarav!'"></textarea></div>
+        <div class="full"><button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Request a quote on WhatsApp</button></div>
+        <p class="form-note full">Custom cakes need at least 24 hours' notice. Tiered cakes need 3 days.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sweet words</span>
+        <h2>Loved by our neighbours</h2>
+      </div>
+      <div class="review-grid">
+        <div class="review reveal"><div class="stars">★★★★★</div><p>"The red velvet was the softest cake I've ever had. My daughter is already asking for it again next year."</p><div class="who"><span class="avatar" style="background:var(--pink)">NK</span><div><b>Neha K.</b><small>Ordered a birthday cake</small></div></div></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>"Fudgy brownies that are actually fudgy. Delivery was quick and the box looked so pretty I almost didn't open it."</p><div class="who"><span class="avatar" style="background:var(--cocoa-2)">RS</span><div><b>Rohan S.</b><small>Regular since 2024</small></div></div></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>"Finally an eggless bakery where nothing tastes 'eggless'. The Biscoff cupcakes are dangerous."</p><div class="who"><span class="avatar" style="background:#4E9A78">AM</span><div><b>Aditi M.</b><small>Office party order</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Good questions</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details><summary>Where do you deliver?</summary><p>We deliver within 8 km of our kitchen. Orders above ₹999 ship free; below that it's a flat ₹49.</p></details>
+        <details><summary>How do I pay?</summary><p>Pay by UPI or cash on delivery. We'll share the UPI details on WhatsApp after confirming your order.</p></details>
+        <details><summary>Is everything available eggless?</summary><p>Yes — every item on our menu has an eggless version. Just mention it in your order.</p></details>
+        <details><summary>How fresh are the bakes?</summary><p>Everything is baked to order on the day of delivery. Cakes stay best refrigerated for up to 3 days.</p></details>
+        <details><summary>Can I cancel or change my order?</summary><p>Ready-menu orders can be changed up to 2 hours before delivery. Custom cakes can be changed up to 24 hours before.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="visit">
+    <div class="wrap">
+      <div class="visit-card reveal">
+        <div style="position:relative;z-index:1">
+          <h2>Come say hi (and grab a cookie).</h2>
+          <p>Shop 4, Rose Garden Market, Sector 12 — follow the smell of fresh brownies. Pickup orders are ready in 30 minutes.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#menu">Start an order</a>
+            <a class="btn btn-ghost" href="tel:+919876543210">Call +91 98765 43210</a>
+          </div>
+        </div>
+        <div class="hours">
+          <h3>Opening hours</h3>
+          <div><span>Mon – Fri</span><span>10 AM – 9 PM</span></div>
+          <div><span>Saturday</span><span>9 AM – 10 PM</span></div>
+          <div><span>Sunday</span><span>9 AM – 8 PM</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="logo"><span class="logo-mark">S</span><span>Sweet <em>Cravings</em></span></a>
+    <span>© <span id="year"></span> Sweet Cravings Co. · Baked with love.</span>
+    <div class="socials">
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="WhatsApp">WA</a>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head"><h2>Your box</h2><button class="close" id="closeCart" aria-label="Close cart">×</button></div>
+  <div class="drawer-items" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="sum"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+    <div class="sum"><span>Delivery</span><span id="delivery">₹0</span></div>
+    <div class="sum total"><span>Total</span><span id="total">₹0</span></div>
+    <button class="btn btn-primary" id="checkout" disabled>Place order on WhatsApp</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// Replace with the bakery's real WhatsApp number (country code, no +).
+const WHATSAPP = '919876543210';
+const FREE_DELIVERY = 999, DELIVERY_FEE = 49;
+
+/* ---------- Illustrations (inline SVG, no image files needed) ---------- */
+const art = {
+  cake: (a='#E86A7E', b='#FBD3D9') => `<svg viewBox="0 0 200 200"><ellipse cx="100" cy="172" rx="78" ry="12" fill="#3B2420" opacity=".12"/><rect x="34" y="96" width="132" height="70" rx="14" fill="#6B4A40"/><rect x="34" y="96" width="132" height="22" rx="11" fill="${b}"/><path d="M34 110c10 14 20 14 30 0s20 14 30 0 20 14 30 0 20 14 30 0 12 10 12 10V110z" fill="${b}"/><rect x="34" y="132" width="132" height="8" fill="${a}" opacity=".7"/><circle cx="62" cy="92" r="9" fill="${a}"/><circle cx="100" cy="88" r="10" fill="${a}"/><circle cx="138" cy="92" r="9" fill="${a}"/><rect x="97" y="52" width="6" height="30" rx="3" fill="#F6C76B"/><path d="M100 36c6 8 6 14 0 16-6-2-6-8 0-16z" fill="#F6A13A"/></svg>`,
+  cupcake: (a='#E86A7E', b='#FBD3D9') => `<svg viewBox="0 0 200 200"><ellipse cx="100" cy="176" rx="56" ry="9" fill="#3B2420" opacity=".12"/><path d="M52 104h96l-12 68H64z" fill="#6B4A40"/><path d="M68 104l4 68M88 104l2 68M112 104l-2 68M132 104l-4 68" stroke="#3B2420" stroke-width="3" opacity=".25"/><path d="M44 108c-6-22 14-32 24-30 0-22 22-34 40-26 16-10 40 2 38 22 14 2 22 20 12 34z" fill="${b}"/><path d="M58 92c10-4 22 0 26 6M98 70c12-4 24 2 28 10" stroke="${a}" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="104" cy="44" r="12" fill="${a}"/><path d="M104 32c2-8 8-10 12-10" stroke="#4E9A78" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+  brownie: () => `<svg viewBox="0 0 200 200"><ellipse cx="100" cy="166" rx="80" ry="11" fill="#3B2420" opacity=".12"/><path d="M30 92l70-26 70 26v56l-70 20-70-20z" fill="#4A2C24"/><path d="M30 92l70-26 70 26-70 22z" fill="#6B4A40"/><path d="M100 114v54" stroke="#3B2420" stroke-width="3" opacity=".4"/><path d="M48 92c10 6 18-4 28 2s16-4 26 2 18-2 26 2 16-4 24 0" stroke="#2A1814" stroke-width="5" fill="none" stroke-linecap="round"/><rect x="70" y="80" width="10" height="8" rx="2" fill="#F6C76B" transform="rotate(-15 75 84)"/><rect x="118" y="84" width="10" height="8" rx="2" fill="#F6C76B" transform="rotate(20 123 88)"/><circle cx="96" cy="78" r="4" fill="#2A1814"/></svg>`,
+  cookie: () => `<svg viewBox="0 0 200 200"><ellipse cx="100" cy="170" rx="66" ry="10" fill="#3B2420" opacity=".12"/><circle cx="100" cy="98" r="66" fill="#D9A066"/><circle cx="100" cy="98" r="66" fill="none" stroke="#B7804A" stroke-width="6" stroke-dasharray="6 10" opacity=".6"/><g fill="#3B2420"><circle cx="72" cy="74" r="8"/><circle cx="118" cy="66" r="7"/><circle cx="132" cy="108" r="9"/><circle cx="88" cy="118" r="8"/><circle cx="64" cy="108" r="5"/><circle cx="108" cy="96" r="5"/><circle cx="112" cy="140" r="6"/></g></svg>`,
+  donut: (a='#E86A7E') => `<svg viewBox="0 0 200 200"><ellipse cx="100" cy="168" rx="68" ry="10" fill="#3B2420" opacity=".12"/><circle cx="100" cy="96" r="68" fill="#E2B07A"/><path d="M38 90c0-36 28-62 62-62s62 26 62 62c-8 10-14 0-22 8s-14 2-20 10-14-2-22 4-12-4-20 2-14-6-20-2-12-12-20-22z" fill="${a}"/><circle cx="100" cy="96" r="20" fill="#FFF6EC"/><g stroke-width="5" stroke-linecap="round"><path d="M64 60l8 4" stroke="#F6C76B"/><path d="M128 52l6-6" stroke="#BFE3D0"/><path d="M140 84l8 2" stroke="#fff"/><path d="M76 98l-2 8" stroke="#BFE3D0"/><path d="M110 64l2 8" stroke="#fff"/><path d="M54 84l-6 4" stroke="#fff"/></g></svg>`,
+  macaron: () => `<svg viewBox="0 0 200 200"><ellipse cx="100" cy="166" rx="70" ry="10" fill="#3B2420" opacity=".12"/><g transform="translate(-20 18)"><path d="M48 112h84c0 14-18 26-42 26s-42-12-42-26z" fill="#E86A7E"/><rect x="50" y="102" width="80" height="12" rx="6" fill="#FFF6EC"/><path d="M48 104c0-16 18-28 42-28s42 12 42 28z" fill="#E86A7E"/></g><g transform="translate(40 -10)"><path d="M48 112h84c0 14-18 26-42 26s-42-12-42-26z" fill="#BFE3D0"/><rect x="50" y="102" width="80" height="12" rx="6" fill="#FFF6EC"/><path d="M48 104c0-16 18-28 42-28s42 12 42 28z" fill="#BFE3D0"/></g></svg>`
+};
+
+const products = [
+  {id:1, name:'Strawberry Dream Cake', cat:'Cakes', price:799, unit:'500g', desc:'Vanilla sponge, fresh strawberry compote and whipped cream.', art:art.cake('#E86A7E','#FBD3D9'), bg:'#FDE4E8', tag:'Bestseller'},
+  {id:2, name:'Belgian Truffle Cake', cat:'Cakes', price:899, unit:'500g', desc:'Three layers of dark chocolate sponge and silky ganache.', art:art.cake('#3B2420','#8A5A48'), bg:'#F1E2D8'},
+  {id:3, name:'Red Velvet Classic', cat:'Cakes', price:849, unit:'500g', desc:'Cocoa-kissed red sponge with tangy cream cheese frosting.', art:art.cake('#C94C62','#FFF6EC'), bg:'#FBE9DA', tag:'New'},
+  {id:4, name:'Biscoff Cupcakes', cat:'Cupcakes', price:449, unit:'box of 4', desc:'Caramel sponge, Biscoff buttercream and a cookie crumble.', art:art.cupcake('#B7804A','#F6DDB8'), bg:'#FCEBD3', tag:'Bestseller'},
+  {id:5, name:'Berry Bliss Cupcakes', cat:'Cupcakes', price:399, unit:'box of 4', desc:'Vanilla bean cupcakes with mixed-berry swirl frosting.', art:art.cupcake('#E86A7E','#FBD3D9'), bg:'#FDE4E8'},
+  {id:6, name:'Fudge Brownies', cat:'Brownies', price:349, unit:'box of 4', desc:'Gooey centre, crackly top. Made with 54% dark chocolate.', art:art.brownie(), bg:'#EEDFD3', tag:'Bestseller'},
+  {id:7, name:'Walnut Brownies', cat:'Brownies', price:399, unit:'box of 4', desc:'Our fudge brownie loaded with toasted Kashmiri walnuts.', art:art.brownie(), bg:'#F1E2D8'},
+  {id:8, name:'Choco-Chunk Cookies', cat:'Cookies', price:299, unit:'box of 6', desc:'Brown-butter dough with big pools of melted chocolate.', art:art.cookie(), bg:'#FCEBD3'},
+  {id:9, name:'Sprinkle Donuts', cat:'Donuts', price:349, unit:'box of 4', desc:'Fluffy brioche donuts dipped in strawberry glaze.', art:art.donut('#E86A7E'), bg:'#FDE4E8', tag:'New'},
+  {id:10, name:'Chocolate Glazed Donuts', cat:'Donuts', price:349, unit:'box of 4', desc:'Brioche donuts with a thick dark chocolate glaze.', art:art.donut('#5A3A30'), bg:'#EEDFD3'},
+  {id:11, name:'French Macarons', cat:'Cookies', price:549, unit:'box of 8', desc:'Rose, pistachio, salted caramel and raspberry.', art:art.macaron(), bg:'#E4F3EA'},
+];
+
+const $ = s => document.querySelector(s);
+const inr = n => '₹' + n.toLocaleString('en-IN');
+
+document.getElementById('heroArt').innerHTML = art.cake();
+$('#year').textContent = new Date().getFullYear();
+
+const words = ['Fresh every morning','Eggless options','Same-day delivery','Custom cakes','Belgian chocolate','Made with love'];
+$('#marquee').innerHTML = [...words, ...words, ...words, ...words].map(w => `<span>${w}</span>`).join('');
+
+/* ---------- Menu ---------- */
+const cats = ['All', ...new Set(products.map(p => p.cat))];
+let activeCat = 'All';
+function renderFilters(){
+  $('#filters').innerHTML = cats.map(c =>
+    `<button class="chip ${c===activeCat?'active':''}" role="tab" aria-selected="${c===activeCat}" data-cat="${c}">${c}</button>`).join('');
+}
+function renderGrid(){
+  const list = products.filter(p => activeCat==='All' || p.cat===activeCat);
+  $('#grid').innerHTML = list.map(p => `
+    <article class="card">
+      <div class="card-art" style="background:${p.bg}">
+        ${p.tag ? `<span class="badge">${p.tag}</span>` : ''}
+        <span class="badge veg" title="Eggless available">EGGLESS</span>
+        ${p.art}
+      </div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="card-foot">
+          <span class="price">${inr(p.price)} <small>/ ${p.unit}</small></span>
+          <button class="add" data-id="${p.id}" aria-label="Add ${p.name} to cart">+ Add</button>
+        </div>
+      </div>
+    </article>`).join('');
+}
+$('#filters').addEventListener('click', e => {
+  const b = e.target.closest('[data-cat]'); if(!b) return;
+  activeCat = b.dataset.cat; renderFilters(); renderGrid();
+});
+$('#grid').addEventListener('click', e => {
+  const b = e.target.closest('.add'); if(!b) return;
+  addToCart(+b.dataset.id);
+  b.textContent = '✓ Added'; b.classList.add('added');
+  setTimeout(() => { b.textContent = '+ Add'; b.classList.remove('added'); }, 1200);
+});
+renderFilters(); renderGrid();
+
+/* ---------- Cart ---------- */
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem('sc-cart')) || {}; } catch(_) { cart = {}; }
+function save(){ try { localStorage.setItem('sc-cart', JSON.stringify(cart)); } catch(_){} }
+
+function addToCart(id){
+  cart[id] = (cart[id] || 0) + 1; save(); renderCart();
+  const c = $('#cartCount'); c.classList.add('bump'); setTimeout(() => c.classList.remove('bump'), 250);
+  toast(`Added to your box ✓`);
+}
+function setQty(id, d){
+  cart[id] = (cart[id] || 0) + d;
+  if(cart[id] <= 0) delete cart[id];
+  save(); renderCart();
+}
+function totals(){
+  const sub = Object.entries(cart).reduce((s,[id,q]) => s + products.find(p => p.id==id).price*q, 0);
+  const del = sub === 0 || sub >= FREE_DELIVERY ? 0 : DELIVERY_FEE;
+  return {sub, del, total: sub + del};
+}
+function renderCart(){
+  const entries = Object.entries(cart);
+  $('#cartCount').textContent = entries.reduce((s,[,q]) => s+q, 0);
+  $('#cartItems').innerHTML = entries.length ? entries.map(([id,q]) => {
+    const p = products.find(x => x.id==id);
+    return `<div class="line">
+      <div class="line-art" style="background:${p.bg}">${p.art}</div>
+      <div><b>${p.name}</b><small>${inr(p.price)} · ${p.unit}</small></div>
+      <div class="qty"><button data-q="-1" data-id="${id}" aria-label="Decrease">−</button><span>${q}</span><button data-q="1" data-id="${id}" aria-label="Increase">+</button></div>
+    </div>`;
+  }).join('') : `<div class="empty"><div>🧁</div>Your box is empty.<br>Go on, treat yourself.</div>`;
+  const t = totals();
+  $('#subtotal').textContent = inr(t.sub);
+  $('#delivery').textContent = t.del ? inr(t.del) : (t.sub ? 'Free' : inr(0));
+  $('#total').textContent = inr(t.total);
+  $('#checkout').disabled = !entries.length;
+}
+$('#cartItems').addEventListener('click', e => {
+  const b = e.target.closest('[data-q]'); if(b) setQty(+b.dataset.id, +b.dataset.q);
+});
+function openCart(o){
+  $('#drawer').classList.toggle('open', o); $('#overlay').classList.toggle('show', o);
+  $('#drawer').setAttribute('aria-hidden', !o);
+  document.body.style.overflow = o ? 'hidden' : '';
+}
+$('#cartBtn').onclick = () => openCart(true);
+$('#closeCart').onclick = $('#overlay').onclick = () => openCart(false);
+document.addEventListener('keydown', e => { if(e.key==='Escape') openCart(false); });
+$('#checkout').onclick = () => {
+  const t = totals();
+  const lines = Object.entries(cart).map(([id,q]) => {
+    const p = products.find(x => x.id==id); return `• ${p.name} (${p.unit}) × ${q} — ${inr(p.price*q)}`;
+  });
+  const msg = `Hi Sweet Cravings! I'd like to order:\n${lines.join('\n')}\n\nSubtotal: ${inr(t.sub)}\nDelivery: ${t.del ? inr(t.del) : 'Free'}\nTotal: ${inr(t.total)}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+};
+renderCart();
+
+/* ---------- Custom cake form ---------- */
+const dateInput = $('#cDate');
+const tomorrow = new Date(Date.now() + 864e5);
+dateInput.min = tomorrow.toISOString().slice(0,10);
+$('#customForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  if(!f.get('name').trim() || !f.get('phone').trim() || !f.get('date')){
+    toast('Please add your name, phone and date'); return;
+  }
+  const msg = `Hi! I'd like a custom cake quote.\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\nFlavour: ${f.get('flavour')}\nSize: ${f.get('size')}\nDate: ${f.get('date')}\nPreference: ${f.get('egg')}\nTheme/message: ${f.get('notes') || '—'}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  toast('Opening WhatsApp…');
+});
+
+/* ---------- Nav, toast, reveal ---------- */
+$('#menuToggle').onclick = () => {
+  const open = $('#navLinks').classList.toggle('open');
+  $('#menuToggle').setAttribute('aria-expanded', open);
+};
+$('#navLinks').addEventListener('click', e => { if(e.target.tagName==='A') $('#navLinks').classList.remove('open'); });
+
+let toastTimer;
+function toast(t){
+  const el = $('#toast'); el.textContent = t; el.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+}), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
