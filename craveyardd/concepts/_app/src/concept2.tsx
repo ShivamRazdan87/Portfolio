@@ -5,7 +5,6 @@ import { ArrowRight, CalendarHeart, Heart, Sparkles } from "lucide-react"
 import "./styles.css"
 
 import { Button } from "@/components/ui/button"
-import { RotatingBadge } from "@/components/RotatingBadge"
 import { Marquee } from "@/components/ui/marquee"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { BorderBeam } from "@/components/ui/border-beam"
@@ -89,9 +88,6 @@ function Hero() {
             <div className="relative overflow-hidden rounded-[36px] bg-white p-2 shadow-[0_30px_60px_-30px_rgba(194,24,91,.55)]">
               <img src={img("assets/photos/cups-lineup.webp")} alt="Four CraveYardd chocolate strawberry cups" width={1280} height={720} className="aspect-[4/3.3] w-full rounded-[30px] object-cover" />
               <BorderBeam size={180} duration={8} colorFrom="#FF3D8B" colorTo="#C2185B" borderWidth={3} />
-            </div>
-            <div className="absolute -right-2 -top-10 rounded-full bg-white p-1 shadow-[0_14px_30px_-12px_rgba(194,24,91,.6)] md:-right-6 md:-top-12">
-              <RotatingBadge text="Fresh ✦ Handmade ✦ Made to crave ✦ " center="CY" color="#C2185B" size={124} duration={20} reverse className="font-display" />
             </div>
             <div className="absolute -bottom-5 left-6 rounded-2xl bg-white px-4 py-3 shadow-lg">
               <span className="block text-xs font-bold uppercase tracking-widest text-rasp-deep">Cups from</span>

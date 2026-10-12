@@ -15,8 +15,7 @@ import { Spotlight } from "@/components/ui/spotlight"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Tilt } from "@/components/ui/tilt"
 import { Button } from "@/components/ui/button"
-import { RotatingBadge } from "@/components/RotatingBadge"
-import { COPY, data, Footer, fromPrice, img, Instagram, LINKS, Logo, ROOT, MenuTabs, money, Photo, useOpenStatus, Visit, withPhotos } from "./shared"
+import { COPY, data, Footer, fromPrice, img, Instagram, LINKS, Logo, MenuTabs, money, Photo, useOpenStatus, Visit, withPhotos } from "./shared"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -196,13 +195,12 @@ function App() {
                   <ul className="occ mt-5 flex list-none flex-wrap gap-2 p-0">
                     {COPY.occasions.map((o) => <li key={o} className="rounded-full border-2 border-baby/55 px-3.5 py-1.5 text-sm font-bold">{o}</li>)}
                   </ul>
-                  <div className="mt-6 flex flex-wrap items-center gap-6">
+                  <div className="mt-6">
                     <Magnetic intensity={0.25} range={120}>
                       <a href={LINKS.enquiry} className="inline-flex min-h-13 items-center gap-2 rounded-full bg-hot px-7 font-extrabold text-choc-dark hover:bg-baby">
                         <CalendarHeart className="size-5" aria-hidden /> Request a Quote <ArrowRight className="size-5" aria-hidden />
                       </a>
                     </Magnetic>
-                    <RotatingBadge text="Book us for your event ✦ CraveYardd ✦ " logoSrc={ROOT + "assets/logo.webp"} color="#FF3D8B" size={128} duration={22} className="font-display" />
                   </div>
                 </div>
               </div>
