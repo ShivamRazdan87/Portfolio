@@ -8,13 +8,17 @@ import { cn } from "@/lib/utils"
 export type Item = { name: string; description: string; price?: number | string; image?: string; favourite?: number; tag?: string }
 export type Category = { category: string; price?: number; tagline?: string; items?: Item[]; groups?: { title: string; options: string[] }[] }
 export type SiteConfig = { instagram?: string; tiktokUrl?: string; email?: string; phone?: string; whatsapp?: string; formEndpoint?: string }
-type SiteData = { config: SiteConfig; menu: Category[]; gallery: string[] }
+export type SiteText = {
+  headline?: string; sub?: string; heroImage?: string; about?: string; eventsTitle?: string; events?: string; occasions?: string[]
+  place?: string; address?: string; mapQuery?: string; hours?: string; hoursShort?: string; openHour?: number; closeHour?: number; allergen?: string
+}
+export type SiteData = { config: SiteConfig; site?: SiteText; menu: Category[]; gallery: string[] }
 
 export const data: SiteData = (window as unknown as { CRAVEYARDD: SiteData }).CRAVEYARDD
 // Path from the page to the craveyardd/ folder. Concept pages live two levels down; the main site sets window.CRAVEYARDD_ROOT = "./".
 export const ROOT: string = (window as unknown as { CRAVEYARDD_ROOT?: string }).CRAVEYARDD_ROOT ?? "../../"
 
-export const img = (src?: string) => (src ? ROOT + src : "")
+export const img = (src?: string) => (!src ? "" : /^(https?:)?\/\//.test(src) || src.startsWith("/") ? src : ROOT + src)
 export const money = (p?: number | string) =>
   typeof p === "number" ? (p < 1 ? `${Math.round(p * 100)}p` : `£${p.toFixed(2)}`) : p ?? ""
 
@@ -27,9 +31,10 @@ export const fromPrice = Math.min(
   ...data.menu.flatMap((c) => [c.price, ...(c.items ?? []).map((i) => i.price)]).filter((p): p is number => typeof p === "number"),
 )
 
-export const COPY = {
+const DEFAULT_TEXT = {
   headline: "Where Every Craving Meets Its Match",
   sub: "Fresh strawberries, warm waffles, indulgent cakes and chocolate-filled creations, made to satisfy every craving.",
+  heroImage: "assets/photos/hero-strawberry-cup.webp",
   about:
     "CraveYardd is an independent Birmingham dessert brand created for people who take their cravings seriously. From fresh strawberries covered in luxurious chocolate to warm loaded waffles and irresistible cakes, every item is made to look amazing and taste even better.",
   eventsTitle: "Bring CraveYardd to Your Event",
@@ -39,13 +44,21 @@ export const COPY = {
   allergen: "Please speak to a member of our team if you have any allergies or dietary requirements.",
   place: "CraveYardd at Oba’s Kitchen, Lounge & Bar",
   address: "Bristol Road, Selly Oak, Birmingham",
+  mapQuery: "Oba's Kitchen Lounge & Bar, Bristol Road, Selly Oak, Birmingham",
   hours: "Open daily: 2:00 PM–11:00 PM",
+  hoursShort: "2–11 PM",
+  openHour: 14,
+  closeHour: 23,
 }
-const Q = encodeURIComponent("Oba's Kitchen Lounge & Bar, Bristol Road, Selly Oak, Birmingham")
+// Saved content (from /admin) wins; anything left empty falls back to the defaults above.
+const siteText = Object.fromEntries(Object.entries(data.site ?? {}).filter(([, v]) => v !== "" && v != null && !(Array.isArray(v) && !v.length)))
+export const COPY = { ...DEFAULT_TEXT, ...siteText } as typeof DEFAULT_TEXT
+
+const Q = encodeURIComponent(COPY.mapQuery)
 export const LINKS = {
   directions: `https://www.google.com/maps/dir/?api=1&destination=${Q}`,
   map: `https://maps.google.com/maps?q=${Q}&z=16&output=embed`,
-  instagram: "https://www.instagram.com/crave.yardd/",
+  instagram: `https://www.instagram.com/${data.config?.instagram || "crave.yardd"}/`,
   enquiry: `${ROOT}index.html#enquiry`,
   concepts: "../",
 }
@@ -80,12 +93,13 @@ export function useSplashDone() {
 
 /* ---------- Live open/closed status in UK time ---------- */
 export function useOpenStatus() {
-  const [label, setLabel] = useState({ open: false, text: "Open daily 2–11 PM" })
+  const [label, setLabel] = useState({ open: false, text: `Open daily ${COPY.hoursShort}` })
   useEffect(() => {
     try {
       const h = Number(new Intl.DateTimeFormat("en-GB", { hour: "numeric", hour12: false, timeZone: "Europe/London" }).format(new Date()))
-      const open = h >= 14 && h < 23
-      setLabel({ open, text: open ? "Open now · till 11 PM" : "Opens 2 PM today" })
+      const fmt = (x: number) => (x % 24 === 0 ? "midnight" : x === 12 ? "12 PM" : x > 12 ? `${x - 12} PM` : `${x} AM`)
+      const open = h >= COPY.openHour && h < COPY.closeHour
+      setLabel({ open, text: open ? `Open now · till ${fmt(COPY.closeHour)}` : h < COPY.openHour ? `Opens ${fmt(COPY.openHour)} today` : `Opens ${fmt(COPY.openHour)} tomorrow` })
     } catch {
       /* keep default */
     }

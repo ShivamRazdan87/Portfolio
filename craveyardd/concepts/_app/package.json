@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "clean": "node -e \"const fs=require('fs');for(const d of ['../_assets','../../app'])fs.rmSync(d,{recursive:true,force:true})\"",
+    "clean": "node -e \"const fs=require('fs');for(const d of ['../_assets','../../app','../../admin'])fs.rmSync(d,{recursive:true,force:true})\"",
     "build": "npm run clean && tsc --noEmit && vite build && vite build -c vite.site.config.ts"
   },
   "dependencies": {

@@ -1,0 +1,10 @@
+{
+  "name": "craveyardd-site",
+  "private": true,
+  "type": "module",
+  "description": "CraveYardd website. Static site plus Vercel Functions in api/ for the admin page.",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@vercel/blob": "2.8.1"
+  }
+}

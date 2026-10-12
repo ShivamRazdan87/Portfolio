@@ -30,6 +30,25 @@ window.CRAVEYARDD = {
     formEndpoint: ''      // optional form service URL (e.g. Formspree). If empty, enquiries open the visitor's email app (needs email above).
   },
 
+  // Business text shown on the site (also editable on /admin).
+  site: {
+    headline: 'Where Every Craving Meets Its Match',
+    sub: 'Fresh strawberries, warm waffles, indulgent cakes and chocolate-filled creations, made to satisfy every craving.',
+    heroImage: 'assets/photos/hero-strawberry-cup.webp',
+    about: 'CraveYardd is an independent Birmingham dessert brand created for people who take their cravings seriously. From fresh strawberries covered in luxurious chocolate to warm loaded waffles and irresistible cakes, every item is made to look amazing and taste even better.',
+    eventsTitle: 'Bring CraveYardd to Your Event',
+    events: 'Make your celebration sweeter with freshly prepared CraveYardd desserts. We offer flexible packages for private parties, corporate events and large celebrations across Birmingham.',
+    occasions: ['Birthdays', 'Weddings', 'University events', 'Corporate events', 'Festivals', 'Private parties', 'Brand collaborations'],
+    place: 'CraveYardd at Oba’s Kitchen, Lounge & Bar',
+    address: 'Bristol Road, Selly Oak, Birmingham',
+    mapQuery: "Oba's Kitchen Lounge & Bar, Bristol Road, Selly Oak, Birmingham",
+    hours: 'Open daily: 2:00 PM–11:00 PM',
+    hoursShort: '2–11 PM',
+    openHour: 14,   // 24-hour clock, UK time – used for the live "Open now" badge
+    closeHour: 23,
+    allergen: 'Please speak to a member of our team if you have any allergies or dietary requirements.'
+  },
+
   menu: [
     {
       category: 'Chocolate Strawberry Cups',

@@ -363,7 +363,7 @@ export default function App() {
             <div className="mx-auto max-w-6xl">
               <div className={`hero-card relative grid overflow-hidden rounded-[36px] bg-rasp lg:min-h-[560px] lg:grid-cols-2 ${clay}`}>
                 <div className="hero-photo relative aspect-[4/3.3] overflow-hidden lg:order-2 lg:aspect-auto">
-                  <img src={img("assets/photos/hero-strawberry-cup.webp")} alt="CraveYardd Dubai Chocolate strawberry cup" width={1280} height={720} fetchPriority="high" className="absolute inset-0 size-full scale-110 object-cover" />
+                  <img src={img(COPY.heroImage)} alt="CraveYardd dessert" width={1280} height={720} fetchPriority="high" className="absolute inset-0 size-full scale-110 object-cover" />
                 </div>
                 <div className="flex flex-col justify-center p-6 text-white md:p-12">
                   <span className="text-xs font-extrabold uppercase tracking-[.14em] text-baby">Birmingham dessert cart · Selly Oak</span>
@@ -390,7 +390,7 @@ export default function App() {
                 <BorderBeam size={220} duration={10} colorFrom="#FFC9DF" colorTo="#FF3D8B" borderWidth={3} />
               </div>
               <div className="mt-3 grid grid-cols-3 gap-2.5">
-                {[[money(fromPrice), "Desserts from"], ["2–11 PM", "Open daily"], ["Selly Oak", "Bristol Road"]].map(([a, b]) => (
+                {[[money(fromPrice), "Desserts from"], [COPY.hoursShort, "Open daily"], ["Selly Oak", COPY.address.split(",")[0]]].map(([a, b]) => (
                   <div key={b} className={`fact rounded-[22px] bg-white px-3 py-3.5 text-center ${clay}`}>
                     <strong className="block font-display text-lg font-semibold text-rasp md:text-2xl">{a}</strong>
                     <span className="text-[13px] font-bold text-muted-ink">{b}</span>
