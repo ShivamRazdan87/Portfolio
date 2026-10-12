@@ -10,13 +10,21 @@ Put the original files in `assets/originals/` using these exact names:
 |---|---|
 | `logo.png` | Header and footer logo, favicon, share image |
 | `hero-strawberry-cup.jpg` | Hero photo and share image |
-| `strawberry-cups.jpg` | Signature Strawberry Cups |
-| `strawberry-skewers.jpg` | Strawberry Skewers |
-| `matilda-cake.jpg` | Matilda Cake |
+| `strawberry-cups.jpg` | Classic Chocolate Strawberry cup |
+| `dubai-chocolate-cup.jpg` | Dubai Chocolate cup |
+| `biscoff-crunch-cup.jpg` | Biscoff Crunch cup |
+| `oreo-crunch-cup.jpg` | Oreo Crunch cup |
+| `chocolate-strawberry-waffle.jpg` | Chocolate & Strawberry Waffle |
+| `biscoff-waffle.jpg` | Biscoff Waffle |
+| `loaded-waffle.jpg` | CraveYardd Loaded Waffle |
+| `oreo-waffle.jpg` | Oreo Waffle |
 | `milk-cake.jpg` | Milk Cake |
 | `san-sebastian-cheesecake.jpg` | San Sebastian Cheesecake |
-| `loaded-waffles.jpg` | Loaded Waffles (set `image` in `data.js`) |
-| `kunafa-cups.jpg` | Kunafa Cups (set `image` in `data.js`) |
+| `real-mango-pop.jpg` | Real Mango Pop |
+| `espresso-bean.jpg` | The Espresso Bean |
+| `blueberry-cheesecake.jpg` | Blueberry Cheesecake |
+| `matilda-cake.jpg` | Matilda Cake |
+| `strawberry-skewers.jpg` | Instagram gallery |
 
 Then run:
 
@@ -31,8 +39,8 @@ This writes compressed `.webp` photos to `assets/photos/`, a web-sized `assets/l
 
 Everything editable lives in **`data.js`**:
 
-- **Menu:** categories, items, descriptions, flavours and prices. Prices are `null` (shown as "Price on request") until they're confirmed from the current menu.
-- **Favourites:** set `favourite: true` on an item.
+- **Menu:** categories, items, descriptions, prices, and the sauces and toppings in "Make It Yours". A category `price` applies to every item in it (for example "£6.49 each"). An item `price` overrides it.
+- **Favourites:** give an item `favourite: 1`, `2`, `3` and so on to show it in Our Favourites in that order. `tag` adds a label such as "Fully loaded".
 - **Gallery and About photos:** paths to files in `assets/photos/`.
 - **Contact:** `tiktokUrl`, `email`, `phone` and `whatsapp`. The floating WhatsApp button only appears once `whatsapp` is set.
 - **Enquiry form:** set `formEndpoint` (for example a Formspree URL) to receive enquiries by email. Without it, the form opens the visitor's email app using `email`. If neither is set, it asks visitors to DM on Instagram.
