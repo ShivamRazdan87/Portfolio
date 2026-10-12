@@ -36,18 +36,18 @@ window.CRAVEYARDD = {
       price: 6.99,
       tagline: 'Fresh strawberries, smothered in chocolate and built in a cup.',
       items: [
-        { name: 'Dubai Chocolate', tag: 'Signature', favourite: 3,
+        { name: 'Dubai Chocolate', tag: 'Signature', favourite: 1,
           description: 'The viral one. Juicy strawberries under silky chocolate with a pistachio and crispy kunafa crunch.',
           image: 'assets/photos/dubai-chocolate-cup.webp' },
-        { name: 'Biscoff Crunch',
+        { name: 'Biscoff Crunch', favourite: 2,
           description: 'Strawberries and smooth chocolate, finished with caramelised Biscoff for that cookie-butter crunch.',
           image: 'assets/photos/biscoff-crunch-cup.webp' },
         { name: 'Oreo Crunch',
           description: 'Strawberries and chocolate topped with crushed Oreo – cookies and cream in every spoonful.',
           image: 'assets/photos/oreo-crunch-cup.webp' },
-        { name: 'Classic Chocolate Strawberry', favourite: 1,
+        { name: 'Classic Chocolate Strawberry',
           description: 'Where it all started: fresh strawberries layered with rich, melted chocolate. Simple, glossy, irresistible.',
-          image: 'assets/photos/strawberry-cups.webp' }
+          image: 'assets/photos/classic-chocolate-cup.webp' }
       ]
     },
     {
@@ -61,7 +61,7 @@ window.CRAVEYARDD = {
         { name: 'Biscoff Waffle',
           description: 'Warm waffle smothered in smooth Biscoff sauce for that caramel-biscuit hit.',
           image: 'assets/photos/biscoff-waffle.webp' },
-        { name: 'CraveYardd Loaded Waffle', tag: 'Fully loaded', favourite: 2,
+        { name: 'CraveYardd Loaded Waffle', tag: 'Fully loaded', favourite: 3,
           description: 'Our house special – a warm waffle drowned in Biscoff, hazelnut, chocolate and white chocolate sauces. For serious cravings only.',
           image: 'assets/photos/loaded-waffle.webp' },
         { name: 'Oreo Waffle',
@@ -73,22 +73,22 @@ window.CRAVEYARDD = {
       category: 'Cakes & Desserts',
       tagline: 'Show-stopping slices and dessert pops.',
       items: [
-        { name: 'Milk Cake', price: 6.99, favourite: 6,
+        { name: 'Milk Cake', price: 6.99,
           description: 'Light sponge soaked in sweet milk and crowned with whipped cream. Soft, cold and dreamy.',
           image: 'assets/photos/milk-cake.webp' },
-        { name: 'San Sebastian Cheesecake', price: 6.99, favourite: 5,
+        { name: 'San Sebastian Cheesecake', price: 6.99,
           description: 'Basque-style cheesecake with a deeply caramelised top and a rich, creamy centre.',
           image: 'assets/photos/san-sebastian-cheesecake.webp' },
-        { name: 'Real Mango Pop', price: 6.99, tag: 'Must try', favourite: 7,
+        { name: 'Real Mango Pop', price: 6.99, tag: 'Must try', favourite: 4,
           description: 'A dessert that looks just like a real mango – with a fruity mango centre inside.',
           image: 'assets/photos/real-mango-pop.webp' },
-        { name: 'The Espresso Bean', price: 6.99,
+        { name: 'The Espresso Bean', price: 6.99, favourite: 5,
           description: 'A coffee-bean-shaped dessert made for coffee lovers, with a glossy chocolate finish.',
           image: 'assets/photos/espresso-bean.webp' },
-        { name: 'Blueberry Cheesecake', price: 6.99,
+        { name: 'Blueberry Cheesecake', price: 6.99, favourite: 6,
           description: 'Smooth, creamy cheesecake with a bright blueberry finish.',
           image: 'assets/photos/blueberry-cheesecake.webp' },
-        { name: 'Matilda Cake', price: 7.99, tag: 'Chocolate lovers', favourite: 4,
+        { name: 'Matilda Cake', price: 7.99, tag: 'Chocolate lovers', favourite: 7,
           description: 'The ultimate chocolate cake – layers of moist chocolate sponge and glossy fudge frosting.',
           image: 'assets/photos/matilda-cake.webp' }
       ]
@@ -105,12 +105,12 @@ window.CRAVEYARDD = {
 
   // Instagram-style gallery: up to 6 photos from assets/photos/ ('' = placeholder tile).
   gallery: [
-    'assets/photos/strawberry-cups.webp',
-    'assets/photos/loaded-waffle.webp',
-    'assets/photos/matilda-cake.webp',
-    'assets/photos/strawberry-skewers.webp',
-    'assets/photos/san-sebastian-cheesecake.webp',
-    'assets/photos/milk-cake.webp'
+    'assets/photos/cups-lineup.webp',
+    'assets/photos/cups-and-trays.webp',
+    'assets/photos/biscoff-crunch-cup.webp',
+    'assets/photos/cups-and-slices.webp',
+    'assets/photos/oreo-tray.webp',
+    'assets/photos/real-mango-pop.webp'
   ],
 
   // Brand-story photos for the About section ('' = placeholder).
