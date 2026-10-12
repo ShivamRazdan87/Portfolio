@@ -13,7 +13,7 @@ import { InfiniteSlider } from "@/components/ui/infinite-slider"
 import { Spotlight } from "@/components/ui/spotlight"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Button } from "@/components/ui/button"
-import { COPY, data, Footer, img, LINKS, money, Photo, useOpenStatus, Visit, withPhotos } from "./shared"
+import { COPY, data, Footer, img, LINKS, Logo, money, Photo, useOpenStatus, useSplashDone, Visit, withPhotos } from "./shared"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -31,7 +31,7 @@ function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-choc-dark/85 text-cream backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 md:px-8">
-        <a href="#top" className="font-display text-2xl font-bold">Crave<span className="text-hot">Yardd</span></a>
+        <a href="#top" className="inline-flex min-h-12 items-center"><Logo /></a>
         <nav aria-label="Main" className="hidden gap-1 lg:flex">
           {[["#menu", "Menu"], ["#about", "About Us"], ["#events", "Events"], ["#visit", "Find Us"]].map(([h, l]) => (
             <a key={h} href={h} className="flex min-h-11 items-center rounded-full px-4 font-medium hover:bg-white/10">{l}</a>
@@ -48,6 +48,7 @@ function Header() {
 
 function App() {
   const root = useRef<HTMLDivElement>(null)
+  const ready = useSplashDone()
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -114,7 +115,7 @@ function App() {
             <div className="mx-auto grid w-full max-w-6xl items-center gap-8 py-10 lg:grid-cols-2">
               <div className="hero-copy relative z-10">
                 <span className="text-xs font-bold uppercase tracking-[.16em] text-baby">Birmingham dessert cart · Selly Oak</span>
-                <TextEffect as="h1" per="char" preset="blur" speedReveal={1.6} className="mt-4 font-display text-5xl font-bold leading-[1.02] md:text-7xl">
+                <TextEffect as="h1" per="char" preset="blur" speedReveal={1.6} trigger={ready} className="mt-4 font-display text-5xl font-bold leading-[1.02] md:text-7xl">
                   {COPY.headline}
                 </TextEffect>
                 <p className="mt-5 max-w-lg text-lg text-cream/85">{COPY.sub}</p>

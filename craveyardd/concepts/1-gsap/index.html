@@ -37,18 +37,12 @@
   .btn-line{border:2px solid var(--cream);color:var(--cream)}
   .btn-line:hover{background:var(--cream);color:var(--choc-dark)}
 
-  /* ---------- Loader ---------- */
-  .loader{position:fixed;inset:0;z-index:200;background:var(--hot);display:grid;place-items:center;pointer-events:none}
-  .loader-word{font-family:var(--display);font-weight:700;font-size:clamp(44px,12vw,140px);color:var(--choc-dark);display:flex}
-  .loader-word span{display:inline-block}
-  .loader svg{position:absolute;left:0;right:0;bottom:-79px;width:100%;height:80px;color:var(--hot)}
-  .no-anim .loader{display:none}
 
   /* ---------- Top bar ---------- */
   .bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(42,21,18,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,249,244,.08)}
   @media (min-width:720px){.bar{padding:12px 40px}}
-  .brand{font-family:var(--display);font-weight:700;font-size:24px;text-decoration:none}
-  .brand b{color:var(--hot);font-weight:700}
+  .brand{display:inline-flex;align-items:center;min-height:48px}
+  .brand img{height:46px;width:auto}
   .bar nav{display:flex;gap:6px}
   .bar nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:14px}
   .bar nav a:hover{background:var(--hot);color:var(--choc-dark)}
@@ -164,15 +158,12 @@
 </style>
 </head>
 <body>
+<script src="../splash.js" data-theme="dark"></script>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="loader" aria-hidden="true">
-  <div class="loader-word" id="loaderWord">CraveYardd</div>
-  <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="currentColor" d="M0 0h1440v20c-40 0-40 40-80 40s-30-40-70-40-40 56-80 56-30-56-70-56-40 30-80 30-40-30-80-30-40 50-80 50-40-50-80-50-40 24-80 24-40-24-80-24-40 44-80 44-40-44-80-44-40 30-80 30-40-30-80-30-40 52-80 52-40-52-80-52-40 22-80 22-40-22-80-22-40 36-80 36S40 20 0 20z"/></svg>
-</div>
 
 <header class="bar">
-  <a class="brand" href="#top">Crave<b>Yardd</b></a>
+  <a class="brand" href="#top"><img src="../../assets/logo.webp" alt="CraveYardd" width="93" height="46"></a>
   <nav aria-label="Main">
     <a href="#menu">Menu</a>
     <a class="hide-sm" href="#about">About</a>
@@ -311,15 +302,11 @@
   }
   gsap.registerPlugin(ScrollTrigger);
 
-  // Loader: letters bounce in, then the pink panel drips away upwards.
-  var lw = document.getElementById('loaderWord');
-  lw.innerHTML = lw.textContent.split('').map(function(c){ return '<span>' + c + '</span>'; }).join('');
-  var intro = gsap.timeline();
-  intro.from('#loaderWord span', {yPercent:120, opacity:0, duration:.6, ease:'back.out(2)', stagger:.04})
-       .to('.loader', {yPercent:-120, duration:1, ease:'power3.inOut'}, '+=.25')
-       .from('.hero-title .line > span', {yPercent:110, duration:1, ease:'power4.out', stagger:.08}, '-=.55')
-       .from('.hero-sub > *, .scroll-cue', {y:24, opacity:0, duration:.7, ease:'power3.out', stagger:.08}, '-=.6')
-       .set('.loader', {display:'none'});
+  // Hero intro plays as the shared logo intro (../splash.js) closes.
+  var intro = gsap.timeline({paused:true});
+  intro.from('.hero-title .line > span', {yPercent:110, duration:1, ease:'power4.out', stagger:.08})
+       .from('.hero-sub > *, .scroll-cue', {y:24, opacity:0, duration:.7, ease:'power3.out', stagger:.08}, '-=.6');
+  (window.CraveSplash ? window.CraveSplash.done : Promise.resolve()).then(function(){ intro.play(); });
 
   // Hero: the cup photo opens from a circle to full screen while the headline lifts away.
   var heroTl = gsap.timeline({scrollTrigger:{trigger:'.hero', start:'top top', end:'+=120%', scrub:1, pin:true}});

@@ -391,8 +391,8 @@
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand" href="#home" aria-label="CraveYardd – home">
-      <!-- Official logo: save it as assets/logo.png (do not edit the artwork). -->
-      <img src="assets/logo.png" alt="CraveYardd" width="132" height="58" data-fallback="brand">
+      <!-- Official logo, built from assets/originals/logo.png by tools/optimise_images.py -->
+      <img src="assets/logo.webp" alt="CraveYardd" width="117" height="58" data-fallback="brand">
     </a>
     <nav aria-label="Main">
       <ul class="nav-links">
@@ -599,7 +599,7 @@
   <div class="wrap">
     <div class="foot-top">
       <a class="foot-logo" href="#home" aria-label="CraveYardd – back to top">
-        <img src="assets/logo.png" alt="CraveYardd" width="192" height="84" data-fallback="brand">
+        <img src="assets/logo.webp" alt="CraveYardd" width="170" height="84" data-fallback="brand">
       </a>
       <nav aria-label="Footer">
         <ul class="foot-nav">
@@ -641,7 +641,7 @@
     return '<div class="media"' + (extra||'') + '><img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async" width="800" height="800" onerror="this.parentNode.classList.add(\'is-empty\');this.parentNode.setAttribute(\'role\',\'img\');this.parentNode.setAttribute(\'aria-label\',this.alt);this.remove()"></div>';
   }
 
-  // Logo fallback: if assets/logo.png is not uploaded yet, show the brand name as plain text.
+  // Logo fallback: if the logo file is missing, show the brand name as plain text.
   document.querySelectorAll('img[data-fallback="brand"]').forEach(function(img){
     function swap(){ var s = document.createElement('span'); s.className = 'brand-text'; s.textContent = 'CraveYardd'; img.replaceWith(s); }
     if (img.complete && img.naturalWidth === 0) swap(); else img.addEventListener('error', swap);

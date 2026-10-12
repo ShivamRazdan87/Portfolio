@@ -17,7 +17,7 @@ import { Tilt } from "@/components/ui/tilt"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Spotlight } from "@/components/ui/spotlight"
 import { InView } from "@/components/ui/in-view"
-import { COPY, data, Footer, img, LINKS, MenuTabs, money, Photo, useOpenStatus, Visit, withPhotos } from "./shared"
+import { COPY, data, Footer, img, LINKS, Logo, MenuTabs, money, Photo, useOpenStatus, useSplashDone, Visit, withPhotos } from "./shared"
 
 /*
  * Concept 2 – "Candy Pop"
@@ -31,7 +31,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-choc/10 bg-cream/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 md:px-8">
-        <a href="#top" className="font-display text-2xl font-bold text-choc">Crave<span className="text-rasp">Yardd</span></a>
+        <a href="#top" className="inline-flex min-h-12 items-center"><Logo /></a>
         <nav aria-label="Main" className="hidden gap-1 lg:flex">
           {[["#menu", "Menu"], ["#about", "About Us"], ["#events", "Events"], ["#visit", "Find Us"]].map(([h, l]) => (
             <a key={h} href={h} className="flex min-h-11 items-center rounded-full px-4 font-medium transition-colors hover:bg-blush">{l}</a>
@@ -47,9 +47,11 @@ function Header() {
 }
 
 function Hero() {
+  const ready = useSplashDone() // hero animates in as the logo intro closes
   return (
-    <section id="top" className="relative overflow-hidden px-4 pb-16 pt-10 md:px-8 md:pt-16">
+    <section id="top" className="relative min-h-[640px] overflow-hidden px-4 pb-16 pt-10 md:px-8 md:pt-16">
       <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 size-[520px] rounded-full bg-baby/70 blur-3xl" />
+      {ready && (
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-baby px-4 py-1.5 text-xs font-bold uppercase tracking-[.14em] text-rasp-deep">
@@ -94,6 +96,7 @@ function Hero() {
           </Tilt>
         </BlurFade>
       </div>
+      )}
     </section>
   )
 }

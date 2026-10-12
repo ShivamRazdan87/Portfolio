@@ -60,7 +60,8 @@
   /* ---------- Header ---------- */
   .top{position:sticky;top:0;z-index:50;background:rgba(255,249,244,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(90,48,42,.08)}
   .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:68px}
-  .brand{display:inline-flex;align-items:center;min-height:48px;font-family:var(--heading);font-weight:700;font-size:24px;text-decoration:none;color:var(--choc)}
+  .brand{display:inline-flex;align-items:center;min-height:48px}
+  .brand img{height:46px;width:auto}
   .brand b{color:var(--rasp)}
   .status{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:var(--clay);font-weight:700;font-size:14px;text-decoration:none}
   .status .dot{width:10px;height:10px;border-radius:50%;background:#9AA0A6}
@@ -165,6 +166,7 @@
 </style>
 </head>
 <body>
+<script src="../splash.js" data-theme="light"></script>
 <a class="skip" href="#main">Skip to content</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -179,7 +181,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top">Crave<b>Yardd</b></a>
+    <a class="brand" href="#top"><img src="../../assets/logo.webp" alt="CraveYardd" width="93" height="46"></a>
     <nav aria-label="Main">
       <a href="#menu">Menu</a><a href="#about">About Us</a><a href="#events">Events</a><a href="#visit">Find Us</a><a href="../">All concepts</a>
     </nav>
@@ -357,7 +359,10 @@
       }, {threshold:.15});
       io.observe(els[0]);
     });
-    gsap.from('.hero-card', {opacity:0, y:24, scale:.97, duration:.6, ease:'back.out(1.4)'});
+    gsap.set('.hero-card', {opacity:0, y:24, scale:.97});
+    (window.CraveSplash ? window.CraveSplash.done : Promise.resolve()).then(function(){
+      gsap.to('.hero-card', {opacity:1, y:0, scale:1, duration:.6, ease:'back.out(1.4)', clearProps:'transform,opacity'});
+    });
   }
 })();
 </script>

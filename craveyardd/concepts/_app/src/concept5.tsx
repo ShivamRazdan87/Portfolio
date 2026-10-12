@@ -15,7 +15,7 @@ import { Spotlight } from "@/components/ui/spotlight"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Tilt } from "@/components/ui/tilt"
 import { Button } from "@/components/ui/button"
-import { COPY, data, Footer, fromPrice, img, Instagram, LINKS, MenuTabs, money, Photo, useOpenStatus, Visit, withPhotos } from "./shared"
+import { COPY, data, Footer, fromPrice, img, Instagram, LINKS, Logo, MenuTabs, money, Photo, useOpenStatus, Visit, withPhotos } from "./shared"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -39,7 +39,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-choc/10 bg-cream/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 md:px-8">
-        <a href="#top" className="inline-flex min-h-12 items-center font-display text-2xl font-bold text-choc">Crave<span className="text-rasp">Yardd</span></a>
+        <a href="#top" className="inline-flex min-h-12 items-center"><Logo /></a>
         <nav aria-label="Main" className="hidden gap-1 lg:flex">
           {[["#menu", "Menu"], ["#about", "About Us"], ["#events", "Events"], ["#visit", "Find Us"]].map(([h, l]) => (
             <a key={h} href={h} className="flex min-h-11 items-center rounded-full px-4 font-bold hover:bg-blush">{l}</a>
@@ -61,7 +61,12 @@ function App() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.from(".hero-card", { ...PRESET, duration: 0.6 })
+        // Hero card enters as the shared logo intro closes.
+        gsap.set(".hero-card", { opacity: 0, scale: 0.92, y: 16 })
+        const splash = (window as unknown as { CraveSplash?: { done: Promise<void> } }).CraveSplash
+        ;(splash ? splash.done : Promise.resolve()).then(() =>
+          gsap.to(".hero-card", { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.4)", clearProps: "transform,opacity" }),
+        )
         gsap.to(".hero-photo img", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".hero-card", start: "top top", end: "bottom top", scrub: true } })
 
         // Preset stagger for every block group as it enters the screen.

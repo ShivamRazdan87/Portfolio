@@ -10,7 +10,7 @@ Input:
     assets/originals/<photo-name>.jpg|png|... full-size photos, named as in README.md
 
 Output:
-    assets/logo.png                            logo resized for the web (artwork untouched)
+    assets/logo.png, assets/logo.webp          logo resized for the web (artwork untouched)
     assets/photos/<photo-name>.webp            compressed photos (max 1600px)
     assets/favicon-32.png, assets/apple-touch-icon.png
     assets/og-image.jpg                        1200x630 social-sharing image
@@ -51,9 +51,10 @@ def main():
     if logo_src.exists():
         logo = Image.open(logo_src).convert("RGBA")
         fit(logo, 480).save(ASSETS / "logo.png", optimize=True)
+        fit(logo, 480).save(ASSETS / "logo.webp", "WEBP", quality=90, method=6)
         on_square(logo, 32).save(ASSETS / "favicon-32.png", optimize=True)
         on_square(logo, 180, bg=(255, 255, 255, 255)).convert("RGB").save(ASSETS / "apple-touch-icon.png", optimize=True)
-        print("logo -> logo.png, favicon-32.png, apple-touch-icon.png")
+        print("logo -> logo.png, logo.webp, favicon-32.png, apple-touch-icon.png")
     else:
         logo = None
         print("No assets/originals/logo.png – skipped logo and favicons.")

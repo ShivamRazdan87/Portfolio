@@ -59,6 +59,23 @@ export function Instagram({ className }: { className?: string }) {
   )
 }
 
+/* ---------- Official logo + logo intro (../splash.js) ---------- */
+export function Logo({ className }: { className?: string }) {
+  return <img src={ROOT + "assets/logo.webp"} alt="CraveYardd" width={93} height={46} className={cn("h-11 w-auto", className)} />
+}
+
+/** True once the shared logo intro starts closing, so hero animations play as the page is revealed. */
+export function useSplashDone() {
+  const [done, setDone] = useState(false)
+  useEffect(() => {
+    const splash = (window as unknown as { CraveSplash?: { done: Promise<void> } }).CraveSplash
+    let alive = true
+    ;(splash ? splash.done : Promise.resolve()).then(() => alive && setDone(true))
+    return () => { alive = false }
+  }, [])
+  return done
+}
+
 /* ---------- Live open/closed status in UK time ---------- */
 export function useOpenStatus() {
   const [label, setLabel] = useState({ open: false, text: "Open daily 2–11 PM" })
