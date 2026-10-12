@@ -41,3 +41,12 @@ Everything editable lives in **`data.js`**:
 
 - Add `<link rel="canonical">` and make the `og:image` URL absolute once the domain is known (see the comment in `index.html`).
 - Check the Google Map pin points at Oba's Kitchen, Lounge & Bar.
+
+## Animations (GSAP)
+
+Animations live in `animations.js` and use GSAP 3.12.5 with ScrollTrigger, bundled in `vendor/` so they don't depend on a CDN.
+
+- **Hero:** the chocolate drip falls in, the headline rises word by word, the buttons pop in, the sparkles float, and the photo has a slow parallax.
+- **On scroll:** section headings, favourite cards, menu categories and items, About photos (a curtain wipe), event occasion chips, the gallery, contact rows and the footer logo animate in.
+- **Buttons:** they squish slightly when pressed.
+- **Reduced motion:** visitors with "reduce motion" turned on get no animation. If GSAP fails to load, everything stays visible.

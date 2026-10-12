@@ -6,6 +6,13 @@
 <title>CraveYardd | Desserts in Selly Oak, Birmingham – Strawberry Cups, Waffles &amp; Cakes</title>
 <meta name="description" content="CraveYardd is a Birmingham dessert cart in Selly Oak serving strawberry cups, loaded waffles, kunafa cups and cakes. Find us at Oba’s Kitchen, Lounge &amp; Bar, Bristol Road – open daily 2–11 PM. Dessert catering across Birmingham.">
 <meta name="theme-color" content="#F7B6CF">
+<script>
+  // GSAP animations: hide the hero until the intro plays. Falls back to visible if scripts fail.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('anim');
+    setTimeout(function(){ if (!document.documentElement.classList.contains('anim-ready')) document.documentElement.classList.remove('anim'); }, 3000);
+  }
+</script>
 <!-- Once the domain is live, add: <link rel="canonical" href="https://YOUR-DOMAIN/"> and make the og:image URL absolute. -->
 
 <meta property="og:type" content="website">
@@ -134,8 +141,7 @@
   /* ---------- Decorative bits ---------- */
   .drip{position:absolute;left:0;right:0;top:0;height:46px;color:var(--choc);pointer-events:none;z-index:2}
   .drip svg{width:100%;height:100%}
-  .sparkle{position:absolute;color:var(--pink-mid);pointer-events:none;animation:twinkle 4s ease-in-out infinite}
-  @keyframes twinkle{0%,100%{opacity:.4;transform:scale(.85) rotate(0)}50%{opacity:1;transform:scale(1.05) rotate(12deg)}}
+  .sparkle{position:absolute;color:var(--pink-mid);pointer-events:none}
 
   /* ---------- Hero ---------- */
   .hero{padding:0;background:var(--blush);overflow:hidden;isolation:isolate}
@@ -333,13 +339,15 @@
   .wa-float svg{width:30px;height:30px}
 
   /* ---------- Motion ---------- */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:none}
-  .no-js .reveal{opacity:1;transform:none}
+  /* GSAP: hero starts hidden until the intro timeline runs (see animations.js) */
+  .anim .hero-copy > *, .anim .hero-media img, .anim .hero .drip{visibility:hidden}
+  .w-wrap{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+  .w{display:inline-block;will-change:transform}
+  .site-header{transition:box-shadow .3s}
+  .site-header.scrolled{box-shadow:0 10px 30px -18px rgba(90,48,42,.45)}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     *,*::before,*::after{animation:none!important;transition:none!important}
-    .reveal{opacity:1;transform:none}
   }
 </style>
 </head>
@@ -405,7 +413,7 @@
       </div>
       <div class="hero-copy">
         <svg class="sparkle" style="width:22px;left:12%;top:-18px" aria-hidden="true"><use href="#i-spark"/></svg>
-        <svg class="sparkle" style="width:16px;right:14%;top:8px;animation-delay:1.4s;color:var(--choc)" aria-hidden="true"><use href="#i-heart"/></svg>
+        <svg class="sparkle" style="width:16px;right:14%;top:8px;color:var(--choc)" aria-hidden="true"><use href="#i-heart"/></svg>
         <span class="eyebrow">Birmingham dessert cart · Selly Oak</span>
         <h1 id="hero-title">Where Every Craving <span class="accent">Meets Its Match</span></h1>
         <p class="hero-sub">Fresh strawberries, warm waffles, indulgent cakes and chocolate-filled creations, made to satisfy every craving.</p>
@@ -427,7 +435,7 @@
         <h2 id="fav-title">Made to be craved</h2>
         <p>The desserts that keep Selly Oak coming back – from our signature strawberry cups to slices of cake worth sharing (or not).</p>
       </div>
-      <div class="fav-track reveal" id="favTrack" role="list"></div>
+      <div class="fav-track reveal" data-anim="stagger" id="favTrack" role="list"></div>
       <p class="swipe-hint" aria-hidden="true">Swipe to see more →</p>
     </div>
   </section>
@@ -463,7 +471,7 @@
           <div><strong>Daily</strong>2–11 PM</div>
         </div>
       </div>
-      <div class="story reveal" id="story">
+      <div class="story reveal" data-anim="stagger" id="story">
         <figure><div class="media" data-src-key="cart"></div><figcaption>The cart</figcaption></figure>
         <figure><div class="media" data-src-key="team"></div><figcaption>The team</figcaption></figure>
         <figure><div class="media" data-src-key="customers"></div><figcaption>Our cravers</figcaption></figure>
@@ -533,8 +541,8 @@
         <h2 id="social-title">Follow the Cravings</h2>
         <a class="handle" href="https://www.instagram.com/crave.yardd/" target="_blank" rel="noopener">@crave.yardd</a>
       </div>
-      <div class="gallery reveal" id="gallery"></div>
-      <div class="social-actions reveal">
+      <div class="gallery reveal" data-anim="stagger" id="gallery"></div>
+      <div class="social-actions reveal" data-anim="stagger">
         <div class="social-card">
           <div class="qr"><img src="assets/qr-instagram.svg" alt="QR code linking to CraveYardd on Instagram" width="96" height="96" loading="lazy"></div>
           <div>
@@ -563,7 +571,7 @@
         <h2 id="contact-title">Say hello</h2>
         <p>Questions, collaborations or dessert catering in Birmingham – we’d love to hear from you.</p>
       </div>
-      <div class="contact-list reveal" id="contactList"></div>
+      <div class="contact-list reveal" data-anim="stagger" id="contactList"></div>
     </div>
   </section>
 </main>
@@ -757,15 +765,11 @@
       });
     }, {rootMargin:'-45% 0px -50% 0px'});
     ids.forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
-
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
 })();
 </script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="animations.js"></script>
 </body>
 </html>
