@@ -57,16 +57,16 @@ window.CRAVEYARDD = {
       items: [
         { name: 'Chocolate & Strawberry Waffle',
           description: 'A warm golden waffle with fresh strawberries and a generous chocolate drizzle.',
-          image: 'assets/photos/chocolate-strawberry-waffle.webp' },
+          image: '' },
         { name: 'Biscoff Waffle',
           description: 'Warm waffle smothered in smooth Biscoff sauce for that caramel-biscuit hit.',
-          image: 'assets/photos/biscoff-waffle.webp' },
+          image: '' },
         { name: 'CraveYardd Loaded Waffle', tag: 'Fully loaded', favourite: 3,
           description: 'Our house special – a warm waffle drowned in Biscoff, hazelnut, chocolate and white chocolate sauces. For serious cravings only.',
-          image: 'assets/photos/loaded-waffle.webp' },
+          image: '' },
         { name: 'Oreo Waffle',
           description: 'Warm waffle loaded with crushed Oreo and a cookies-and-cream finish.',
-          image: 'assets/photos/oreo-waffle.webp' }
+          image: '' }
       ]
     },
     {
@@ -75,10 +75,10 @@ window.CRAVEYARDD = {
       items: [
         { name: 'Milk Cake', price: 6.99,
           description: 'Light sponge soaked in sweet milk and crowned with whipped cream. Soft, cold and dreamy.',
-          image: 'assets/photos/milk-cake.webp' },
+          image: '' },
         { name: 'San Sebastian Cheesecake', price: 6.99,
           description: 'Basque-style cheesecake with a deeply caramelised top and a rich, creamy centre.',
-          image: 'assets/photos/san-sebastian-cheesecake.webp' },
+          image: '' },
         { name: 'Real Mango Pop', price: 6.99, tag: 'Must try', favourite: 4,
           description: 'A dessert that looks just like a real mango – with a fruity mango centre inside.',
           image: 'assets/photos/real-mango-pop.webp' },
@@ -90,7 +90,7 @@ window.CRAVEYARDD = {
           image: 'assets/photos/blueberry-cheesecake.webp' },
         { name: 'Matilda Cake', price: 7.99, tag: 'Chocolate lovers', favourite: 7,
           description: 'The ultimate chocolate cake – layers of moist chocolate sponge and glossy fudge frosting.',
-          image: 'assets/photos/matilda-cake.webp' }
+          image: '' }
       ]
     },
     {

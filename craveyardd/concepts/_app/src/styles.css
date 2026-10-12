@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@source "./";
+
+/* CraveYardd brand tokens + the theme names that shadcn/Magic UI components expect */
+@theme {
+  --color-cream: #FFF9F4;
+  --color-blush: #FFF1F6;
+  --color-baby: #FFC9DF;
+  --color-hot: #FF3D8B;
+  --color-rasp: #C2185B;
+  --color-rasp-deep: #9C1047;
+  --color-choc: #5A302A;
+  --color-choc-dark: #2A1512;
+  --color-muted-ink: #6B4A42;
+
+  --color-background: #FFFFFF;
+  --color-foreground: #3A1F1A;
+  --color-primary: #C2185B;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #FFC9DF;
+  --color-secondary-foreground: #5A302A;
+  --color-accent: #FFF1F6;
+  --color-accent-foreground: #5A302A;
+  --color-destructive: #B3261E;
+  --color-destructive-foreground: #FFFFFF;
+  --color-input: #F3D6E0;
+  --color-ring: #C2185B;
+
+  --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-nunito: "Nunito", system-ui, sans-serif;
+
+  /* Magic UI animations (marquee, shimmer-button) */
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(calc(-100% - var(--gap))); } }
+  @keyframes marquee-vertical { from { transform: translateY(0); } to { transform: translateY(calc(-100% - var(--gap))); } }
+  @keyframes shimmer-slide { to { transform: translate(calc(100cqw - 100%), 0); } }
+  @keyframes spin-around {
+    0% { transform: translateZ(0) rotate(0); }
+    15%, 35% { transform: translateZ(0) rotate(90deg); }
+    65%, 85% { transform: translateZ(0) rotate(270deg); }
+    100% { transform: translateZ(0) rotate(360deg); }
+  }
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  :focus-visible { outline: 3px solid var(--color-rasp); outline-offset: 3px; border-radius: 10px; }
+  a, button, [role="tab"] { cursor: pointer; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

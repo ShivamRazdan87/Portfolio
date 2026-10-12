@@ -35,33 +35,33 @@
 <main class="wrap">
   <a class="back" href="../index.html">← Current CraveYardd site</a>
   <h1>CraveYardd <b>concepts</b></h1>
-  <p class="lead">Design directions for the CraveYardd website. Every concept uses the same menu, prices and photos from <code>data.js</code>, so only the design changes.</p>
+  <p class="lead">Design directions for the CraveYardd website. Every concept uses the same menu, prices and photos from <code>data.js</code>, so only the design changes. Concepts 2, 3 and 5 are React builds; their source is in <code>_app/</code>.</p>
   <div class="grid">
     <a class="card" href="1-gsap/">
       <span class="num">01</span><h2>Chocolate Drip</h2>
       <p>Built with GSAP and ScrollTrigger. A dark, cinematic, scroll-driven story: the cup photo opens from a circle, you ride sideways through the cups, chocolate lines draw under the waffles and toppings fall like sprinkles.</p>
       <span class="tag ready">Ready to view</span>
     </a>
-    <div class="card off" aria-disabled="true">
-      <span class="num">02</span><h2>21st.dev components</h2>
-      <p>Waiting on network access to 21st.dev. Its component registry is blocked in this environment.</p>
-      <span class="tag blocked">Blocked</span>
-    </div>
-    <div class="card off" aria-disabled="true">
-      <span class="num">03</span><h2>GSAP + 21st.dev</h2>
-      <p>Needs 21st.dev access as well.</p>
-      <span class="tag blocked">Blocked</span>
-    </div>
+    <a class="card" href="2-21st-dev/">
+      <span class="num">02</span><h2>Candy Pop</h2>
+      <p>Built from 21st.dev components (shadcn Button, Magic UI Marquee) and the same open-source libraries 21st.dev distributes: animated headline, rotating product names, shimmer buttons, a glowing border, tilt cards, a bento grid and a spotlight card. Motion comes from the components, no GSAP.</p>
+      <span class="tag ready">Ready to view</span>
+    </a>
+    <a class="card" href="3-gsap-21st/">
+      <span class="num">03</span><h2>Scroll Sundae</h2>
+      <p>GSAP drives the scroll: a stack of cups fans out, the menu rides sideways on desktop, chocolate colour fills the About text. 21st.dev components supply the marquee, shimmer buttons, photo slider, spotlight and magnetic button.</p>
+      <span class="tag ready">Ready to view</span>
+    </a>
     <a class="card" href="4-ui-ux-pro-max/">
       <span class="num">04</span><h2>Sweet Blocks</h2>
       <p>Guided by UI UX Pro Max: a hero-led layout built to convert, with bold colour blocks and soft clay cards. Live open/closed status, a menu with tabs, a sticky action bar for thumbs and its GSAP stagger preset.</p>
       <span class="tag ready">Ready to view</span>
     </a>
-    <div class="card off" aria-disabled="true">
-      <span class="num">05</span><h2>All combined</h2>
-      <p>GSAP, 21st.dev and UI UX Pro Max together. Needs 21st.dev access.</p>
-      <span class="tag blocked">Blocked</span>
-    </div>
+    <a class="card" href="5-all-combined/">
+      <span class="num">05</span><h2>Ultimate Craving</h2>
+      <p>Everything together: UI UX Pro Max sets the structure (a hero built to convert, clay blocks, live opening status, sticky thumb bar, a map). 21st.dev components supply the interface and GSAP drives the scroll motion with UI UX Pro Max’s stagger preset.</p>
+      <span class="tag ready">Ready to view</span>
+    </a>
   </div>
 </main>
 </body>
