@@ -1,6 +1,6 @@
 /*
- * CraveYardd logo intro – shared by every concept.
- * Include right after <body>:  <script src="../splash.js" data-theme="light|dark"></script>
+ * CraveYardd logo intro – used by the main site and every concept.
+ * Include right after <body>:  <script src="splash.js" data-theme="light|dark"></script>  (path relative to the page)
  *
  * About 4 seconds: the logo pops in with a bounce, sparkles burst out, a ring pulses,
  * a progress bar fills, then the screen closes in a circle to reveal the page.
@@ -12,7 +12,7 @@
   'use strict';
   var script = document.currentScript;
   var theme = (script && script.getAttribute('data-theme')) || 'light';
-  var logoUrl = new URL('../assets/logo.webp', script ? script.src : location.href).href;
+  var logoUrl = new URL('assets/logo.webp', script ? script.src : location.href).href;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var HOLD = reduce ? 1200 : 3300;   // time before the exit starts
   var EXIT = reduce ? 400 : 700;

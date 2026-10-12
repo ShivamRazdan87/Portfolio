@@ -1,6 +1,20 @@
 # CraveYardd website
 
-One-page, mobile-first site for CraveYardd. It's plain HTML, CSS and JS with no build step. Open `index.html`, or upload the folder to any static host such as Netlify, Vercel or GitHub Pages.
+The live site is **Concept 5 "Ultimate Craving"**: mobile-first, with the logo intro, live opening status, full menu with prices, event enquiry form, Find Us map, Follow the Cravings and Contact.
+
+- `index.html` and `app/` are the built website. Upload the whole `craveyardd/` folder to any static host (Netlify, Vercel, GitHub Pages). No build step is needed to publish.
+- `data.js` holds the menu, prices, photos and contact details. The site reads it when the page loads, so editing it needs no rebuild.
+- `splash.js` is the logo intro.
+- `concepts/` holds the five design concepts that were presented. They're marked so search engines won't list them.
+- The site's source code is in `concepts/_app/` (React, TypeScript, Tailwind CSS, GSAP). Rebuild only after changing the design:
+
+  ```
+  cd concepts/_app
+  npm install
+  npm run build
+  ```
+
+  This rebuilds `index.html` and `app/`, plus concepts 2, 3 and 5.
 
 ## 1. Add the official images
 
@@ -50,11 +64,11 @@ Everything editable lives in **`data.js`**:
 - Add `<link rel="canonical">` and make the `og:image` URL absolute once the domain is known (see the comment in `index.html`).
 - Check the Google Map pin points at Oba's Kitchen, Lounge & Bar.
 
-## Animations (GSAP)
+## Animations
 
-Animations live in `animations.js` and use GSAP 3.12.5 with ScrollTrigger, bundled in `vendor/` so they don't depend on a CDN.
+The site uses GSAP 3.12.5 with ScrollTrigger, installed through npm in `concepts/_app`:
 
-- **Hero:** the chocolate drip falls in, the headline rises word by word, the buttons pop in, the sparkles float, and the photo has a slow parallax.
-- **On scroll:** section headings, favourite cards, menu categories and items, About photos (a curtain wipe), event occasion chips, the gallery, contact rows and the footer logo animate in.
-- **Buttons:** they squish slightly when pressed.
-- **Reduced motion:** visitors with "reduce motion" turned on get no animation. If GSAP fails to load, everything stays visible.
+- The logo intro (`splash.js`) plays for about 4 seconds. It has a Skip intro button and a short fade for visitors with "reduce motion" turned on.
+- The hero card animates in as the intro closes, and the hero photo has a slow parallax.
+- Blocks, favourites, the gallery and contact rows animate in as you scroll. The favourites grid zooms in gently.
+- Visitors with "reduce motion" turned on get no movement.

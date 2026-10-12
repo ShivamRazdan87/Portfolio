@@ -1,5 +1,5 @@
 // Source: Magic UI (MIT) – github.com/magicuidesign/magicui
-// Modified for CraveYardd: darker description text for WCAG AA contrast.
+// Modified for CraveYardd: darker description text (WCAG AA contrast) and 44px-tall call-to-action links.
 import { type ComponentPropsWithoutRef, type ReactNode } from "react"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
@@ -76,7 +76,7 @@ const BentoCard = ({
           variant="link"
           asChild
           size="sm"
-          className="pointer-events-auto p-0"
+          className="pointer-events-auto min-h-11 p-0"
         >
           <a href={href}>
             {cta}
@@ -95,7 +95,7 @@ const BentoCard = ({
         variant="link"
         asChild
         size="sm"
-        className="pointer-events-auto p-0"
+        className="pointer-events-auto min-h-11 p-0"
       >
         <a href={href}>
           {cta}

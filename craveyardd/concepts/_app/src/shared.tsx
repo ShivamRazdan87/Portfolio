@@ -7,10 +7,12 @@ import { cn } from "@/lib/utils"
 /* ---------- Content (read from craveyardd/data.js, loaded before the app) ---------- */
 export type Item = { name: string; description: string; price?: number | string; image?: string; favourite?: number; tag?: string }
 export type Category = { category: string; price?: number; tagline?: string; items?: Item[]; groups?: { title: string; options: string[] }[] }
-type SiteData = { menu: Category[]; gallery: string[] }
+export type SiteConfig = { instagram?: string; tiktokUrl?: string; email?: string; phone?: string; whatsapp?: string; formEndpoint?: string }
+type SiteData = { config: SiteConfig; menu: Category[]; gallery: string[] }
 
 export const data: SiteData = (window as unknown as { CRAVEYARDD: SiteData }).CRAVEYARDD
-export const ROOT = "../../" // concept pages live in craveyardd/concepts/<name>/
+// Path from the page to the craveyardd/ folder. Concept pages live two levels down; the main site sets window.CRAVEYARDD_ROOT = "./".
+export const ROOT: string = (window as unknown as { CRAVEYARDD_ROOT?: string }).CRAVEYARDD_ROOT ?? "../../"
 
 export const img = (src?: string) => (src ? ROOT + src : "")
 export const money = (p?: number | string) =>
@@ -44,7 +46,7 @@ export const LINKS = {
   directions: `https://www.google.com/maps/dir/?api=1&destination=${Q}`,
   map: `https://maps.google.com/maps?q=${Q}&z=16&output=embed`,
   instagram: "https://www.instagram.com/crave.yardd/",
-  enquiry: `${ROOT}index.html#events`,
+  enquiry: `${ROOT}index.html#enquiry`,
   concepts: "../",
 }
 
