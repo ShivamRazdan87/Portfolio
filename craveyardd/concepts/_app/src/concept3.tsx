@@ -13,6 +13,7 @@ import { InfiniteSlider } from "@/components/ui/infinite-slider"
 import { Spotlight } from "@/components/ui/spotlight"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Button } from "@/components/ui/button"
+import { RotatingBadge } from "@/components/RotatingBadge"
 import { COPY, data, Footer, img, LINKS, Logo, money, Photo, useOpenStatus, useSplashDone, Visit, withPhotos } from "./shared"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -129,6 +130,7 @@ function App() {
                     <a href="#events">Book Us for an Event</a>
                   </Button>
                 </div>
+                <RotatingBadge text="Scroll to crave ✦ CraveYardd ✦ Selly Oak ✦ " center="CY" color="#FFC9DF" size={150} className="mt-10 font-display" />
               </div>
               <div className="relative mx-auto h-[360px] w-full max-w-[520px] md:h-[460px]" aria-label="Three CraveYardd cups" role="img">
                 {STACK.map((src, i) => (

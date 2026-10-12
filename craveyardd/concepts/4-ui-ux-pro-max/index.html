@@ -145,7 +145,10 @@
   /* ---------- Visit ---------- */
   .visit-grid{display:grid;gap:12px}
   @media (min-width:1024px){.visit-grid{grid-template-columns:.9fr 1.1fr;gap:18px}}
-  .visit-card{background:var(--baby);border-radius:32px;padding:26px 22px;box-shadow:var(--clay);display:flex;flex-direction:column;gap:14px}
+  .visit-card{position:relative;background:var(--baby);border-radius:32px;padding:26px 22px;box-shadow:var(--clay);display:flex;flex-direction:column;gap:14px}
+  .visit-card .rotating-badge{position:absolute;top:14px;right:14px;width:104px;height:104px}
+  @media (min-width:1024px){.visit-card .rotating-badge{width:136px;height:136px;top:22px;right:22px}}
+  .visit-card h2{max-width:calc(100% - 110px)}
   .visit-card h2{font-size:clamp(30px,5vw,44px)}
   .row{display:flex;gap:12px;align-items:flex-start;font-weight:700}
   .row span{display:block;font-weight:600;color:var(--muted)}
@@ -247,6 +250,7 @@
   <section id="visit" aria-labelledby="visit-h">
     <div class="wrap visit-grid">
       <div class="visit-card">
+        <span data-rotating-badge data-text="Open daily 2–11 PM ✦ Bristol Road ✦ " data-logo="../../assets/logo.webp" data-color="#C2185B" data-size="136" data-duration="22"></span>
         <span class="eyebrow">Find us</span>
         <h2 id="visit-h">Desserts in Selly Oak</h2>
         <div class="row"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><div>CraveYardd at Oba’s Kitchen, Lounge &amp; Bar<span>Bristol Road, Selly Oak, Birmingham</span></div></div>
@@ -274,6 +278,7 @@
 
 <script src="../../data.js"></script>
 <script src="../../vendor/gsap.min.js"></script>
+<script src="../rotating-badge.js"></script>
 <script>
 (function(){
   'use strict';
