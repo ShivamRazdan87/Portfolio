@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CraveYardd – Concept 4: Sweet Blocks (UI UX Pro Max)</title>
+<meta name="description" content="Concept 4 for CraveYardd, the Birmingham dessert cart in Selly Oak: a conversion-focused, block-based design guided by UI UX Pro Max.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FF3D8B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- UI UX Pro Max typography pairing "Playful Creative": Fredoka + Nunito -->
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /*
+   * Design system (UI UX Pro Max guidance, CraveYardd brand colours)
+   * Product: Restaurant/Food Service -> Vibrant & Block-based + Motion-Driven, Claymorphism accents
+   * Pattern: Hero-Centric Design + Conversion
+   * Avoid: poor food photos, hidden hours, no map
+   */
+  :root{
+    --bg:#FFF9F4; --card:#FFFFFF; --fg:#3A1F1A; --muted:#6B4A42;
+    --baby:#FFC9DF; --blush:#FFF1F6; --hot:#FF3D8B; --rasp:#C2185B; --rasp-deep:#9C1047; --choc:#5A302A;
+    --ring:#C2185B;
+    --clay:0 18px 34px -16px rgba(194,24,91,.35), inset 0 -6px 0 rgba(90,48,42,.06), inset 0 3px 0 rgba(255,255,255,.8);
+    --clay-dark:0 18px 34px -16px rgba(42,21,18,.6), inset 0 -6px 0 rgba(0,0,0,.18), inset 0 3px 0 rgba(255,255,255,.12);
+    --r:28px;
+    --heading:'Fredoka', system-ui, sans-serif; --body:'Nunito', system-ui, sans-serif;
+    --bar-h:72px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom))}
+  @media (min-width:1024px){body{padding-bottom:0}}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  button{font:inherit;color:inherit}
+  h1,h2,h3{font-family:var(--heading);font-weight:600;line-height:1.08;margin:0}
+  p{margin:0}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+  @media (min-width:768px){.wrap{padding:0 32px}}
+  .skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--choc);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700}
+  .skip:focus{top:12px}
+  :focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:12px}
+  a,button,[role="tab"]{cursor:pointer}
+  .ic{width:22px;height:22px;flex:none}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 24px;border-radius:999px;border:0;font-weight:800;text-decoration:none;transition:transform .2s ease, box-shadow .2s ease, background-color .2s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-rasp{background:var(--rasp);color:#fff;box-shadow:0 12px 24px -12px rgba(194,24,91,.8), inset 0 -4px 0 rgba(0,0,0,.15)}
+  .btn-rasp:hover{background:var(--rasp-deep)}
+  .btn-white{background:#fff;color:var(--choc);box-shadow:var(--clay)}
+  .btn-choc{background:var(--choc);color:#fff;box-shadow:var(--clay-dark)}
+  .eyebrow{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--rasp-deep)}
+  section{padding:56px 0}
+  @media (min-width:1024px){section{padding:88px 0}}
+  .head{margin-bottom:24px}
+  .head h2{font-size:clamp(32px,6vw,52px);margin-top:8px}
+  .head p{color:var(--muted);margin-top:8px;max-width:560px}
+
+  /* ---------- Header ---------- */
+  .top{position:sticky;top:0;z-index:50;background:rgba(255,249,244,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(90,48,42,.08)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:68px}
+  .brand{display:inline-flex;align-items:center;min-height:48px;font-family:var(--heading);font-weight:700;font-size:24px;text-decoration:none;color:var(--choc)}
+  .brand b{color:var(--rasp)}
+  .status{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:var(--clay);font-weight:700;font-size:14px;text-decoration:none}
+  .status .dot{width:10px;height:10px;border-radius:50%;background:#9AA0A6}
+  .status.open .dot{background:#1F9E55;box-shadow:0 0 0 4px rgba(31,158,85,.18)}
+  .top nav{display:none;gap:4px}
+  .top nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-weight:700;transition:background-color .2s}
+  .top nav a:hover{background:var(--blush)}
+  @media (min-width:1024px){.top nav{display:flex}}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-top:16px}
+  .hero-card{position:relative;border-radius:36px;overflow:hidden;background:var(--hot);box-shadow:var(--clay);display:grid}
+  .hero-photo{position:relative;aspect-ratio:4/3.4}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-copy{padding:24px 20px 28px;color:#fff;background:var(--rasp)}
+  .hero-copy h1{font-size:clamp(38px,9vw,72px);font-weight:700}
+  .hero-copy p{margin:12px 0 22px;font-size:17px;color:rgba(255,255,255,.92)}
+  .hero-ctas{display:grid;gap:10px}
+  @media (min-width:600px){.hero-ctas{grid-template-columns:auto auto;justify-content:start}}
+  @media (min-width:1024px){
+    .hero-card{grid-template-columns:1fr 1fr;min-height:560px}
+    .hero-photo{aspect-ratio:auto;order:2}
+    .hero-copy{padding:56px;display:flex;flex-direction:column;justify-content:center}
+  }
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  .fact{background:#fff;border-radius:22px;padding:14px 12px;box-shadow:var(--clay);text-align:center}
+  .fact strong{display:block;font-family:var(--heading);font-weight:600;font-size:clamp(18px,4vw,26px);color:var(--rasp)}
+  .fact span{font-size:13px;font-weight:700;color:var(--muted)}
+
+  /* ---------- Bento favourites ---------- */
+  .bento{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (min-width:1024px){.bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:18px}}
+  .tile{position:relative;border-radius:var(--r);overflow:hidden;background:var(--baby);box-shadow:var(--clay);min-height:200px;display:flex;align-items:flex-end;text-decoration:none}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+  .tile:hover img{transform:scale(1.05)}
+  .tile .label{position:relative;margin:10px;background:rgba(255,255,255,.95);border-radius:18px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;width:calc(100% - 20px)}
+  .tile .label b{font-family:var(--heading);font-weight:600;font-size:17px;line-height:1.15}
+  .tile .label span{font-weight:800;color:var(--rasp-deep);white-space:nowrap}
+  .tile.big{grid-column:span 2;min-height:300px}
+  @media (min-width:1024px){.tile.big{grid-row:span 2}.tile{min-height:0}}
+
+  /* ---------- Menu tabs ---------- */
+  .menu{background:var(--blush)}
+  .tabs{position:sticky;top:68px;z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 16px;margin:0 -16px 20px;background:var(--blush);scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  @media (min-width:768px){.tabs{margin:0 0 24px;padding:10px 0}}
+  [role="tab"]{flex:none;min-height:48px;padding:0 20px;border-radius:999px;border:0;background:#fff;font-weight:800;box-shadow:var(--clay);transition:background-color .2s, color .2s}
+  [role="tab"][aria-selected="true"]{background:var(--choc);color:#fff;box-shadow:var(--clay-dark)}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .panel-head p{color:var(--muted);font-weight:600}
+  .pill{background:var(--rasp);color:#fff;font-weight:800;border-radius:999px;padding:6px 16px}
+  .items{display:grid;gap:12px}
+  @media (min-width:768px){.items{grid-template-columns:1fr 1fr;gap:16px}}
+  .item{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center;background:#fff;border-radius:24px;padding:12px;box-shadow:var(--clay)}
+  .item .th{width:84px;height:84px;border-radius:18px;overflow:hidden;background:var(--baby);display:grid;place-items:center}
+  .item .th img{width:100%;height:100%;object-fit:cover}
+  .item .th svg{width:34px;height:34px;color:var(--rasp)}
+  .item h3{font-size:19px}
+  .item p{font-size:14.5px;color:var(--muted);margin-top:2px}
+  .item .pr{font-weight:800;color:var(--rasp-deep);margin-top:6px;display:block}
+  .opts{background:#fff;border-radius:24px;padding:18px;box-shadow:var(--clay)}
+  .opts h3{font-size:18px;margin:6px 0 10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 8px;padding:0}
+  .chips li{background:var(--blush);border:2px solid var(--baby);border-radius:999px;padding:8px 14px;font-weight:700}
+  .note{display:flex;gap:12px;align-items:flex-start;margin-top:20px;background:#fff;border:2px solid var(--hot);border-radius:20px;padding:16px 18px;font-weight:700}
+
+  /* ---------- About / Events blocks ---------- */
+  .blocks{display:grid;gap:12px}
+  @media (min-width:1024px){.blocks{grid-template-columns:1.1fr .9fr;gap:18px}}
+  .block{border-radius:32px;padding:28px 22px;box-shadow:var(--clay)}
+  @media (min-width:768px){.block{padding:40px}}
+  .block.about{background:#fff}
+  .block.about p{font-size:18px;margin-top:12px}
+  .block.events{background:var(--choc);color:#fff;box-shadow:var(--clay-dark)}
+  .block.events .eyebrow{color:var(--baby)}
+  .block.events h2{font-size:clamp(30px,5vw,44px);margin:8px 0 12px}
+  .block.events p{color:rgba(255,255,255,.85)}
+  .occ{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:18px 0 22px;padding:0}
+  .occ li{border:2px solid rgba(255,201,223,.55);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
+
+  /* ---------- Visit ---------- */
+  .visit-grid{display:grid;gap:12px}
+  @media (min-width:1024px){.visit-grid{grid-template-columns:.9fr 1.1fr;gap:18px}}
+  .visit-card{background:var(--baby);border-radius:32px;padding:26px 22px;box-shadow:var(--clay);display:flex;flex-direction:column;gap:14px}
+  .visit-card h2{font-size:clamp(30px,5vw,44px)}
+  .row{display:flex;gap:12px;align-items:flex-start;font-weight:700}
+  .row span{display:block;font-weight:600;color:var(--muted)}
+  .row .ic{color:var(--rasp-deep);margin-top:2px}
+  .map{border-radius:32px;overflow:hidden;box-shadow:var(--clay);min-height:320px;background:var(--blush)}
+  .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+
+  footer{padding:32px 0 24px;text-align:center;font-size:14px;color:var(--muted)}
+  footer .allergen{font-weight:800;color:var(--fg);margin-bottom:6px}
+
+  /* ---------- Sticky action bar (mobile thumb zone) ---------- */
+  .actionbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 -10px 30px -18px rgba(90,48,42,.5)}
+  .actionbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;border-radius:18px;text-decoration:none;font-weight:800;font-size:13px;color:var(--choc)}
+  .actionbar a.primary{background:var(--rasp);color:#fff}
+  @media (min-width:1024px){.actionbar{display:none}}
+
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cake" viewBox="0 0 24 24"><path d="M4 20h16v-7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7zM4 15c2 1.5 4 1.5 5.3 0 1.4 1.5 4 1.5 5.4 0 1.3 1.5 3.3 1.5 5.3 0M12 11V7m0-4c1 1.3 1 2.3 0 3-1-.7-1-1.7 0-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Crave<b>Yardd</b></a>
+    <nav aria-label="Main">
+      <a href="#menu">Menu</a><a href="#about">About Us</a><a href="#events">Events</a><a href="#visit">Find Us</a><a href="../">All concepts</a>
+    </nav>
+    <a class="status" id="status" href="#visit"><span class="dot" aria-hidden="true"></span><span id="statusText">Open daily 2–11 PM</span></a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-photo"><img src="../../assets/photos/cups-lineup.webp" alt="Four CraveYardd chocolate strawberry cups: Classic, Oreo Crunch, Biscoff Crunch and Dubai Chocolate" width="1280" height="720" fetchpriority="high"></div>
+        <div class="hero-copy">
+          <span class="eyebrow" style="color:var(--baby)">Birmingham dessert cart · Selly Oak</span>
+          <h1 id="hero-h" style="margin-top:8px">Where Every Craving Meets Its Match</h1>
+          <p>Fresh strawberries, warm waffles, indulgent cakes and chocolate-filled creations, made to satisfy every craving.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-white" href="#menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>View Our Menu</a>
+            <a class="btn btn-choc" href="#visit"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Find Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><strong id="fromPrice">£6.49</strong><span>Desserts from</span></div>
+        <div class="fact"><strong>2–11 PM</strong><span>Open daily</span></div>
+        <div class="fact"><strong>Selly Oak</strong><span>Bristol Road</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="fav-h">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Our favourites</span><h2 id="fav-h">Most craved right now</h2></div>
+      <div class="bento" id="bento"></div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu" aria-labelledby="menu-h">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Full menu</span><h2 id="menu-h">Pick your craving</h2><p>Chocolate strawberry cups, waffles in Birmingham and cakes worth the trip – make it yours with extra sauces and toppings.</p></div>
+      <div class="tabs" role="tablist" aria-label="Menu categories" id="tabs"></div>
+      <div id="panels"></div>
+      <p class="note" role="note"><svg class="ic" aria-hidden="true" style="color:var(--rasp)"><use href="#i-info"/></svg>Please speak to a member of our team if you have any allergies or dietary requirements.</p>
+    </div>
+  </section>
+
+  <section aria-label="About and events">
+    <div class="wrap blocks">
+      <div class="block about" id="about">
+        <span class="eyebrow">About us</span>
+        <p>CraveYardd is an independent Birmingham dessert brand created for people who take their cravings seriously. From fresh strawberries covered in luxurious chocolate to warm loaded waffles and irresistible cakes, every item is made to look amazing and taste even better.</p>
+      </div>
+      <div class="block events" id="events">
+        <span class="eyebrow">Dessert catering Birmingham</span>
+        <h2>Bring CraveYardd to Your Event</h2>
+        <p>Make your celebration sweeter with freshly prepared CraveYardd desserts. We offer flexible packages for private parties, corporate events and large celebrations across Birmingham.</p>
+        <ul class="occ"><li>Birthdays</li><li>Weddings</li><li>University events</li><li>Corporate events</li><li>Festivals</li><li>Private parties</li><li>Brand collaborations</li></ul>
+        <a class="btn btn-rasp" href="../../index.html#events">Request a Quote<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" aria-labelledby="visit-h">
+    <div class="wrap visit-grid">
+      <div class="visit-card">
+        <span class="eyebrow">Find us</span>
+        <h2 id="visit-h">Desserts in Selly Oak</h2>
+        <div class="row"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><div>CraveYardd at Oba’s Kitchen, Lounge &amp; Bar<span>Bristol Road, Selly Oak, Birmingham</span></div></div>
+        <div class="row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div>Open daily: 2:00 PM–11:00 PM<span>Afternoon treats to late-night cravings</span></div></div>
+        <a class="btn btn-rasp" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Oba%27s%20Kitchen%20Lounge%20%26%20Bar%2C%20Bristol%20Road%2C%20Selly%20Oak%2C%20Birmingham">Get Directions<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-white" href="https://www.instagram.com/crave.yardd/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-insta"/></svg>@crave.yardd</a>
+      </div>
+      <div class="map"><iframe title="Map of CraveYardd at Oba’s Kitchen, Lounge &amp; Bar, Bristol Road, Selly Oak" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Oba%27s%20Kitchen%20Lounge%20%26%20Bar%2C%20Bristol%20Road%2C%20Selly%20Oak%2C%20Birmingham&amp;z=16&amp;output=embed"></iframe></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="allergen">Please speak to a member of our team if you have any allergies or dietary requirements.</p>
+    <p>© 2026 CraveYardd. All rights reserved.</p>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a href="#menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>Menu</a>
+  <a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Oba%27s%20Kitchen%20Lounge%20%26%20Bar%2C%20Bristol%20Road%2C%20Selly%20Oak%2C%20Birmingham"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Directions</a>
+  <a href="https://www.instagram.com/crave.yardd/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-insta"/></svg>Instagram</a>
+</nav>
+
+<script src="../../data.js"></script>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  var data = window.CRAVEYARDD;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function money(p){ return p < 1 ? Math.round(p * 100) + 'p' : '£' + p.toFixed(2); }
+  function slug(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+
+  /* Live open/closed status in UK time (avoids the "hidden hours" anti-pattern). */
+  try {
+    var h = +new Intl.DateTimeFormat('en-GB', {hour:'numeric', hour12:false, timeZone:'Europe/London'}).format(new Date());
+    var open = h >= 14 && h < 23;
+    document.getElementById('status').classList.toggle('open', open);
+    document.getElementById('statusText').textContent = open ? 'Open now · till 11 PM' : 'Opens 2 PM today';
+  } catch (e) {}
+
+  /* Lowest price for the "Desserts from" fact. */
+  var prices = [];
+  data.menu.forEach(function(c){ if (typeof c.price === 'number') prices.push(c.price); (c.items || []).forEach(function(i){ if (typeof i.price === 'number') prices.push(i.price); }); });
+  if (prices.length) document.getElementById('fromPrice').textContent = money(Math.min.apply(null, prices));
+
+  /* Bento favourites: only items with real photos (UI UX Pro Max: avoid poor food photos). */
+  var favs = [];
+  data.menu.forEach(function(c){ (c.items || []).forEach(function(i){ if (i.favourite && i.image) favs.push({it:i, price: i.price != null ? i.price : c.price}); }); });
+  favs.sort(function(a, b){ return a.it.favourite - b.it.favourite; });
+  document.getElementById('bento').innerHTML = favs.slice(0, 5).map(function(f, i){
+    return '<a class="tile' + (i === 0 ? ' big' : '') + '" href="#menu"><img src="../../' + esc(f.it.image) + '" alt="' + esc(f.it.name) + '" loading="lazy" decoding="async" onerror="this.closest(\'.tile\').remove()"><span class="label"><b>' + esc(f.it.name) + '</b><span>' + money(f.price) + '</span></span></a>';
+  }).join('');
+
+  /* Menu tabs (accessible tablist with arrow-key support). */
+  var cats = data.menu;
+  var tabs = document.getElementById('tabs'), panels = document.getElementById('panels');
+  tabs.innerHTML = cats.map(function(c, i){
+    return '<button role="tab" id="tab-' + slug(c.category) + '" aria-controls="panel-' + slug(c.category) + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '">' + esc(c.category) + '</button>';
+  }).join('');
+  var cakeIcon = '<svg aria-hidden="true"><use href="#i-cake"/></svg>';
+  panels.innerHTML = cats.map(function(c, i){
+    var head = '<div class="panel-head"><p>' + esc(c.tagline || '') + '</p>' + (typeof c.price === 'number' ? '<span class="pill">' + money(c.price) + ' each</span>' : '') + '</div>';
+    var items = (c.items || []).length ? '<div class="items">' + c.items.map(function(it){
+      var th = it.image ? '<img src="../../' + esc(it.image) + '" alt="" loading="lazy" decoding="async" onerror="this.parentNode.innerHTML=this.parentNode.dataset.icon">' : cakeIcon;
+      return '<article class="item"><div class="th" data-icon="' + esc(cakeIcon) + '">' + th + '</div><div><h3>' + esc(it.name) + '</h3><p>' + esc(it.description) + '</p>' + (it.price != null ? '<span class="pr">' + money(it.price) + '</span>' : '') + '</div></article>';
+    }).join('') + '</div>' : '';
+    var groups = (c.groups || []).length ? '<div class="opts">' + c.groups.map(function(g){ return '<h3>' + esc(g.title) + '</h3><ul class="chips">' + g.options.map(function(o){ return '<li>' + esc(o) + '</li>'; }).join('') + '</ul>'; }).join('') + '</div>' : '';
+    return '<div role="tabpanel" id="panel-' + slug(c.category) + '" aria-labelledby="tab-' + slug(c.category) + '"' + (i ? ' hidden' : '') + ' tabindex="0">' + head + items + groups + '</div>';
+  }).join('');
+
+  // UI UX Pro Max motion preset "Stagger List": opacity 0, scale .92, y 16, 0.4s, back.out(1.4).
+  function stagger(targets){
+    if (reduce || !window.gsap) return;
+    gsap.from(targets, {opacity:0, scale:.92, y:16, duration:.4, stagger:{each:.06, from:'start', grid:'auto'}, ease:'back.out(1.4)', clearProps:'transform,opacity'});
+  }
+  function select(tab){
+    var all = tabs.querySelectorAll('[role="tab"]');
+    all.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    var panel = document.getElementById(tab.getAttribute('aria-controls'));
+    stagger(panel.querySelectorAll('.item, .chips li'));
+    tab.scrollIntoView({block:'nearest', inline:'center', behavior: reduce ? 'auto' : 'smooth'});
+  }
+  tabs.addEventListener('click', function(e){ var t = e.target.closest('[role="tab"]'); if (t) select(t); });
+  tabs.addEventListener('keydown', function(e){
+    var all = Array.prototype.slice.call(tabs.querySelectorAll('[role="tab"]')), i = all.indexOf(document.activeElement);
+    if (i < 0) return;
+    var n = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? all.length - 1 : null;
+    if (n === null) return;
+    e.preventDefault(); n = (n + all.length) % all.length; all[n].focus(); select(all[n]);
+  });
+
+  /* Scroll reveals with the same preset (only when the block enters view). */
+  if (!reduce && window.gsap && 'IntersectionObserver' in window){
+    var groups = ['.facts .fact', '#bento .tile', '#panels [role="tabpanel"]:not([hidden]) .item', '.blocks .block', '.occ li', '.visit-card, .map'];
+    groups.forEach(function(sel){
+      var els = document.querySelectorAll(sel); if (!els.length) return;
+      gsap.set(els, {opacity:0, scale:.92, y:16});
+      var io = new IntersectionObserver(function(entries){
+        if (!entries.some(function(en){ return en.isIntersecting; })) return;
+        io.disconnect();
+        gsap.to(els, {opacity:1, scale:1, y:0, duration:.4, stagger:{each:.06, grid:'auto'}, ease:'back.out(1.4)', clearProps:'transform,opacity'});
+      }, {threshold:.15});
+      io.observe(els[0]);
+    });
+    gsap.from('.hero-card', {opacity:0, y:24, scale:.97, duration:.6, ease:'back.out(1.4)'});
+  }
+})();
+</script>
+</body>
+</html>

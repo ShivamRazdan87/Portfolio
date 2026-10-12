@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CraveYardd Concepts</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FFF9F4;--choc:#5A302A;--muted:#7A4A42;--baby:#FFC9DF;--blush:#FFF1F6;--hot:#FF3D8B;--rasp:#C2185B}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--choc);font-family:'Poppins',system-ui,sans-serif;line-height:1.6}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 16px 64px}
+  h1{font-family:'Fredoka',sans-serif;font-size:clamp(36px,7vw,60px);line-height:1.05;margin:8px 0 10px}
+  h1 b{color:var(--rasp)}
+  .lead{color:var(--muted);max-width:620px;margin:0 0 32px}
+  .grid{display:grid;gap:14px}
+  @media (min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+  .card{display:flex;flex-direction:column;gap:6px;background:#fff;border-radius:24px;padding:22px;text-decoration:none;border:2px solid transparent;box-shadow:0 14px 30px -18px rgba(194,24,91,.4);transition:transform .2s,border-color .2s}
+  a.card:hover{transform:translateY(-3px);border-color:var(--hot)}
+  a.card:focus-visible{outline:3px solid var(--rasp);outline-offset:3px}
+  .num{font-family:'Fredoka',sans-serif;font-weight:700;color:var(--hot)}
+  .card h2{font-family:'Fredoka',sans-serif;font-size:26px;margin:0}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .tag{align-self:flex-start;font-size:12.5px;font-weight:600;border-radius:999px;padding:4px 12px;margin-top:6px}
+  .ready{background:var(--baby);color:#9C1047}
+  .blocked{background:#EEE;color:#555}
+  .card.off{background:var(--blush);box-shadow:none;border:2px dashed var(--baby)}
+  .back{display:inline-flex;min-height:44px;align-items:center;font-weight:600;color:var(--rasp)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">← Current CraveYardd site</a>
+  <h1>CraveYardd <b>concepts</b></h1>
+  <p class="lead">Design directions for the CraveYardd website. Every concept uses the same menu, prices and photos from <code>data.js</code>, so only the design changes.</p>
+  <div class="grid">
+    <a class="card" href="1-gsap/">
+      <span class="num">01</span><h2>Chocolate Drip</h2>
+      <p>Built with GSAP and ScrollTrigger. A dark, cinematic, scroll-driven story: the cup photo opens from a circle, you ride sideways through the cups, chocolate lines draw under the waffles and toppings fall like sprinkles.</p>
+      <span class="tag ready">Ready to view</span>
+    </a>
+    <div class="card off" aria-disabled="true">
+      <span class="num">02</span><h2>21st.dev components</h2>
+      <p>Waiting on network access to 21st.dev. Its component registry is blocked in this environment.</p>
+      <span class="tag blocked">Blocked</span>
+    </div>
+    <div class="card off" aria-disabled="true">
+      <span class="num">03</span><h2>GSAP + 21st.dev</h2>
+      <p>Needs 21st.dev access as well.</p>
+      <span class="tag blocked">Blocked</span>
+    </div>
+    <a class="card" href="4-ui-ux-pro-max/">
+      <span class="num">04</span><h2>Sweet Blocks</h2>
+      <p>Guided by UI UX Pro Max: a hero-led layout built to convert, with bold colour blocks and soft clay cards. Live open/closed status, a menu with tabs, a sticky action bar for thumbs and its GSAP stagger preset.</p>
+      <span class="tag ready">Ready to view</span>
+    </a>
+    <div class="card off" aria-disabled="true">
+      <span class="num">05</span><h2>All combined</h2>
+      <p>GSAP, 21st.dev and UI UX Pro Max together. Needs 21st.dev access.</p>
+      <span class="tag blocked">Blocked</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

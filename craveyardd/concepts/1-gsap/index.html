@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CraveYardd – Concept 1: Chocolate Drip (GSAP)</title>
+<meta name="description" content="Concept 1 for CraveYardd, the Birmingham dessert cart in Selly Oak: a cinematic, scroll-driven design built with GSAP and ScrollTrigger.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2A1512">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --choc-dark:#2A1512; --choc:#3D201B; --choc-2:#5A302A;
+    --cream:#FFF9F4; --cream-dim:rgba(255,249,244,.72);
+    --baby:#FFC9DF; --hot:#FF3D8B; --rasp:#C2185B; --rasp-deep:#9C1047;
+    --display:'Fredoka', system-ui, sans-serif; --body:'Poppins', system-ui, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--choc-dark);color:var(--cream);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.02;margin:0}
+  p{margin:0}
+  .skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--hot);color:var(--choc-dark);padding:12px 18px;border-radius:12px;font-weight:600}
+  .skip:focus{top:12px}
+  :focus-visible{outline:3px solid var(--hot);outline-offset:3px;border-radius:8px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+  @media (min-width:720px){.wrap{padding:0 40px}}
+  .kicker{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--baby)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .2s, background-color .2s, color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-hot{background:var(--hot);color:var(--choc-dark)}
+  .btn-hot:hover{background:var(--baby)}
+  .btn-line{border:2px solid var(--cream);color:var(--cream)}
+  .btn-line:hover{background:var(--cream);color:var(--choc-dark)}
+
+  /* ---------- Loader ---------- */
+  .loader{position:fixed;inset:0;z-index:200;background:var(--hot);display:grid;place-items:center;pointer-events:none}
+  .loader-word{font-family:var(--display);font-weight:700;font-size:clamp(44px,12vw,140px);color:var(--choc-dark);display:flex}
+  .loader-word span{display:inline-block}
+  .loader svg{position:absolute;left:0;right:0;bottom:-79px;width:100%;height:80px;color:var(--hot)}
+  .no-anim .loader{display:none}
+
+  /* ---------- Top bar ---------- */
+  .bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(42,21,18,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,249,244,.08)}
+  @media (min-width:720px){.bar{padding:12px 40px}}
+  .brand{font-family:var(--display);font-weight:700;font-size:24px;text-decoration:none}
+  .brand b{color:var(--hot);font-weight:700}
+  .bar nav{display:flex;gap:6px}
+  .bar nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:14px}
+  .bar nav a:hover{background:var(--hot);color:var(--choc-dark)}
+  .bar nav .hide-sm{display:none}
+  @media (min-width:720px){.bar nav .hide-sm{display:flex}}
+
+  /* ---------- Hero (pinned circle reveal) ---------- */
+  .hero{position:relative;height:100svh;overflow:hidden}
+  .hero-photo{position:absolute;inset:0;clip-path:circle(22% at 50% 62%)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.15)}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,21,18,.15),rgba(42,21,18,.55))}
+  .hero-title{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16px;z-index:2;pointer-events:none}
+  .hero-title h1{font-size:clamp(46px,11vw,150px);font-weight:700;letter-spacing:-.02em;text-shadow:0 4px 30px rgba(42,21,18,.85),0 2px 6px rgba(42,21,18,.6)}
+  .hero-title h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
+  .hero-title h1 .line > span{display:inline-block}
+  .hero-title h1 .pink{color:var(--hot)}
+  .hero-sub{position:absolute;left:0;right:0;bottom:7svh;z-index:3;text-align:center;padding:0 16px}
+  .hero-sub p{max-width:560px;margin:0 auto 22px;color:var(--cream);font-size:16px}
+  .hero-sub .ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .scroll-cue{position:absolute;left:50%;top:14svh;transform:translateX(-50%);z-index:3;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--baby)}
+
+  /* ---------- Marquee ---------- */
+  .marquee{background:var(--hot);color:var(--choc-dark);overflow:hidden;padding:16px 0;transform:rotate(-2deg);margin:-10px -20px 0;position:relative;z-index:4}
+  .marquee-track{display:flex;width:max-content;font-family:var(--display);font-weight:700;font-size:clamp(26px,5vw,48px);white-space:nowrap}
+  .marquee-track span{padding:0 28px;display:flex;align-items:center;gap:28px}
+  .marquee-track span::after{content:"✦";color:var(--choc-dark);font-size:.6em}
+
+  main{overflow-x:clip}
+  section{position:relative}
+  .sec-head{padding:96px 0 40px}
+  .sec-head h2{font-size:clamp(40px,8vw,96px);margin-top:12px}
+  .sec-head h2 em{font-style:normal;color:var(--hot)}
+  .sec-head p{color:var(--cream-dim);max-width:520px;margin-top:14px}
+  .price-tag{display:inline-flex;align-items:center;background:var(--rasp);color:#fff;font-weight:600;border-radius:999px;padding:6px 16px;font-size:15px;margin-top:18px}
+
+  /* ---------- Cups: horizontal pinned track ---------- */
+  .cups{overflow:hidden}
+  .cups-pin{min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+  .cups-track{display:flex;gap:20px;padding:0 16px 56px;width:max-content}
+  @media (min-width:720px){.cups-track{padding:0 40px 56px;gap:32px}}
+  .cup{width:min(82vw,420px);flex:none;background:var(--choc);border-radius:32px;overflow:hidden;display:flex;flex-direction:column}
+  .cup .img{aspect-ratio:4/5;overflow:hidden;background:var(--choc-2)}
+  .cup .img img{width:100%;height:100%;object-fit:cover}
+  .cup-body{padding:20px 22px 24px}
+  .cup-body .num{font-family:var(--display);color:var(--hot);font-size:15px;font-weight:600}
+  .cup-body h3{font-size:30px;margin:4px 0 8px}
+  .cup-body p{color:var(--cream-dim);font-size:15px}
+  .progress{position:absolute;left:16px;right:16px;bottom:24px;height:4px;background:rgba(255,249,244,.15);border-radius:4px;overflow:hidden}
+  @media (min-width:720px){.progress{left:40px;right:40px}}
+  .progress i{display:block;height:100%;width:100%;background:var(--hot);transform-origin:0 50%;transform:scaleX(0)}
+
+  /* ---------- Waffles ---------- */
+  .waffles{background:var(--baby);color:var(--choc-dark);border-radius:48px 48px 0 0;padding-bottom:80px}
+  .waffles .kicker{color:var(--rasp-deep)}
+  .waffles .sec-head p{color:var(--choc-2)}
+  .waffles .sec-head h2 em{color:var(--rasp)}
+  .waffle-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--choc-dark)}
+  .waffle-list li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;padding:26px 0;border-bottom:2px solid var(--choc-dark);align-items:baseline}
+  .waffle-list .n{font-family:var(--display);font-weight:700;font-size:clamp(34px,6vw,64px);color:var(--rasp);line-height:1;grid-row:span 2}
+  .waffle-list h3{font-size:clamp(24px,4vw,40px)}
+  .waffle-list p{color:var(--choc-2);font-size:15px;max-width:620px}
+  .waffle-list .drip-line{grid-column:2;width:100%;height:10px;margin-top:6px}
+  .waffle-list .drip-line path{stroke:var(--choc-dark);stroke-width:4;fill:none;stroke-linecap:round}
+
+  /* ---------- Cakes ---------- */
+  .cakes{background:var(--cream);color:var(--choc-dark);padding-bottom:96px}
+  .cakes .kicker{color:var(--rasp-deep)}
+  .cakes .sec-head p{color:var(--choc-2)}
+  .cakes .sec-head h2 em{color:var(--rasp)}
+  .cake-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (min-width:900px){.cake-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
+  .cake{background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 rgba(42,21,18,.1);will-change:transform}
+  .cake .img{aspect-ratio:1/1;background:radial-gradient(circle at 30% 20%,#fff,var(--baby));display:grid;place-items:center}
+  .cake .img img{width:100%;height:100%;object-fit:cover}
+  .cake .img .soon{font-family:var(--display);color:var(--rasp-deep);font-size:14px;text-align:center;padding:12px}
+  .cake-body{padding:14px 14px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .cake-body h3{font-size:19px}
+  .cake-body p{font-size:13.5px;color:var(--choc-2);flex:1}
+  .cake-body .p{font-weight:600;color:var(--rasp-deep)}
+  @media (min-width:900px){.cake-body{padding:20px 22px 24px}.cake-body h3{font-size:24px}.cake-body p{font-size:15px}}
+
+  /* ---------- Make it yours ---------- */
+  .extras{background:var(--rasp);color:#fff;padding:96px 0;overflow:hidden}
+  .extras .kicker{color:var(--baby)}
+  .extras h2{font-size:clamp(40px,8vw,96px);margin:12px 0 10px}
+  .extras .lead{font-size:18px;color:rgba(255,255,255,.9)}
+  .opt h3{font-size:22px;margin:36px 0 14px}
+  .sprinkles{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+  .sprinkles li{background:#fff;color:var(--rasp-deep);font-weight:600;border-radius:999px;padding:10px 20px;font-size:16px}
+
+  /* ---------- About (scrubbed words) ---------- */
+  .about{padding:120px 0}
+  .about-text{font-family:var(--display);font-weight:500;font-size:clamp(26px,4.4vw,52px);line-height:1.2;max-width:1000px}
+  .about-text .word{opacity:.18}
+  .no-anim .about-text .word{opacity:1}
+
+  /* ---------- Visit ---------- */
+  .visit{padding:0 0 96px}
+  .visit-card{background:var(--choc);border-radius:36px;padding:32px 22px;display:grid;gap:28px}
+  @media (min-width:900px){.visit-card{grid-template-columns:1fr 1fr;padding:56px;align-items:center}}
+  .visit-card h2{font-size:clamp(34px,6vw,64px);margin:10px 0 16px}
+  .visit-card .where{font-size:18px;font-weight:600}
+  .visit-card .where span{display:block;font-weight:400;color:var(--cream-dim);font-size:16px}
+  .visit-card .hours{margin-top:16px;color:var(--baby);font-weight:600}
+  .visit-card .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+  .visit-card iframe{width:100%;min-height:300px;border:0;border-radius:24px;background:var(--choc-2)}
+
+  footer{border-top:1px solid rgba(255,249,244,.14);padding:36px 0 calc(36px + env(safe-area-inset-bottom));text-align:center;font-size:14px;color:var(--cream-dim)}
+  footer .allergen{color:var(--cream);font-weight:500;margin-bottom:8px}
+  footer a{color:var(--baby)}
+
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="loader" aria-hidden="true">
+  <div class="loader-word" id="loaderWord">CraveYardd</div>
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="currentColor" d="M0 0h1440v20c-40 0-40 40-80 40s-30-40-70-40-40 56-80 56-30-56-70-56-40 30-80 30-40-30-80-30-40 50-80 50-40-50-80-50-40 24-80 24-40-24-80-24-40 44-80 44-40-44-80-44-40 30-80 30-40-30-80-30-40 52-80 52-40-52-80-52-40 22-80 22-40-22-80-22-40 36-80 36S40 20 0 20z"/></svg>
+</div>
+
+<header class="bar">
+  <a class="brand" href="#top">Crave<b>Yardd</b></a>
+  <nav aria-label="Main">
+    <a href="#menu">Menu</a>
+    <a class="hide-sm" href="#about">About</a>
+    <a href="#visit">Find Us</a>
+    <a class="hide-sm" href="../">All concepts</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="hero-photo"><img src="../../assets/photos/hero-strawberry-cup.webp" alt="CraveYardd Dubai Chocolate strawberry cup" width="1280" height="720" fetchpriority="high"></div>
+    <span class="scroll-cue" aria-hidden="true">Scroll to dig in ↓</span>
+    <div class="hero-title">
+      <h1 id="hero-h"><span class="line"><span>Where Every</span></span><span class="line"><span>Craving <span class="pink">Meets</span></span></span><span class="line"><span class="pink">Its Match</span></span></h1>
+    </div>
+    <div class="hero-sub">
+      <p>Fresh strawberries, warm waffles, indulgent cakes and chocolate-filled creations, made to satisfy every craving.</p>
+      <div class="ctas"><a class="btn btn-hot" href="#menu">View Our Menu</a><a class="btn btn-line" href="#visit">Find Us</a></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+  <section class="cups" id="menu" aria-labelledby="cups-h">
+    <div class="cups-pin">
+      <div class="wrap sec-head" style="padding-top:72px;padding-bottom:28px">
+        <span class="kicker">01 · Chocolate Strawberry Cups</span>
+        <h2 id="cups-h">Built in a cup.<br><em>Drowned</em> in chocolate.</h2>
+        <span class="price-tag" id="cupsPrice"></span>
+      </div>
+      <div class="cups-track" id="cupsTrack"></div>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="cupsProgress"></i></div>
+  </section>
+
+  <section class="waffles" aria-labelledby="waffles-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">02 · Waffles</span>
+        <h2 id="waffles-h">Warm. Golden. <em>Loaded.</em></h2>
+        <span class="price-tag" id="wafflesPrice"></span>
+      </div>
+      <ol class="waffle-list" id="waffleList"></ol>
+    </div>
+  </section>
+
+  <section class="cakes" aria-labelledby="cakes-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">03 · Cakes &amp; Desserts</span>
+        <h2 id="cakes-h">Slices &amp; <em>show-stoppers</em></h2>
+      </div>
+      <div class="cake-grid" id="cakeGrid"></div>
+    </div>
+  </section>
+
+  <section class="extras" aria-labelledby="extras-h">
+    <div class="wrap">
+      <span class="kicker">04 · Make It Yours</span>
+      <h2 id="extras-h">Make It Yours</h2>
+      <p class="lead" id="extrasLead"></p>
+      <div id="extrasGroups"></div>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-label="About CraveYardd">
+    <div class="wrap">
+      <span class="kicker">About us</span>
+      <p class="about-text" id="aboutText" style="margin-top:20px">CraveYardd is an independent Birmingham dessert brand created for people who take their cravings seriously. From fresh strawberries covered in luxurious chocolate to warm loaded waffles and irresistible cakes, every item is made to look amazing and taste even better.</p>
+    </div>
+  </section>
+
+  <section class="visit" id="visit" aria-labelledby="visit-h">
+    <div class="wrap">
+      <div class="visit-card">
+        <div>
+          <span class="kicker">Desserts in Selly Oak</span>
+          <h2 id="visit-h">Come get your fix</h2>
+          <p class="where">CraveYardd at Oba’s Kitchen, Lounge &amp; Bar<span>Bristol Road, Selly Oak, Birmingham</span></p>
+          <p class="hours">Open daily: 2:00 PM–11:00 PM</p>
+          <div class="ctas">
+            <a class="btn btn-hot" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Oba%27s%20Kitchen%20Lounge%20%26%20Bar%2C%20Bristol%20Road%2C%20Selly%20Oak%2C%20Birmingham">Get Directions</a>
+            <a class="btn btn-line" href="../../index.html#events">Book Us for an Event</a>
+          </div>
+        </div>
+        <iframe title="Map of CraveYardd at Oba’s Kitchen, Lounge &amp; Bar, Bristol Road, Selly Oak" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Oba%27s%20Kitchen%20Lounge%20%26%20Bar%2C%20Bristol%20Road%2C%20Selly%20Oak%2C%20Birmingham&amp;z=16&amp;output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="allergen">Please speak to a member of our team if you have any allergies or dietary requirements.</p>
+    <p>Follow <a href="https://www.instagram.com/crave.yardd/" target="_blank" rel="noopener">@crave.yardd</a> · © 2026 CraveYardd. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../../data.js"></script>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  var data = window.CRAVEYARDD, root = document.documentElement;
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function money(p){ return p < 1 ? Math.round(p * 100) + 'p' : '£' + p.toFixed(2); }
+  function cat(name){ return data.menu.filter(function(c){ return c.category === name; })[0] || {items:[]}; }
+  function img(src, alt){ return src ? '<img src="../../' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async" onerror="this.outerHTML=\'<span class=&quot;soon&quot;>Photo coming soon</span>\'">' : '<span class="soon">Photo coming soon</span>'; }
+
+  /* ---------- Content from data.js ---------- */
+  var cups = cat('Chocolate Strawberry Cups'), waffles = cat('Waffles'), cakes = cat('Cakes & Desserts'), extras = cat('Make It Yours');
+  document.getElementById('cupsPrice').textContent = money(cups.price) + ' each';
+  document.getElementById('wafflesPrice').textContent = money(waffles.price) + ' each';
+  document.getElementById('cupsTrack').innerHTML = cups.items.map(function(it, i){
+    return '<article class="cup"><div class="img">' + img(it.image, it.name) + '</div><div class="cup-body"><span class="num">0' + (i+1) + ' / 0' + cups.items.length + '</span><h3>' + esc(it.name) + '</h3><p>' + esc(it.description) + '</p></div></article>';
+  }).join('');
+  document.getElementById('waffleList').innerHTML = waffles.items.map(function(it, i){
+    return '<li><span class="n">0' + (i+1) + '</span><div><h3>' + esc(it.name) + '</h3><p>' + esc(it.description) + '</p></div><svg class="drip-line" viewBox="0 0 400 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5 Q 52 -3 102 5 T 202 5 T 302 5 T 398 5"/></svg></li>';
+  }).join('');
+  document.getElementById('cakeGrid').innerHTML = cakes.items.map(function(it){
+    return '<article class="cake"><div class="img">' + img(it.image, it.name) + '</div><div class="cake-body"><h3>' + esc(it.name) + '</h3><p>' + esc(it.description) + '</p><span class="p">' + money(it.price) + '</span></div></article>';
+  }).join('');
+  document.getElementById('extrasLead').textContent = extras.tagline || '';
+  document.getElementById('extrasGroups').innerHTML = (extras.groups || []).map(function(g){
+    return '<div class="opt"><h3>' + esc(g.title) + '</h3><ul class="sprinkles">' + g.options.map(function(o){ return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></div>';
+  }).join('');
+  var words = ['Chocolate Strawberry Cups','Waffles','Cakes & Desserts','Make It Yours','Selly Oak','Open daily 2–11 PM'];
+  document.getElementById('marquee').innerHTML = words.concat(words, words).map(function(w){ return '<span>' + esc(w) + '</span>'; }).join('');
+  var about = document.getElementById('aboutText');
+  about.innerHTML = about.textContent.split(' ').map(function(w){ return '<span class="word">' + esc(w) + '</span>'; }).join(' ');
+
+  /* ---------- Motion ---------- */
+  if (!window.gsap || !window.ScrollTrigger || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    root.classList.add('no-anim'); return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Loader: letters bounce in, then the pink panel drips away upwards.
+  var lw = document.getElementById('loaderWord');
+  lw.innerHTML = lw.textContent.split('').map(function(c){ return '<span>' + c + '</span>'; }).join('');
+  var intro = gsap.timeline();
+  intro.from('#loaderWord span', {yPercent:120, opacity:0, duration:.6, ease:'back.out(2)', stagger:.04})
+       .to('.loader', {yPercent:-120, duration:1, ease:'power3.inOut'}, '+=.25')
+       .from('.hero-title .line > span', {yPercent:110, duration:1, ease:'power4.out', stagger:.08}, '-=.55')
+       .from('.hero-sub > *, .scroll-cue', {y:24, opacity:0, duration:.7, ease:'power3.out', stagger:.08}, '-=.6')
+       .set('.loader', {display:'none'});
+
+  // Hero: the cup photo opens from a circle to full screen while the headline lifts away.
+  var heroTl = gsap.timeline({scrollTrigger:{trigger:'.hero', start:'top top', end:'+=120%', scrub:1, pin:true}});
+  heroTl.to('.hero-photo', {clipPath:'circle(75% at 50% 50%)', ease:'none'}, 0)
+        .to('.hero-photo img', {scale:1, ease:'none'}, 0)
+        .to('.hero-title', {yPercent:-30, opacity:0, ease:'none'}, 0)
+        .to('.scroll-cue', {opacity:0, duration:.2}, 0);
+
+  // Marquee: always moving, speeds up with scroll velocity.
+  var mq = gsap.to('#marquee', {xPercent:-33.333, duration:18, ease:'none', repeat:-1});
+  ScrollTrigger.create({onUpdate:function(self){
+    var v = Math.min(Math.abs(self.getVelocity()) / 400, 4);
+    gsap.to(mq, {timeScale:(self.direction < 0 ? -1 : 1) * (1 + v), duration:.3, overwrite:true});
+    gsap.to(mq, {timeScale:self.direction < 0 ? -1 : 1, duration:1.2, delay:.3});
+  }});
+
+  // Cups: vertical scroll drives a horizontal ride through each cup.
+  var track = document.getElementById('cupsTrack');
+  function dist(){ return Math.max(0, track.scrollWidth - window.innerWidth); }
+  gsap.to(track, {x:function(){ return -dist(); }, ease:'none',
+    scrollTrigger:{trigger:'.cups', start:'top top', end:function(){ return '+=' + dist(); }, pin:true, scrub:1, invalidateOnRefresh:true,
+      onUpdate:function(self){ gsap.set('#cupsProgress', {scaleX:self.progress}); }}});
+
+  // Section headings rise in.
+  gsap.utils.toArray('.sec-head, .extras .wrap > :not(#extrasGroups)').forEach(function(el){
+    gsap.from(el.children.length ? el.children : el, {y:50, opacity:0, duration:.9, ease:'power3.out', stagger:.08, scrollTrigger:{trigger:el, start:'top 85%', once:true}});
+  });
+
+  // Waffles: each row slides in and a chocolate line draws underneath it.
+  gsap.utils.toArray('.waffle-list li').forEach(function(li){
+    var path = li.querySelector('path'), len = path.getTotalLength();
+    gsap.set(path, {strokeDasharray:len, strokeDashoffset:len});
+    gsap.timeline({scrollTrigger:{trigger:li, start:'top 88%', once:true}})
+      .from(li.querySelector('.n'), {scale:0, rotate:-20, duration:.6, ease:'back.out(2)'})
+      .from(li.querySelector('div'), {x:-30, opacity:0, duration:.6, ease:'power3.out'}, '<.1')
+      .to(path, {strokeDashoffset:0, duration:1, ease:'power2.inOut'}, '<.2');
+  });
+
+  // Cakes: cards pop up in a wave, then drift at different speeds.
+  ScrollTrigger.batch('.cake', {start:'top 92%', once:true, onEnter:function(b){
+    gsap.from(b, {y:80, scale:.9, rotate:function(i){ return i % 2 ? 3 : -3; }, opacity:0, duration:.8, ease:'back.out(1.4)', stagger:.08});
+  }});
+  gsap.utils.toArray('.cake').forEach(function(c, i){
+    gsap.to(c, {y:(i % 3 - 1) * -30, ease:'none', scrollTrigger:{trigger:'.cake-grid', start:'top bottom', end:'bottom top', scrub:true}});
+  });
+
+  // Make it yours: options fall in like sprinkles.
+  gsap.from('.sprinkles li', {y:-140, rotate:function(){ return gsap.utils.random(-40, 40); }, opacity:0, duration:.9, ease:'bounce.out',
+    stagger:{each:.05, from:'random'}, scrollTrigger:{trigger:'.extras', start:'top 70%', once:true}});
+
+  // About: words light up as you read down the page.
+  gsap.to('#aboutText .word', {opacity:1, ease:'none', stagger:.1, scrollTrigger:{trigger:'#aboutText', start:'top 80%', end:'bottom 45%', scrub:true}});
+
+  // Visit card.
+  gsap.from('.visit-card', {y:80, scale:.94, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{trigger:'.visit-card', start:'top 85%', once:true}});
+
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
