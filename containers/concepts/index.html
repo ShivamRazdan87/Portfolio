@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoxYard design concepts</title>
+<style>
+  body{ margin:0; font-family:system-ui, sans-serif; background:#F2F4F6; color:#1A2233; line-height:1.55; }
+  main{ max-width:880px; margin:0 auto; padding:48px 16px; }
+  h1{ font-size:2rem; margin:0 0 8px; }
+  p.intro{ color:#4B5568; margin:0 0 32px; }
+  a.card{ display:grid; grid-template-columns:140px 1fr; gap:20px; align-items:center; background:#fff; padding:18px; margin-bottom:14px; text-decoration:none; color:inherit; border:1px solid #DCE3EF; border-radius:6px; }
+  a.card:hover, a.card:focus-visible{ border-color:#1A2233; }
+  .sw{ height:72px; border-radius:4px; }
+  h2{ margin:0 0 4px; font-size:1.2rem; }
+  .card p{ margin:0; color:#4B5568; }
+  @media (max-width:520px){ a.card{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Website concepts</h1>
+  <p class="intro">Four directions for the same business. Pick one, or mix parts of them, and I'll build it out with your real name, contacts and photos.</p>
+  <a class="card" href="../index.html"><div class="sw" style="background:linear-gradient(90deg,#14213A 60%,#D9531E 60%)"></div><div><h2>Original: Industrial classic</h2><p>Navy and rust, a full range catalogue, tabbed size guide and a detailed quote form.</p></div></a>
+  <a class="card" href="a-configurator.html"><div class="sw" style="background:linear-gradient(90deg,#0E3B43 60%,#F2C230 60%)"></div><div><h2>A: Yard configurator</h2><p>Customers build their container on the first screen (size, use, windows, doors, branding), and the spec flows into a WhatsApp quote.</p></div></a>
+  <a class="card" href="b-stacked.html"><div class="sw" style="background:linear-gradient(90deg,#B8312F 25%,#1F4E8C 25% 50%,#2F6B4F 50% 75%,#E07A1F 75%)"></div><div><h2>B: Stacked</h2><p>A crane lowers the headline in on load, and every section is the side of a different coloured container. Bold and easy to remember.</p></div></a>
+  <a class="card" href="c-blueprint.html"><div class="sw" style="background:#163A86;background-image:linear-gradient(rgba(185,204,242,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(185,204,242,.3) 1px,transparent 1px);background-size:12px 12px"></div><div><h2>C: Blueprint</h2><p>Calm and architectural, leading with custom offices, shops and homes. The floor plan draws itself in the hero.</p></div></a>
+</main>
+</body>
+</html>
