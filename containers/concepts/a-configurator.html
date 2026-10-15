@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BoxYard — Build your container</title>
+<title>Shivaak Enterprises — Build your container</title>
 <meta name="description" content="Configure a shipping, office, storage or custom container and get a quote in minutes. Sale, rent and delivery.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,12 +25,14 @@
   /* nav */
   .nav{ background:var(--teal); color:var(--white); }
   .nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:68px; }
-  .brand{ font-family:var(--display); font-weight:900; font-size:30px; letter-spacing:.01em; text-decoration:none; }
+  .brand{ font-family:var(--display); font-weight:900; font-size:30px; letter-spacing:.01em; text-decoration:none; white-space:nowrap; }
+  .nav nav a.call{ white-space:nowrap; }
   .brand span{ color:var(--yellow); }
   .nav nav{ display:flex; gap:24px; align-items:center; }
   .nav nav a{ text-decoration:none; font-weight:600; }
   .nav nav a.call{ background:var(--yellow); color:var(--black); padding:9px 16px; }
   @media (max-width:700px){ .nav nav a:not(.call){ display:none; } }
+  @media (max-width:460px){ .brand{ font-size:24px; } .call .num{ display:none; } }
 
   /* configurator hero */
   .hero{ background:var(--teal); color:var(--white); padding:40px 0 64px; }
@@ -113,15 +115,15 @@
 </style>
 </head>
 <body>
-<!-- TODO: replace BoxYard, phone, email and WHATSAPP_NUMBER with your real details -->
+<!-- TODO: add the yard address -->
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#">Box<span>Yard</span></a>
+    <a class="brand" href="#">Shivaak <span>Enterprises</span></a>
     <nav>
       <a href="#range">Containers</a>
       <a href="#ways">Buy or rent</a>
       <a href="#quote">Quote</a>
-      <a class="call" href="tel:+910000000000">Call +91 00000 00000</a>
+      <a class="call" href="tel:+919958446787">Call<span class="num"> +91 99584 46787</span></a>
     </nav>
   </div>
 </header>
@@ -266,14 +268,14 @@
 
 <footer>
   <div class="wrap">
-    <div><b>BoxYard Containers</b><br>Your yard address, City, State</div>
-    <div><a href="tel:+910000000000">+91 00000 00000</a><br><a href="mailto:sales@example.com">sales@example.com</a></div>
+    <div><b>Shivaak Enterprises</b><br>Your yard address, City, State</div>
+    <div><a href="tel:+919958446787">+91 99584 46787</a><br><a href="mailto:shivaakenterprises4926@gmail.com">shivaakenterprises4926@gmail.com</a></div>
     <div>Mon to Sat, 9 am to 7 pm</div>
   </div>
 </footer>
 
 <script>
-  const WHATSAPP_NUMBER = '910000000000';
+  const WHATSAPP_NUMBER = '919958446787';
   const SIZES = {
     '10':   { w:150, h:160, len:'2.99 m', area:'6.8 m²',  ht:'2.39 m', label:'10 ft' },
     '20':   { w:300, h:160, len:'6.06 m', area:'13.9 m²', ht:'2.39 m', label:'20 ft' },
