@@ -681,9 +681,10 @@
   .anim{ position: relative; border-radius: 10px; overflow: hidden; isolation:isolate; background: var(--forest-deep); color: var(--cream); margin: 0 0 44px; }
   .anim-shutter{ height: clamp(470px, 62vh, 580px); }
   .anim-upi{ height: clamp(560px, 70vh, 640px); margin-top: 52px; }
-  .anim-replay{ position:absolute; right: 12px; bottom: 12px; z-index: 30; font-family: var(--mono); font-size: 11px; letter-spacing:.08em; color: var(--cream); background: rgba(22,36,28,.6); border: 1px solid var(--line-light); border-radius: 999px; padding: 6px 12px; cursor:pointer; opacity:0; transition: opacity .4s; }
+  .anim-replay{ position:absolute; right: 12px; top: 12px; z-index: 30; font-family: var(--mono); font-size: 11px; letter-spacing:.08em; color: var(--cream); background: rgba(22,36,28,.6); border: 1px solid var(--line-light); border-radius: 999px; padding: 6px 12px; cursor:pointer; opacity:0; transition: opacity .4s; }
   .anim.done .anim-replay{ opacity: 1; }
   @media (max-width: 700px){ .anim-shutter{ height: 560px; } .anim-upi{ height: 600px; } }
+  @media (max-width: 420px){ .sh-tag{ font-size: 7px; padding: 12px 3px 4px; right: auto; left: 50%; margin-left: -29px; } .sh-shelf{ gap: 6px; padding: 0 8px; } }
 
   /* shutter */
   .sh{position:absolute;inset:0;display:grid;place-items:center;padding:22px 16px;
@@ -719,7 +720,7 @@
   .sh-item.on .sh-tag{animation:shSwing 1.8s ease-out}
   @keyframes shSwing{0%{transform:rotate(22deg)}25%{transform:rotate(-14deg)}50%{transform:rotate(8deg)}75%{transform:rotate(-4deg)}100%{transform:none}}
   .sh-plank{height:10px;background:linear-gradient(180deg,#8a6a3f,#5e4628);box-shadow:0 6px 10px rgba(0,0,0,.3)}
-  .sh-sign{position:absolute;right:clamp(12px,3vw,30px);top:48px;width:clamp(64px,9vw,84px);height:clamp(26px,3.6vw,32px);perspective:300px;z-index:2}
+  .sh-sign{position:absolute;right:clamp(12px,3vw,30px);top:16px;z-index:4;width:clamp(64px,9vw,84px);height:clamp(26px,3.6vw,32px);perspective:300px}
   .sh-sign span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:clamp(10px,1.4vw,13px);letter-spacing:.12em;border-radius:3px;backface-visibility:hidden;transition:transform .7s cubic-bezier(.3,1.5,.5,1)}
   .sh-sign .c{background:var(--paper);color:var(--tag-red);border:2px solid var(--tag-red)}
   .sh-sign .o{background:var(--tag-red);color:var(--cream);transform:rotateY(180deg)}
@@ -901,7 +902,7 @@
 
   <div class="intro-meta" id="introMeta">
     <span><b>Full-stack studio</b> <span class="stack">&nbsp;Next.js · Supabase · Vercel</span></span>
-    <a href="#contact" onclick="openContactModal(event)">Start a project →</a>
+    <a href="https://wa.me/919958882260?text=Hi%20SS%20Forge%21%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20get%20a%20website%20made%20for%20my%20business.%20Can%20we%20talk%20about%20it%3F" target="_blank" rel="noopener">Start a project →</a>
   </div>
 
   <div class="intro-foot">
@@ -970,7 +971,7 @@
 <section id="process">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-eyebrow">How I Work</div>
+      <div class="section-eyebrow">How we work</div>
       <h2 class="section-title">From first chat to launch day.</h2>
     </div>
     <div class="process-grid reveal">
@@ -1107,7 +1108,7 @@
     <div class="anim anim-upi" data-anim="upi" role="img" aria-label="A phone pays the ₹5,000 advance by UPI, then shows the project has started. The balance is due on completion."></div>
 
     <p class="price-note">Domain and hosting are billed separately (typically ₹1,500–3,000/year) and are not included in the prices above.</p>
-    <p class="price-note">Have something more specific in mind — an online store, a booking system, a custom dashboard? Pricing scales with scope. Let's talk through what you need and I'll quote accordingly.</p>
+    <p class="price-note">Have something more specific in mind — an online store, a booking system, a custom dashboard? Pricing scales with scope. Let's talk through what you need and we'll quote accordingly.</p>
     <div style="text-align:center; margin-top:26px;">
       <a class="btn btn-ghost" href="#contact" onclick="openContactModal(event, 'booking')">Book a Call</a>
     </div>
@@ -1134,11 +1135,11 @@
       </div>
       <div class="faq-item">
         <p class="faq-q">Do you handle hosting and the domain?</p>
-        <p class="faq-a">I can set them up for you, but they're billed separately from the build cost (see the Pricing section above).</p>
+        <p class="faq-a">We can set them up for you, but they're billed separately from the build cost (see the Pricing section above).</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">How long does a project take?</p>
-        <p class="faq-a">Depends on scope — typical timelines are listed under each pricing tier, from about a week for a simple site to 3–4 weeks for a full corporate build.</p>
+        <p class="faq-a">Depends on scope. Typical timelines are shown on each package in the Pricing section, from about a week for a simple site to 3–4 weeks for a full corporate build.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">Can I request changes after launch?</p>
@@ -1198,7 +1199,7 @@
       </div>
       <div class="modal-field">
         <label for="cm-message">Message</label>
-        <textarea id="cm-message" rows="4" required placeholder="Tell me a bit about what you need..."></textarea>
+        <textarea id="cm-message" rows="4" required placeholder="Tell us a bit about what you need..."></textarea>
       </div>
       <button type="submit" class="modal-submit" id="cm-submit">Send Message</button>
       <p class="modal-note">Opens your email app with this pre-filled — nothing sent until you hit send there.</p>
@@ -1220,7 +1221,7 @@
       general: {
         eyebrow: 'Send a message',
         title: "Let's talk about your site.",
-        placeholder: 'Tell me a bit about what you need...',
+        placeholder: 'Tell us a bit about what you need...',
         submit: 'Send Message',
         subjectPrefix: 'New enquiry from'
       },
@@ -1570,13 +1571,12 @@
               return '<div class="sh-item"><span class="sh-tag">' + it[2] + '</span><i></i><b>' + it[0] + '</b><small>' + it[1] + '</small></div>';
             }).join("") + '</div>' +
             '<div class="sh-plank"></div>' +
-            '<div class="sh-counter"><span>Tell us about your business.</span><a href="#contact" class="sh-cta">Start your website →</a></div>' +
+            '<div class="sh-counter"><span>Tell us about your business.</span><a href="https://wa.me/919958882260?text=Hi%20SS%20Forge%21%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20get%20a%20website%20made%20for%20my%20business.%20Can%20we%20talk%20about%20it%3F" target="_blank" rel="noopener" class="sh-cta">Start your website on WhatsApp →</a></div>' +
           '</div>' +
           '<div class="sh-shutter"><div class="sh-bottom"><span class="sh-handle" style="left:18%"></span><span class="sh-handle" style="right:18%"></span><span class="sh-lock"></span></div></div>' +
         '</div>' +
       '</div></div>';
     var shut = s.q(".sh-shutter"), lock = s.q(".sh-lock"), board = s.q(".sh-board"), inside = s.q(".sh-in"), items = s.qa(".sh-item"), cta = s.q(".sh-cta"), sign = s.q(".sh-sign");
-    cta.addEventListener("click", function(e){ if (window.openContactModal) openContactModal(e); });
     if (reduce){ shut.classList.add("up"); lock.style.display = "none"; board.style.filter = "none"; inside.classList.add("lit"); items.forEach(function(i){ i.classList.add("on"); }); cta.classList.add("on"); sign.classList.add("flip"); return s.done(); }
     s.later(function(){ lock.classList.add("open"); }, 600);
     s.later(function(){ lock.animate && lock.animate([{transform:"none",opacity:1},{transform:"translate(10px,240px) rotate(70deg)",opacity:0}],{duration:650,easing:"cubic-bezier(.5,0,.9,.5)",fill:"forwards"}); }, 1100);
