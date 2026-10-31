@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SS Forge — Full-Stack Web Development</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231F3327'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='34' fill='%23D6A438' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="assets/logo/ss-forge-mark.svg" type="image/svg+xml">
+<link rel="icon" href="assets/logo/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <meta name="description" content="SS Forge — Shivam and Saksham build custom websites and web apps for businesses. Based in Greater Noida, India.">
 <meta property="og:title" content="SS Forge — Full-Stack Web Development">
 <meta property="og:description" content="Shivam and Saksham build custom websites for businesses: studio portfolios, restaurant sites, online stores and booking tools. Based in Greater Noida, India.">
@@ -662,6 +664,13 @@
     }
   }
 
+  /* ---------- LOGO ---------- */
+  .nav-mark{ display:flex; align-items:center; text-decoration:none; }
+  .nav-mark img{ height: 28px; width: auto; display:block; }
+  img.intro-brand{ height: 32px; width: auto; display:block; }
+  @media (max-width: 700px){ .nav-mark img{ height: 24px; } img.intro-brand{ height: 28px; } }
+  @media (max-width: 380px){ .nav-mark{ justify-content: center; } }
+
   /* ---------- PROJECTS ---------- */
   .projects{ display:flex; flex-direction:column; gap: 56px; }
   .project{ display:grid; grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); gap: 40px; align-items:center; }
@@ -911,7 +920,7 @@
   <canvas id="introCanvas" aria-hidden="true"></canvas>
 
   <nav class="intro-nav" id="introNav" aria-label="Intro">
-    <span class="intro-brand">SS <i>✦</i> FORGE</span>
+    <img class="intro-brand" src="assets/logo/ss-forge-logo-on-dark.svg" alt="SS Forge" width="121" height="32">
     <ul class="intro-links">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Projects</a></li>
@@ -942,7 +951,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="nav-mark">SS ✦ Forge</div>
+    <a class="nav-mark" href="#home" aria-label="SS Forge home"><img src="assets/logo/ss-forge-logo.svg" alt="SS Forge" width="106" height="28"></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Projects</a></li>
