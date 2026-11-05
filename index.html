@@ -664,6 +664,16 @@
     }
   }
 
+  /* ---------- GET A QUOTE ---------- */
+  .quote-box{ max-width: 760px; background: var(--paper-dark); border: 1px dashed var(--line); padding: 32px 30px; }
+  .quote-box p{ margin: 0 0 22px; max-width: 60ch; }
+  .quote-steps{ list-style:none; margin: 0 0 26px; padding:0; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; counter-reset: q; }
+  .quote-steps li{ counter-increment: q; }
+  .quote-steps li::before{ content: counter(q, decimal-leading-zero); display:block; font-family: var(--display); font-weight:700; font-size: 1.6rem; color: var(--paper-dark); -webkit-text-stroke: 1.2px var(--tag-red); line-height:1; margin-bottom: 8px; }
+  .quote-steps b{ display:block; font-family: var(--display); font-weight:600; font-size: 1.05rem; }
+  .quote-steps span{ font-size: 13.5px; opacity: .75; }
+  @media (max-width: 700px){ .quote-steps{ grid-template-columns: 1fr; } .quote-box{ padding: 24px 18px; } .quote-box .btn{ width:100%; justify-content:center; } }
+
   /* ---------- LOGO ---------- */
   .nav-mark{ display:flex; align-items:center; text-decoration:none; }
   .nav-mark img{ height: 28px; width: auto; display:block; }
@@ -925,7 +935,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#work">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#quote">Get a quote</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -956,7 +966,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#work">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#quote">Get a quote</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -1129,79 +1139,20 @@
   </div>
 </section>
 
-<section id="pricing">
+<section id="quote" class="quote">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-eyebrow">Pricing</div>
-      <h2 class="section-title">Straightforward pricing, built around what you need.</h2>
-      <p style="font-family:var(--mono); font-size:13px; opacity:0.7; margin-top:14px;">₹5,000 advance to begin work — balance due on completion.</p>
+      <div class="section-eyebrow">Get a quote</div>
+      <h2 class="section-title">Every website is quoted for your business.</h2>
     </div>
-
-    <div class="anim anim-shutter" data-anim="shutter" role="img" aria-label="A shop shutter rolls up to show three website packages: Portfolio site from ₹10,000, Business site from ₹13,000 and Corporate site from ₹30,000."></div>
-
-    <div class="anim anim-upi" data-anim="upi" role="img" aria-label="A phone pays the ₹5,000 advance by UPI, then shows the project has started. The balance is due on completion."></div>
-
-    <p class="price-note">Domain and hosting are billed separately (typically ₹1,500–3,000/year) and are not included in the prices above.</p>
-    <p class="price-note">Have something more specific in mind — an online store, a booking system, a custom dashboard? Pricing scales with scope. Let's talk through what you need and we'll quote accordingly.</p>
-    <div style="text-align:center; margin-top:26px;">
-      <a class="btn btn-ghost" href="https://wa.me/919958882260?text=Hi%20SS%20Forge%21%20I%27d%20like%20to%20book%20a%20call%20to%20discuss%20a%20website%20for%20my%20business.%20When%20are%20you%20free%3F" target="_blank" rel="noopener">Book a call on WhatsApp</a>
-    </div>
-
-    <div class="care reveal" id="care">
-      <div class="section-eyebrow">After launch</div>
-      <h3 class="care-title">Website care plans</h3>
-      <p class="care-sub">Your site keeps working, keeps changing with your business, and you always have someone to WhatsApp. Pay every month, or pay for 3 or 12 months together and save.</p>
-      <div class="cp-toggle" role="radiogroup" aria-label="Billing period">
-        <button type="button" role="radio" aria-checked="true" data-period="1">Monthly</button>
-        <button type="button" role="radio" aria-checked="false" data-period="3">Every 3 months <em>save 10%</em></button>
-        <button type="button" role="radio" aria-checked="false" data-period="12">Yearly <em>2 months free</em></button>
-      </div>
-      <div class="price-grid cp-grid">
-      <div class="price-card" data-m="999">
-        
-        <div class="price-name">Basic Care</div>
-        <div class="price-desc">For a site that just needs to stay up and stay current.</div>
-        <div class="price-amount"><b class="cp-amt">₹999</b> <span class="cp-per">/ month</span></div>
-        <div class="cp-bill">Billed monthly</div>
-        <ul class="price-list"><li>Hosting, SSL and uptime checks</li><li>Domain renewal reminders</li><li>Monthly backup</li><li>1 small change a month (text, photo or price)</li><li>WhatsApp support, reply within 2 working days</li></ul>
-      </div>
-      <div class="price-card featured" data-m="2499">
-        <div class="price-featured-tag">Most popular</div>
-        <div class="price-name">Growth Care</div>
-        <div class="price-desc">For businesses that update offers, menus or products often.</div>
-        <div class="price-amount"><b class="cp-amt">₹2,499</b> <span class="cp-per">/ month</span></div>
-        <div class="cp-bill">Billed monthly</div>
-        <ul class="price-list"><li>Everything in Basic Care</li><li>Up to 5 changes a month</li><li>Festival or offer banner every month</li><li>Google Business Profile kept up to date</li><li>Monthly visits &amp; speed report</li><li>Reply within 1 working day</li></ul>
-      </div>
-      <div class="price-card" data-m="4999">
-        
-        <div class="price-name">Business Care</div>
-        <div class="price-desc">For stores, booking sites and admin panels.</div>
-        <div class="price-amount"><b class="cp-amt">₹4,999</b> <span class="cp-per">/ month</span></div>
-        <div class="cp-bill">Billed monthly</div>
-        <ul class="price-list"><li>Everything in Growth Care</li><li>Up to 12 changes a month</li><li>1 new page or section every quarter</li><li>Product or menu uploads (up to 50 a month)</li><li>Admin panel &amp; data help</li><li>Same-day reply on working days</li></ul>
-      </div>
-      </div>
-      <p class="price-note">Pay by UPI or bank transfer. Unused changes don’t carry over. Cancel any time before your next billing date.</p>
-    </div>
-
-    <div class="payg reveal">
-      <h3 class="care-title">No plan? Pay per request</h3>
-      <p class="care-sub">WhatsApp us whenever you need something and pay only for that job.</p>
-      <div class="addon-list">
-        <div class="addon-row"><span>Small change (text, photo or price)</span><span class="addon-price">₹499 each</span></div>
-        <div class="addon-row"><span>Festival or offer banner</span><span class="addon-price">₹799</span></div>
-        <div class="addon-row"><span>New section on an existing page</span><span class="addon-price">₹1,200</span></div>
-        <div class="addon-row"><span>Extra page</span><span class="addon-price">₹1,500</span></div>
-        <div class="addon-row"><span>WhatsApp chat button or contact form</span><span class="addon-price">₹1,000</span></div>
-        <div class="addon-row"><span>Google Business Profile setup</span><span class="addon-price">₹1,500</span></div>
-        <div class="addon-row"><span>Basic SEO setup</span><span class="addon-price">₹2,000</span></div>
-        <div class="addon-row"><span>Bigger work (new features, fixes, integrations)</span><span class="addon-price">₹800 / hour</span></div>
-      </div>
-      <div style="text-align:center; margin-top:22px;">
-        <a class="btn btn-primary" href="https://wa.me/919958882260?text=Hi%20SS%20Forge%21%20I%27d%20like%20to%20know%20more%20about%20your%20website%20care%20plans." target="_blank" rel="noopener">Ask about a care plan on WhatsApp</a>
-      </div>
-    </div>
+    <div class="quote-box reveal">
+      <p>Tell us what you do and what you need: a portfolio, an online store, a booking system or something custom. We’ll reply on WhatsApp with a clear quote and timeline, usually within a day.</p>
+      <ul class="quote-steps">
+        <li><b>Message us</b><span>A few lines about your business is enough.</span></li>
+        <li><b>Get your quote</b><span>Price, what’s included and delivery time.</span></li>
+        <li><b>We start building</b><span>You see the design before any code.</span></li>
+      </ul>
+      <a class="btn btn-primary" href="https://wa.me/919958882260?text=Hi%20SS%20Forge%21%20I%27d%20like%20a%20quote%20for%20a%20website%20for%20my%20business." target="_blank" rel="noopener">Ask for a quote on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -1219,19 +1170,19 @@
       </div>
       <div class="faq-item">
         <p class="faq-q">Do you handle hosting and the domain?</p>
-        <p class="faq-a">We can set them up for you, but they're billed separately from the build cost (see the Pricing section above).</p>
+        <p class="faq-a">We can set them up for you. Domain and hosting are billed separately from the build, and your quote will show both.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">How long does a project take?</p>
-        <p class="faq-a">Depends on scope. Typical timelines are shown on each package in the Pricing section, from about a week for a simple site to 3–4 weeks for a full corporate build.</p>
+        <p class="faq-a">Depends on scope. A simple site usually takes about a week and a bigger build 3–4 weeks. Your quote includes the timeline.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">Can I request changes after launch?</p>
-        <p class="faq-a">Yes. A website care plan covers regular changes every month, or you can pay per request whenever you need something. See the Pricing section for both.</p>
+        <p class="faq-a">Yes. We offer monthly care for regular updates, or you can ask for changes one at a time whenever you need them.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">What do you need from me to get started?</p>
-        <p class="faq-a">Your content (text, images, logo if you have one), a sense of what you like design-wise, and the ₹5,000 advance to begin.</p>
+        <p class="faq-a">Your content (text, images, logo if you have one), a sense of what you like design-wise, and a small advance to begin. The exact amount is in your quote.</p>
       </div>
       <div class="faq-item">
         <p class="faq-q">Do you build online stores and admin panels, not just static sites?</p>
@@ -1630,142 +1581,8 @@
 })();
 </script>
 
-<script>
-/* Pricing animations: the shutter rolls up on the price list, then the UPI advance plays.
-   Each one starts the first time it scrolls into view and can be replayed. */
-(function(){
-  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function Scene(root, build){
-    var timers = [], rafs = [];
-    var api = {
-      root: root,
-      later: function(fn, ms){ timers.push(setTimeout(fn, ms)); },
-      frame: function(fn){ rafs.push(requestAnimationFrame(fn)); },
-      q: function(s){ return root.querySelector(s); },
-      qa: function(s){ return Array.prototype.slice.call(root.querySelectorAll(s)); },
-      done: function(){ root.classList.add("done"); }
-    };
-    function play(){
-      timers.forEach(clearTimeout); rafs.forEach(cancelAnimationFrame); timers = []; rafs = [];
-      root.classList.remove("done");
-      build(api);
-      var b = document.createElement("button"); b.type = "button"; b.className = "anim-replay"; b.textContent = "Replay ↻";
-      b.addEventListener("click", play); root.appendChild(b);
-    }
-    return play;
-  }
 
-  /* ---------- shutter up ---------- */
-  function shutter(s){
-    var ITEMS = [["Portfolio site","Up to 5 pages · 5–7 days","from ₹10,000"],["Business site","Services, SEO · 7–10 days","from ₹13,000"],["Corporate site","Fully custom · 3–4 weeks","from ₹30,000"]];
-    s.root.innerHTML =
-      '<div class="sh"><div class="sh-front">' +
-        '<div class="sh-board"><b>SS ✦ FORGE</b><span>Websites for every business · Greater Noida</span></div>' +
-        '<div class="sh-box"></div>' +
-        '<div class="sh-open">' +
-          '<div class="sh-in">' +
-            '<span class="sh-bulb" style="left:30%"></span><span class="sh-bulb" style="left:70%"></span>' +
-            '<div class="sh-sign"><span class="c">CLOSED</span><span class="o">OPEN</span></div>' +
-            '<div class="sh-shelf">' + ITEMS.map(function(it){
-              return '<div class="sh-item"><span class="sh-tag">' + it[2] + '</span><i></i><b>' + it[0] + '</b><small>' + it[1] + '</small></div>';
-            }).join("") + '</div>' +
-            '<div class="sh-plank"></div>' +
-            '<div class="sh-counter"><span>Tell us about your business.</span><a href="https://wa.me/919958882260?text=Hi%20SS%20Forge%21%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20get%20a%20website%20made%20for%20my%20business.%20Can%20we%20talk%20about%20it%3F" target="_blank" rel="noopener" class="sh-cta">Start your website on WhatsApp →</a></div>' +
-          '</div>' +
-          '<div class="sh-shutter"><div class="sh-bottom"><span class="sh-handle" style="left:18%"></span><span class="sh-handle" style="right:18%"></span><span class="sh-lock"></span></div></div>' +
-        '</div>' +
-      '</div></div>';
-    var shut = s.q(".sh-shutter"), lock = s.q(".sh-lock"), board = s.q(".sh-board"), inside = s.q(".sh-in"), items = s.qa(".sh-item"), cta = s.q(".sh-cta"), sign = s.q(".sh-sign");
-    if (reduce){ shut.classList.add("up"); lock.style.display = "none"; board.style.filter = "none"; inside.classList.add("lit"); items.forEach(function(i){ i.classList.add("on"); }); cta.classList.add("on"); sign.classList.add("flip"); return s.done(); }
-    s.later(function(){ lock.classList.add("open"); }, 600);
-    s.later(function(){ lock.animate && lock.animate([{transform:"none",opacity:1},{transform:"translate(10px,240px) rotate(70deg)",opacity:0}],{duration:650,easing:"cubic-bezier(.5,0,.9,.5)",fill:"forwards"}); }, 1100);
-    s.later(function(){ shut.animate && shut.animate([{transform:"none"},{transform:"translateY(-8px)"},{transform:"translateY(-2px)"},{transform:"translateY(-12px)"},{transform:"translateY(-5px)"}],{duration:500,easing:"ease-out",fill:"forwards"}); }, 1800);
-    s.later(function(){ shut.getAnimations && shut.getAnimations().forEach(function(a){ a.cancel(); }); shut.classList.add("up"); }, 2400);
-    s.later(function(){
-      board.classList.add("on"); inside.classList.add("lit");
-      items.forEach(function(it, i){ s.later(function(){ it.classList.add("on"); }, 250 + i * 180); });
-      s.later(function(){ cta.classList.add("on"); }, 1700);
-    }, 4300);
-    s.later(function(){ sign.classList.add("flip"); }, 6900);
-    s.later(s.done, 7700);
-  }
 
-  /* ---------- UPI advance ---------- */
-  function upi(s){
-    s.root.innerHTML = '<div class="scr"><div class="scr-cap"><div class="scr-eye">How to start · ₹5,000 advance</div><h3 class="scr-h"></h3>' +
-        '<p class="scr-note">Pay ₹5,000 to begin. The balance is due only when your site is finished and live.</p></div>' +
-      '<div class="ph"><div class="ph-bar"><span>10:42</span><span class="ph-ic"><i></i><i></i><i></i></span></div>' +
-        '<div class="ph-s on up-pay"><div class="up-top">← Pay</div>' +
-          '<div class="up-to"><span class="up-av">SF</span><b>SS Forge</b><small>Full-stack studio · Greater Noida</small></div>' +
-          '<div class="up-amt">₹5,000</div><div class="up-note">Advance to begin work</div>' +
-          '<div class="up-btn">Pay ₹5,000</div>' +
-          '<div class="up-proc"><span class="spin"></span>Processing…</div></div>' +
-        '<div class="ph-s up-ok"><svg viewBox="0 0 90 90" aria-hidden="true"><circle pathLength="1" cx="45" cy="45" r="40"/><path pathLength="1" d="M27 46l12 12 24-26"/></svg>' +
-          '<b>Payment successful</b><div class="up-big">₹0</div><small>to SS Forge · Advance</small></div>' +
-        '<div class="ph-s up-st"><span class="up-badge">Project started ✓</span><h5>Your website is under way</h5>' +
-          '<ul><li><i>✓</i><span><b>Advance received</b><small>₹5,000 · today</small></span></li>' +
-          '<li><i></i><span><b>Discovery call</b><small>We learn how your business works</small></span></li>' +
-          '<li><i></i><span><b>Design preview</b><small>You see it before we code</small></span></li></ul>' +
-          '<div class="foot">Balance due on completion</div></div>' +
-        '<span class="tap"></span></div></div>';
-    var ph = s.q(".ph"), btn = s.q(".up-btn"), h = s.q(".scr-h"), tap = s.q(".tap");
-    function cap(html){
-      if (!h.innerHTML){ h.innerHTML = html; return; }
-      h.classList.add("out"); s.later(function(){ h.innerHTML = html; h.classList.remove("out"); }, 200);
-    }
-    function count(el, to, dur){
-      var t0 = null;
-      (function f(ts){ if (t0 === null) t0 = ts; var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-        el.textContent = "₹" + Math.round(to * e).toLocaleString("en-IN"); if (k < 1) s.frame(f); })(performance.now());
-    }
-    function end(){ s.q(".up-pay").classList.remove("on"); s.q(".up-ok").classList.remove("on"); s.q(".up-st").classList.add("on"); s.qa(".up-st li").forEach(function(l){ l.classList.add("on"); }); s.q(".up-st .foot").classList.add("on"); }
-    cap('Pay the <em>₹5,000</em> advance.');
-    if (reduce){ cap("We start on your site <em>today.</em>"); end(); return s.done(); }
-    s.later(function(){
-      var r = btn.getBoundingClientRect(), b = ph.getBoundingClientRect();
-      tap.style.left = (r.left - b.left + r.width / 2) + "px"; tap.style.top = (r.top - b.top + r.height / 2) + "px"; tap.classList.add("on");
-      s.later(function(){ tap.classList.add("hit"); btn.classList.add("press"); }, 620);
-      s.later(function(){ btn.classList.remove("press"); s.q(".up-proc").classList.add("on"); tap.classList.remove("on"); }, 800);
-    }, 1300);
-    s.later(function(){ s.q(".up-ok").classList.add("on"); count(s.q(".up-big"), 5000, 900); cap("Paid. <em>No paperwork.</em>"); }, 3900);
-    s.later(function(){ s.q(".up-st").classList.add("on"); cap("We start on your site <em>today.</em>"); }, 6000);
-    s.qa(".up-st li").forEach(function(l, i){ s.later(function(){ l.classList.add("on"); }, 6500 + i * 380); });
-    s.later(function(){ s.q(".up-st .foot").classList.add("on"); }, 7900);
-    s.later(s.done, 8500);
-  }
-
-  var SCENES = { shutter: shutter, upi: upi };
-  document.querySelectorAll("[data-anim]").forEach(function(el){
-    var play = Scene(el, SCENES[el.getAttribute("data-anim")]);
-    if (!("IntersectionObserver" in window)) return play();
-    var io = new IntersectionObserver(function(es){
-      if (es[0].isIntersecting){ io.disconnect(); play(); }
-    }, { threshold: 0.45 });
-    io.observe(el);
-  });
-})();
-</script>
-
-<script>
-/* Care plan billing toggle: monthly, every 3 months (10% off) or yearly (pay for 10 months). */
-(function(){
-  var care = document.getElementById("care"); if (!care) return;
-  var btns = care.querySelectorAll(".cp-toggle button"), cards = care.querySelectorAll(".price-card[data-m]");
-  function inr(n){ return "\u20b9" + Math.round(n).toLocaleString("en-IN"); }
-  function set(period){
-    btns.forEach(function(b){ b.setAttribute("aria-checked", b.dataset.period === String(period) ? "true" : "false"); });
-    cards.forEach(function(c){
-      var m = +c.dataset.m, per, total, note;
-      if (period === 3){ total = Math.round(m * 3 * 0.9); per = total / 3; note = "Billed " + inr(total) + " every 3 months"; }
-      else if (period === 12){ total = m * 10; per = total / 12; note = "Billed " + inr(total) + " a year"; }
-      else { per = m; note = "Billed monthly"; }
-      c.querySelector(".cp-amt").textContent = inr(Math.round(per));
-      c.querySelector(".cp-bill").textContent = note;
-    });
-  }
-  btns.forEach(function(b){ b.addEventListener("click", function(){ set(+b.dataset.period); }); });
-})();
-</script>
 </body>
 </html>
