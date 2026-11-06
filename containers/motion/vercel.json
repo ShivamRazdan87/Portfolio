@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/port-yard", "destination": "/concept-1-port-yard" },
+    { "source": "/blueprint-3d", "destination": "/concept-4-blueprint-3d" }
+  ],
+  "redirects": [
+    { "source": "/concept-2-manifest", "destination": "/", "permanent": false },
+    { "source": "/concept-3-editorial-motion", "destination": "/", "permanent": false },
+    { "source": "/concept-5-cargo-cinema", "destination": "/", "permanent": false }
+  ]
+}
