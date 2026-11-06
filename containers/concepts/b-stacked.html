@@ -106,6 +106,17 @@
 
   footer{ background:var(--steel); color:rgba(255,255,255,.75); padding:32px 0; font-size:15px; }
   footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+  .clients{ padding:72px 0 80px; }
+  .clients h2{ font-family:var(--stencil); font-weight:400; font-size:clamp(2.2rem,5vw,3.6rem); line-height:1; margin:0 0 14px; }
+  .clients .lede{ max-width:54ch; margin:0 0 32px; }
+  .client{ display:grid; grid-template-columns:280px 1fr; background:var(--white); border:3px solid var(--steel); max-width:860px; }
+  .client .logo{ background:#2B2C2D; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .client .logo img{ width:100%; max-width:210px; height:auto; }
+  .client .body{ padding:24px 26px; }
+  .client h3{ margin:0 0 8px; font-size:1.3rem; }
+  .client p{ margin:0; }
+  @media (max-width:640px){ .client{ grid-template-columns:1fr; } .client .body{ padding:20px 16px; } }
 </style>
 </head>
 <body>
@@ -196,6 +207,17 @@
       <li><h3>We prepare it</h3><p>Inspection, repairs, paint or a full custom build.</p></li>
       <li><h3>We deliver it</h3><p>Unloaded and placed exactly where you want it.</p></li>
     </ol>
+  </div>
+</section>
+
+<section id="clients" class="clients">
+  <div class="wrap">
+    <h2>Our clients</h2>
+    <p class="lede">Contractors and businesses we supply with containers.</p>
+    <article class="client">
+      <div class="logo"><img src="../assets/rkcpl-logo.png" alt="Rajesh Kumar Contractors Pvt. Ltd. logo" width="420" height="229"></div>
+      <div class="body"><h3>Rajesh Kumar Contractors Pvt. Ltd.</h3><p>Road, highway and bridge contractor based in Jammu, working on BRO, PMGSY and national highway projects across Jammu &amp; Kashmir and Uttarakhand.</p></div>
+    </article>
   </div>
 </section>
 

@@ -112,6 +112,16 @@
   footer{ background:var(--black); color:rgba(255,255,255,.7); padding:40px 0; }
   footer .wrap{ display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
   footer b{ color:var(--white); }
+
+  /* clients */
+  .clients{ background:var(--concrete-2); }
+  .client{ display:grid; grid-template-columns:280px 1fr; background:var(--white); border-top:6px solid var(--black); max-width:860px; }
+  .client .logo{ background:#2B2C2D; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .client .logo img{ width:100%; max-width:210px; height:auto; }
+  .client .body{ padding:24px 26px; }
+  .client h3{ font-family:var(--display); font-weight:800; font-size:1.8rem; text-transform:uppercase; line-height:1; margin:0 0 10px; }
+  .client p{ margin:0; color:var(--text-soft); }
+  @media (max-width:640px){ .client{ grid-template-columns:1fr; } .client .body{ padding:20px 16px; } }
 </style>
 </head>
 <body>
@@ -244,6 +254,17 @@
       <div class="way"><h3>Build</h3><p>Our welders and fitters modify any container to your layout.</p></div>
       <div class="way"><h3>Deliver</h3><p>Trailer or crane drop-off, placed and levelled where you want it.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="clients" class="clients">
+  <div class="wrap">
+    <h2>Our clients</h2>
+    <p class="intro">Contractors and businesses we supply with containers.</p>
+    <article class="client">
+      <div class="logo"><img src="../assets/rkcpl-logo.png" alt="Rajesh Kumar Contractors Pvt. Ltd. logo" width="420" height="229"></div>
+      <div class="body"><h3>Rajesh Kumar Contractors Pvt. Ltd.</h3><p>Road, highway and bridge contractor based in Jammu, working on BRO, PMGSY and national highway projects across Jammu &amp; Kashmir and Uttarakhand.</p></div>
+    </article>
   </div>
 </section>
 

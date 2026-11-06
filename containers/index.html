@@ -255,6 +255,15 @@
     html{ scroll-behavior:auto; }
     .btn:hover, .type:hover{ transform:none; }
   }
+
+  /* ---------- CLIENTS ---------- */
+  .client-card{ display:grid; grid-template-columns:260px 1fr; background:var(--white); border:1px solid var(--line); max-width:820px; }
+  .client-logo{ background:#2B2C2D; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .client-logo img{ width:100%; max-width:200px; height:auto; }
+  .client-body{ padding:26px 28px; }
+  .client-body h3{ margin:0 0 8px; font-weight:800; font-size:1.3rem; }
+  .client-body p{ margin:0; color:var(--steel); }
+  @media (max-width:640px){ .client-card{ grid-template-columns:1fr; } .client-body{ padding:22px 20px; } }
 </style>
 </head>
 <body>
@@ -566,6 +575,23 @@
       <div class="why-item"><h3>Buy-back options</h3><p>Finished with a container? Ask about our buy-back and exchange offers.</p></div>
       <div class="why-item"><h3>One point of contact</h3><p>One person handles your order from first call to final placement.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="tag">Our clients</span>
+        <h2>Who we work with</h2>
+      </div>
+      <p>Contractors and businesses we supply with containers.</p>
+    </div>
+    <article class="client-card reveal">
+      <div class="client-logo"><img src="assets/rkcpl-logo.png" alt="Rajesh Kumar Contractors Pvt. Ltd. logo" width="420" height="229"></div>
+      <div class="client-body"><h3>Rajesh Kumar Contractors Pvt. Ltd.</h3><p>Road, highway and bridge contractor based in Jammu, working on BRO, PMGSY and national highway projects across Jammu &amp; Kashmir and Uttarakhand.</p></div>
+    </article>
   </div>
 </section>
 
