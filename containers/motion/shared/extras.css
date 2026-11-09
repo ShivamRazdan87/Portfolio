@@ -1,0 +1,62 @@
+/* Shared extras for the Shivaak concepts: container finder, pallet fit, language switch, phone action bar.
+   Each page sets the --x-* variables so these pieces take on that concept's look. */
+
+.x-sec{padding-block:clamp(64px,9vw,120px);position:relative}
+.x-in{max-width:var(--x-max,none);margin-inline:auto;padding-inline:var(--x-gut,16px)}
+.x-label{font-family:var(--x-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--x-muted);margin:0 0 8px}
+.x-opts{display:flex;flex-wrap:wrap;gap:8px}
+.x-opt{font:600 15px var(--x-body);color:var(--x-text);background:var(--x-panel);border:1px solid var(--x-line);padding:11px 14px;cursor:pointer;border-radius:var(--x-radius,2px);text-align:left;transition:border-color .2s,background .2s}
+.x-opt:hover{border-color:var(--x-muted)}
+.x-opt[aria-pressed="true"]{background:var(--x-accent);border-color:var(--x-accent);color:var(--x-accent-ink)}
+.x-opt:focus-visible{outline:2px solid var(--x-text);outline-offset:2px}
+
+/* finder */
+.x-finder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.x-qs{display:grid;gap:22px}
+.x-result{background:var(--x-panel);border:1px solid var(--x-line);border-top:4px solid var(--x-accent);padding:clamp(20px,3vw,32px);display:grid;gap:14px}
+.x-result svg{width:100%;max-width:300px;height:auto}
+.x-result h3{font-family:var(--x-display);text-transform:var(--x-display-tt,uppercase);font-weight:var(--x-display-w,400);font-stretch:var(--x-display-stretch,100%);font-size:clamp(26px,2.6vw,36px);line-height:1;margin:0;letter-spacing:var(--x-display-ls,0)}
+.x-result p{margin:0;color:var(--x-muted);font-size:16px;line-height:1.55}
+.x-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.x-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:800 14px var(--x-body);letter-spacing:.06em;text-transform:uppercase;padding:14px 18px;border:0;cursor:pointer;text-decoration:none;border-radius:var(--x-radius,2px)}
+.x-btn.x-wa{background:#25d366;color:#062b14}
+.x-btn.ghost{background:transparent;color:var(--x-text);box-shadow:inset 0 0 0 1px var(--x-line)}
+.x-btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--x-text)}
+.x-btn svg{width:18px;height:18px}
+@media (max-width:860px){.x-finder{grid-template-columns:1fr}}
+
+/* pallet fit */
+.x-fits{margin-top:clamp(36px,5vw,60px);border:1px solid var(--x-line);background:var(--x-panel);padding:clamp(18px,3vw,28px)}
+.x-fits h3{font-family:var(--x-display);text-transform:var(--x-display-tt,uppercase);font-weight:var(--x-display-w,400);font-stretch:var(--x-display-stretch,100%);font-size:clamp(24px,2.4vw,32px);line-height:1;margin:0 0 6px;letter-spacing:var(--x-display-ls,0)}
+.x-fits>p{margin:0 0 18px;color:var(--x-muted)}
+.x-fit-ctrl{display:flex;flex-wrap:wrap;gap:18px 28px;margin-bottom:16px}
+.x-fit-stage{overflow-x:auto;position:relative;background:var(--x-bg);border:1px solid var(--x-line);padding:14px}
+.x-fit-stage svg{display:block;width:100%;height:auto;min-width:420px}
+.x-fit-read{display:flex;flex-wrap:wrap;gap:26px;margin-top:14px;font-variant-numeric:tabular-nums}
+.x-fit-read div{border-left:2px solid var(--x-accent);padding-left:10px}
+.x-fit-read b{display:block;font-family:var(--x-display);font-weight:var(--x-display-w,400);font-stretch:var(--x-display-stretch,100%);font-size:30px;line-height:1.1;color:var(--x-text)}
+.x-fit-read span{font-family:var(--x-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--x-muted)}
+.x-fine{font-size:13px;color:var(--x-muted);margin:12px 0 0}
+
+/* language switch */
+.x-nav-right{display:flex;align-items:center;gap:12px}
+.x-lang{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:38px;padding:0 12px;border:1px solid var(--x-line);color:var(--x-text);font:700 14px var(--x-body);text-decoration:none;border-radius:var(--x-radius,2px);white-space:nowrap}
+@media (max-width:820px){.x-nav-right{margin-left:auto;margin-right:10px}}
+.x-lang:hover{border-color:var(--x-accent);color:var(--x-accent)}
+
+/* phone action bar */
+.x-bar{display:none}
+@media (max-width:820px){
+  .x-bar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--x-bar-bg,#0a0c0e);border-top:1px solid var(--x-line);
+    padding:8px max(8px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px))}
+  .x-bar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:52px;font:700 11px var(--x-body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--x-text);background:var(--x-panel);border-radius:var(--x-radius,2px)}
+  .x-bar a.x-wa{background:#25d366;color:#062b14}
+  .x-bar a.x-q{background:var(--x-accent);color:var(--x-accent-ink)}
+  .x-bar svg{width:20px;height:20px}
+  body{padding-bottom:calc(70px + env(safe-area-inset-bottom, 0px))}
+  .wa-float,a.wa[aria-label="Chat on WhatsApp"]{display:none!important}
+}
+
+/* Hindi: Devanagari needs more line height than the tight English display settings */
+html[lang="hi"] h1,html[lang="hi"] h2,html[lang="hi"] h3,html[lang="hi"] .x{line-height:1.22!important;letter-spacing:0!important}
+html[lang="hi"] .sec-num,html[lang="hi"] .tag,html[lang="hi"] .cap,html[lang="hi"] .x-label,html[lang="hi"] .eyebrow{letter-spacing:.04em}
