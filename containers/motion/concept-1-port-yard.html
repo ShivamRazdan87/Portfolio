@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shivaak Enterprises | Containers to Buy, Rent & Customise</title>
-<meta name="description" content="Shivaak Enterprises supplies shipping, office, storage, refrigerated, custom-built and special containers. Buy, rent or customise, delivered to your site.">
+<title>Shivaak Enterprises | Containers to Buy &amp; Customise</title>
+<meta name="description" content="Shivaak Enterprises supplies shipping, office, storage, refrigerated, custom-built and special containers. Buy or customise, delivered anywhere in India.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -128,7 +128,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,78px);lin
 /* SERVICES */
 .services{background:var(--paper);color:var(--ink)}
 .services .sec-head p{color:#555}
-.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--ink)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid var(--ink)}
 .svc{padding:30px 24px 34px;border-right:1px solid #c9c6bd;position:relative;overflow:hidden}
 .svc:last-child{border-right:0}
 .svc::before{content:"";position:absolute;left:0;top:0;height:6px;width:0;background:var(--orange);transition:width .5s}
@@ -211,7 +211,7 @@ form.qf{background:var(--ink);color:var(--paper);padding:clamp(22px,4vw,40px);di
 .qf input,.qf select,.qf textarea{font:500 16px var(--body);color:var(--paper);background:var(--steel);border:1px solid var(--line);padding:13px 14px;border-radius:2px;width:100%}
 .qf input:focus,.qf select:focus,.qf textarea:focus{outline:2px solid var(--orange);outline-offset:0;border-color:transparent}
 .qf textarea{resize:vertical;min-height:90px}
-.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .seg input{position:absolute;opacity:0;pointer-events:none}
 .seg label{display:block}
 .seg span{display:block;text-align:center;padding:12px 6px;border:1px solid var(--line);background:var(--steel);font-family:var(--body);font-weight:700;font-size:14px;letter-spacing:.04em;color:var(--paper);cursor:pointer;transition:.2s;text-transform:none}
@@ -238,9 +238,6 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
 @media (max-width:980px){
   .hero-grid,.size-panel,.faq-wrap,.quote-grid{grid-template-columns:1fr}
   .types{grid-template-columns:1fr 1fr}
-  .svc-grid{grid-template-columns:1fr 1fr}
-  .svc:nth-child(2){border-right:0}
-  .svc{border-bottom:1px solid #c9c6bd}
   .why-grid{grid-template-columns:1fr 1fr}
   .yard{height:340px;max-width:560px;margin-top:130px}
 }
@@ -259,9 +256,9 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
 }
 @media (max-width:600px){
   .types,.svc-grid,.why-grid{grid-template-columns:1fr}
-  .svc{border-right:0}
+  .svc{border-right:0;border-bottom:1px solid #c9c6bd}
   form.qf{grid-template-columns:1fr}
-  .seg{grid-template-columns:1fr 1fr}
+  .seg{grid-template-columns:repeat(3,1fr)}
   .size-tabs{display:grid;grid-template-columns:repeat(3,1fr);width:100%}
   .size-tabs button{font-size:17px;padding:12px 6px}
   .size-stage{padding:30px 16px 56px}
@@ -326,13 +323,13 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Container supply · Buy · Rent · Customise</span>
+      <span class="eyebrow">Container supply · Buy · Customise · Deliver</span>
       <h1>
         <span class="ln"><span>Every box.</span></span>
         <span class="ln"><span>Every <em>build.</em></span></span>
         <span class="ln"><span>Your site.</span></span>
       </h1>
-      <p class="lead">Shipping, office, storage, refrigerated and custom-built containers. Buy one, rent one, or have it built into a café, shop, home or washroom. We deliver it to your site.</p>
+      <p class="lead">Shipping, office, storage, refrigerated and custom-built containers. Buy one ready to use, or have it built into a café, shop, home or washroom. We deliver it anywhere in India.</p>
       <div class="hero-cta">
         <a href="#quote" class="btn btn-o">Get a free quote →</a>
         <a href="tel:+919958446787" class="btn btn-g">Call +91 99584 46787</a>
@@ -374,14 +371,13 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
 <section id="services" class="services">
   <div class="wrap">
     <div class="sec-head rv">
-      <div><span class="sec-num">02 / SERVICES</span><h2>Buy. Rent.<br>Customise. Deliver.</h2></div>
+      <div><span class="sec-num">02 / SERVICES</span><h2>Buy.<br>Customise. Deliver.</h2></div>
       <p>One supplier for the whole job, from choosing the container to setting it down on your site.</p>
     </div>
     <div class="svc-grid">
       <div class="svc rv"><div class="svc-n">01</div><h3>Buy</h3><p>New and used containers for keeps. Inspected before dispatch.</p><ul><li>New &amp; used units</li><li>All standard sizes</li><li>Your asset to keep</li></ul></div>
-      <div class="svc rv"><div class="svc-n">02</div><h3>Rent</h3><p>Short- and long-term hire for projects, sites and seasonal storage.</p><ul><li>Flexible hire periods</li><li>Site offices &amp; storage</li><li>No large upfront cost</li></ul></div>
-      <div class="svc rv"><div class="svc-n">03</div><h3>Customise</h3><p>We cut, insulate, wire, fit and paint containers to your plan.</p><ul><li>Cafés, shops &amp; homes</li><li>Washrooms &amp; offices</li><li>Doors, windows, AC, branding</li></ul></div>
-      <div class="svc rv"><div class="svc-n">04</div><h3>Deliver</h3><p>Transported and placed at your site, ready to use.</p><ul><li>Site delivery</li><li>Placement on arrival</li><li>Scheduled to your date</li></ul></div>
+      <div class="svc rv"><div class="svc-n">02</div><h3>Customise</h3><p>We cut, insulate, wire, fit and paint containers to your plan.</p><ul><li>Cafés, shops &amp; homes</li><li>Washrooms &amp; offices</li><li>Doors, windows, AC, branding</li></ul></div>
+      <div class="svc rv"><div class="svc-n">03</div><h3>Deliver</h3><p>Transported and placed at your site, ready to use.</p><ul><li>Delivery all over India</li><li>Placement on arrival</li><li>Scheduled to your date</li></ul></div>
     </div>
   </div>
 </section>
@@ -421,7 +417,7 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
     <div class="steps" id="steps">
       <div class="road"><i></i></div>
       <svg class="truck" viewBox="0 0 64 30" aria-hidden="true"><rect x="0" y="4" width="40" height="18" fill="#ff6a13"/><path d="M0 8h40M0 12h40M0 16h40" stroke="rgba(0,0,0,.3)"/><path d="M42 10h12l8 8v4H42z" fill="#eceae4"/><circle cx="12" cy="25" r="4" fill="#111" stroke="#666" stroke-width="2"/><circle cx="52" cy="25" r="4" fill="#111" stroke="#666" stroke-width="2"/></svg>
-      <div class="step"><span class="step-dot"></span><span class="mono">STEP 01</span><h3>Enquire</h3><p>Send your requirement on WhatsApp or call. Size, type, buy or rent, and site location.</p></div>
+      <div class="step"><span class="step-dot"></span><span class="mono">STEP 01</span><h3>Enquire</h3><p>Send your requirement on WhatsApp or call. Size, type, any custom work, and site location.</p></div>
       <div class="step"><span class="step-dot"></span><span class="mono">STEP 02</span><h3>Get a quote</h3><p>We recommend the right unit and send a clear price, including delivery.</p></div>
       <div class="step"><span class="step-dot"></span><span class="mono">STEP 03</span><h3>Prepare</h3><p>We inspect, or build your custom fit-out, and schedule dispatch.</p></div>
       <div class="step"><span class="step-dot"></span><span class="mono">STEP 04</span><h3>Deliver</h3><p>Your container arrives on site and is placed where you need it.</p></div>
@@ -437,7 +433,7 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
     </div>
     <div class="why-grid rv">
       <div class="why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12"/><path d="M6 6v12M10 6v12M14 6v12M18 6v12"/></svg><h3>Every type, one supplier</h3><p>Shipping, office, storage, reefer, custom and special containers from one source.</p></div>
-      <div class="why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg><h3>Buy, rent or build</h3><p>Choose what suits your budget and timeline. Switch from hire to purchase when you're ready.</p></div>
+      <div class="why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg><h3>Buy or build</h3><p>Buy a new or used container ready to use, or have it custom-built to suit your budget and timeline.</p></div>
       <div class="why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4l6 6-10 10H4v-6z"/></svg><h3>Custom fabrication</h3><p>Cut-outs, insulation, electrics, plumbing and finishes, built to your layout.</p></div>
       <div class="why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h13v10H1zM14 10h5l4 4v2h-9z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><h3>Delivered to site</h3><p>We handle transport and placement so you don't have to coordinate trucks.</p></div>
       <div class="why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8 12l3 3 5-6"/></svg><h3>Inspected units</h3><p>Every container is checked for structure, doors and weather-tightness before it leaves.</p></div>
@@ -451,7 +447,6 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
   <div class="wrap faq-wrap">
     <div class="rv"><span class="sec-num">06 / FAQ</span><h2>Questions,<br>answered</h2><p style="color:var(--muted);margin-top:18px;max-width:340px">Can't find it here? Message us on WhatsApp and we'll reply directly.</p></div>
     <div class="rv">
-      <details><summary>Should I buy or rent a container?</summary><p>Rent if you need it for a project, a season or under a year or so. Buy if you need it long-term, want to modify it heavily, or want it as a permanent asset. We can help you compare both.</p></details>
       <details><summary>Do you supply new and used containers?</summary><p>Yes. Used containers are a cost-effective choice for storage and site use. New units suit fit-outs and premium builds. Every unit is inspected before dispatch.</p></details>
       <details><summary>What can you build from a container?</summary><p>Cafés, shops, kiosks, site offices, homes, washrooms, security cabins and more. We handle cut-outs, doors and windows, insulation, electrics, plumbing, interiors and paint.</p></details>
       <details><summary>Do you deliver to my site?</summary><p>Yes. We arrange transport and place the container at your site. Share your location and access details and we'll include delivery in your quote.</p></details>
@@ -494,7 +489,6 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
       <div class="full"><span class="mono" style="font-size:11px;letter-spacing:.14em;color:var(--muted);display:block;margin-bottom:7px">I WANT TO</span>
         <div class="seg">
           <label><input type="radio" name="need" value="Buy" checked><span>Buy</span></label>
-          <label><input type="radio" name="need" value="Rent"><span>Rent</span></label>
           <label><input type="radio" name="need" value="Customise"><span>Customise</span></label>
           <label><input type="radio" name="need" value="Not sure yet"><span>Not sure</span></label>
         </div>
@@ -516,7 +510,7 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
 
 <footer>
   <div class="wrap foot">
-    <div><a href="#top" class="logo"><span class="logo-mark"></span><span class="logo-txt" style="color:var(--paper)">SHIVAAK<small>ENTERPRISES</small></span></a><p style="margin-top:14px;max-width:320px">Shipping, office, storage, refrigerated, custom-built and special containers. Buy, rent, customise, delivered.</p></div>
+    <div><a href="#top" class="logo"><span class="logo-mark"></span><span class="logo-txt" style="color:var(--paper)">SHIVAAK<small>ENTERPRISES</small></span></a><p style="margin-top:14px;max-width:320px">Shipping, office, storage, refrigerated, custom-built and special containers. Buy, customise, delivered all over India.</p></div>
     <div><p class="mono" style="color:var(--orange);font-size:11px;margin-bottom:8px">CONTACT</p><p><a href="tel:+919958446787">+91 99584 46787</a></p><p><a href="https://wa.me/919958446787">WhatsApp us</a></p><p><a href="mailto:shivaakenterprises4926@gmail.com">shivaakenterprises4926@gmail.com</a></p></div>
     <div><p class="mono" style="color:var(--orange);font-size:11px;margin-bottom:8px">YARD</p><p data-biz="address"></p><p data-biz="hours"></p></div>
     <div><p class="mono" style="color:var(--orange);font-size:11px;margin-bottom:8px">EXPLORE</p><p><a href="#types">Containers</a></p><p><a href="#services">Services</a></p><p><a href="#sizes">Size guide</a></p><p><a href="#faq">FAQ</a></p></div>
@@ -539,8 +533,8 @@ footer{background:#0a0c0e;padding:50px 0 100px;border-top:1px solid var(--line)}
   // ===== BUSINESS DETAILS: fill these in and they appear on the page =====
   const BIZ={
     address:'',   // e.g. 'Plot 12, Sector 37, Gurugram, Haryana 122001'
-    area:'',      // e.g. 'Delhi NCR, Haryana, Punjab and J&K'
-    hours:'',     // e.g. 'Mon–Sat, 9 am – 7 pm'
+    area:'All over India',
+    hours:'Monday to Saturday',
     gst:''        // e.g. '06ABCDE1234F1Z5'
   };
   const TODO={address:'Yard address to be added',area:'Service area to be added',hours:'Opening hours to be added',gst:'GSTIN to be added'};
